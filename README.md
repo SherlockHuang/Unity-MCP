@@ -96,7 +96,7 @@ That's it. Ask your AI *"Create 3 cubes in a circle with radius 2"* and watch it
 
 The plugin ships with 100+ built-in tools across three categories. Each tool brings AI skill. All tools are available immediately after installation — no extra configuration required. See [docs/default-mcp-tools.md](docs/default-mcp-tools.md) for the full reference with detailed descriptions.
 
-The standard MCP `tools/list` catalog is intentionally discovery-oriented: Unity-MCP keeps the full enabled tool set visible there, but the default `inputSchema` is minimized to names, required fields, and core structure. When an agent needs richer argument guidance or a tool's full schema, call `tool-get-detail` on demand.
+The standard MCP `tools/list` catalog is intentionally discovery-oriented: Unity-MCP keeps the full enabled tool set visible there, but the default `inputSchema` is minimized to names, required fields, and core structure. The recommended workflow is `tools/list` for discovery, `tool-get-detail` for the default compact single-tool summary, and `tool-get-detail` with `detailLevel: full` only when that summary is not enough.
 
 <details>
   <summary>Project & Assets</summary>

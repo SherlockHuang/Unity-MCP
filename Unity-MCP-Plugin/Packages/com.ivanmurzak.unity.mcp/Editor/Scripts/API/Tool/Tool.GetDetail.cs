@@ -25,8 +25,10 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
     {
         public const string ToolGetDetailId = "tool-get-detail";
         internal const string ToolGetDetailInternalErrorMessage = "Tool detail is temporarily unavailable due to an internal error.";
+        internal const string ToolDetailLevelSummary = "summary";
+        internal const string ToolDetailLevelFull = "full";
 
-        [Description("Structured tool lookup failure.")]
+        [Description("Structured tool detail failure.")]
         public class ToolLookupFailureData
         {
             [JsonInclude, JsonPropertyName("code")]
@@ -102,18 +104,22 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             public int? TokenCount { get; set; }
 
             [JsonInclude, JsonPropertyName("readOnlyHint")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
             [Description("Read-only execution hint.")]
             public bool? ReadOnlyHint { get; set; }
 
             [JsonInclude, JsonPropertyName("idempotentHint")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
             [Description("Idempotent execution hint.")]
             public bool? IdempotentHint { get; set; }
 
             [JsonInclude, JsonPropertyName("destructiveHint")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
             [Description("Destructive execution hint.")]
             public bool? DestructiveHint { get; set; }
 
             [JsonInclude, JsonPropertyName("openWorldHint")]
+            [JsonIgnore(Condition = JsonIgnoreCondition.Never)]
             [Description("Open-world execution hint.")]
             public bool? OpenWorldHint { get; set; }
 
@@ -137,11 +143,14 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             ReadOnlyHint = true,
             IdempotentHint = true
         )]
-        [Description("Get rich metadata for a single MCP tool, including parsed arguments and optional full schemas.")]
+        [Description("Get structured metadata for a single MCP tool, returning compact summary detail by default and full schemas only on explicit request.")]
         public ToolDetailResultData GetDetail
         (
             [Description("Tool name to resolve. Exact match is preferred; case-insensitive lookup is supported.")]
             string? name = null,
+
+            [Description("Detail level to return. Use 'summary' for compact detail or 'full' to additionally include full input/output schemas. Default: summary")]
+            string? detailLevel = null,
 
             [Description("Include the full input and output schemas in the response. Default: false")]
             bool? includeSchemas = false,
@@ -156,6 +165,10 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
 
                 try
                 {
+                    var detailRequest = ResolveDetailRequest(detailLevel, includeSchemas);
+                    if (detailRequest.Failure != null)
+                        return CreateFailureResult(requestedName, detailRequest.Failure);
+
                     var toolManager = UnityMcpPluginEditor.Instance.Tools
                         ?? throw new InvalidOperationException(Error.ToolManagerNotAvailable());
 
@@ -177,7 +190,13 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
                     }
 
                     var fullTool = liveTool;
-                    var fullInputSchema = fullTool.InputSchema;
+                    var shouldIncludeParsedArguments = includeParsedArguments != false;
+                    var includeFullSchemas = detailRequest.IncludeFullSchemas;
+                    JsonNode? fullInputSchema = null;
+                    if (shouldIncludeParsedArguments || includeFullSchemas)
+                    {
+                        fullInputSchema = fullTool.InputSchema;
+                    }
 
                     return new ToolDetailResultData
                     {
@@ -193,13 +212,13 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
                         IdempotentHint = fullTool.IdempotentHint,
                         DestructiveHint = fullTool.DestructiveHint,
                         OpenWorldHint = fullTool.OpenWorldHint,
-                        Inputs = includeParsedArguments != false
+                        Inputs = shouldIncludeParsedArguments
                             ? ParseToolArguments(fullInputSchema)
                             : null,
-                        InputSchema = includeSchemas == true
+                        InputSchema = includeFullSchemas
                             ? fullInputSchema?.DeepClone()
                             : null,
-                        OutputSchema = includeSchemas == true
+                        OutputSchema = includeFullSchemas
                             ? fullTool.OutputSchema?.DeepClone()
                             : null
                     };
@@ -237,6 +256,34 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
                     Code = "internal-error",
                     Message = ToolGetDetailInternalErrorMessage
                 });
+        }
+
+        static (bool IncludeFullSchemas, ToolLookupFailureData? Failure) ResolveDetailRequest(
+            string? detailLevel,
+            bool? includeSchemas)
+        {
+            if (detailLevel != null &&
+                !string.Equals(detailLevel, ToolDetailLevelSummary, StringComparison.Ordinal) &&
+                !string.Equals(detailLevel, ToolDetailLevelFull, StringComparison.Ordinal))
+            {
+                return (false, new ToolLookupFailureData
+                {
+                    Code = "invalid-detail-level",
+                    Message = $"Unsupported detailLevel '{detailLevel}'. Expected '{ToolDetailLevelSummary}' or '{ToolDetailLevelFull}'."
+                });
+            }
+
+            if (string.Equals(detailLevel, ToolDetailLevelSummary, StringComparison.Ordinal) &&
+                includeSchemas == true)
+            {
+                return (false, new ToolLookupFailureData
+                {
+                    Code = "conflicting-detail-request",
+                    Message = $"detailLevel '{ToolDetailLevelSummary}' conflicts with includeSchemas=true. Use detailLevel '{ToolDetailLevelFull}' for schema detail."
+                });
+            }
+
+            return (string.Equals(detailLevel, ToolDetailLevelFull, StringComparison.Ordinal) || includeSchemas == true, null);
         }
 
         static (string? ResolvedName, ToolLookupFailureData? Failure) ResolveToolLookup(

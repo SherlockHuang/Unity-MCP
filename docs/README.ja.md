@@ -96,7 +96,7 @@ unity-mcp-cli open ./MyUnityProject
 
 このプラグインには3つのカテゴリにまたがる100以上の組み込みツールが付属しています。各ツールが AI スキルを提供します。すべてのツールはインストール直後に利用可能で、追加の設定は不要です。詳細な説明付きの完全なリファレンスは [docs/default-mcp-tools.md](docs/default-mcp-tools.md) をご覧ください。
 
-標準 MCP の `tools/list` カタログは、意図的にディスカバリー向けに保たれています。Unity-MCP は有効なツール一式をそこに公開し続けますが、デフォルトの `inputSchema` は名前、必須項目、基本構造に絞って最小化されます。エージェントがより詳しい引数ガイダンスや単一ツールの完全なスキーマを必要とする場合は、必要になった時点で `tool-get-detail` を呼び出してください。
+標準 MCP の `tools/list` カタログは、意図的にディスカバリー向けに保たれています。Unity-MCP は有効なツール一式をそこに公開し続けますが、デフォルトの `inputSchema` は名前、必須項目、基本構造に絞って最小化されます。推奨フローは、発見には `tools/list`、通常の単一ツール確認には既定のコンパクト要約を返す `tool-get-detail`、その要約では足りない場合にだけ `detailLevel: full` を指定した `tool-get-detail` を使う形です。
 
 <details>
   <summary>プロジェクト＆アセット</summary>

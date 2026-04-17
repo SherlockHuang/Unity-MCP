@@ -25,7 +25,7 @@ Required to install [Unity MCP Plugin](https://github.com/IvanMurzak/Unity-MCP) 
 
 Unity-MCP keeps the standard MCP `tools/list` flow compatible for discovery: the full enabled tool set is still returned there, but the default `inputSchema` is minimized to parameter names, required fields, and core type structure.
 
-When a client or agent needs richer argument guidance or the full schema for one tool, use `tool-get-detail` on demand instead of expecting verbose detail in the default catalog response.
+The recommended escalation path is `tools/list` for discovery, `tool-get-detail` for the default compact single-tool summary, and `tool-get-detail` with `detailLevel: full` only when that summary still is not enough and the full schema for one tool is required.
 
 ---
 

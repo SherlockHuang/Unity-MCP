@@ -96,7 +96,7 @@ Eso es todo. Pídele a tu IA *"Crea 3 cubos en un círculo con radio 2"* y obser
 
 El plugin incluye más de 100 herramientas integradas en tres categorías. Cada herramienta aporta una habilidad a la IA. Todas las herramientas están disponibles inmediatamente después de la instalación — no se requiere configuración adicional. Consulta [docs/default-mcp-tools.md](docs/default-mcp-tools.md) para la referencia completa con descripciones detalladas.
 
-El catálogo estándar de MCP `tools/list` está pensado explícitamente para el descubrimiento: Unity-MCP mantiene visible allí todo el conjunto de herramientas habilitadas, pero el `inputSchema` predeterminado se reduce a nombres, campos obligatorios y estructura básica. Cuando un agente necesite una guía de argumentos más rica o el esquema completo de una herramienta, llama a `tool-get-detail` bajo demanda.
+El catálogo estándar de MCP `tools/list` está pensado explícitamente para el descubrimiento: Unity-MCP mantiene visible allí todo el conjunto de herramientas habilitadas, pero el `inputSchema` predeterminado se reduce a nombres, campos obligatorios y estructura básica. El flujo recomendado es `tools/list` para descubrir, `tool-get-detail` para el resumen compacto predeterminado de una sola herramienta y `tool-get-detail` con `detailLevel: full` solo cuando ese resumen no sea suficiente.
 
 <details>
   <summary>Proyecto y assets</summary>
