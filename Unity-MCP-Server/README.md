@@ -21,6 +21,14 @@ Required to install [Unity MCP Plugin](https://github.com/IvanMurzak/Unity-MCP) 
 
 ---
 
+## Tool discovery workflow
+
+Unity-MCP keeps the standard MCP `tools/list` flow compatible for discovery: the full enabled tool set is still returned there, but the default `inputSchema` is minimized to parameter names, required fields, and core type structure.
+
+When a client or agent needs richer argument guidance or the full schema for one tool, use `tool-get-detail` on demand instead of expecting verbose detail in the default catalog response.
+
+---
+
 ### Variables
 
 Doesn't matter what launch option you choose, all of them support custom configuration using both Environment Variables and Command Line Arguments. It would work with default values, if you just need to launch it, don't waste your time for the variables. Just make sure Unity Plugin also has default values, especially the `--port`, they should be equal.

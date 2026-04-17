@@ -69,6 +69,11 @@ namespace com.IvanMurzak.Unity.MCP.Server
 
                 builder.Services
                     .WithMcpServer(dataArguments, logger)
+                    .WithListToolsHandler(async (requestContext, cancellationToken) =>
+                    {
+                        var result = await ToolRouter.ListAll(requestContext, cancellationToken);
+                        return ToolCatalogSchemaMinifier.Minimize(result);
+                    })
                     .WithMcpPluginServer(dataArguments);
 
                 // builder.WebHost.UseUrls(Consts.Hub.DefaultEndpoint);

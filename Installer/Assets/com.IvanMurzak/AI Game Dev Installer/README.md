@@ -68,6 +68,8 @@ AI helper which does wide range of tasks in Unity Editor and even in a running g
 - ✅ Unity API instantly available for usage, even if Unity changes something you will get fresh API using `Reflection`.
 - ✅ Get access to human readable description of any `class`, `method`, `field`, `property` by reading it's `Description` attribute.
 
+The standard MCP `tools/list` catalog stays discovery-oriented by default: Unity-MCP still exposes the full enabled tool set there, while the default `inputSchema` is trimmed down to names, required fields, and core structure. Use `tool-get-detail` on demand when your agent needs richer per-tool guidance or a full schema for one tool.
+
 ### Stability status
 
 | Unity Version | Editmode                                                                                                                                                                               | Playmode                                                                                                                                                                               | Standalone                                                                                                                                                                               |

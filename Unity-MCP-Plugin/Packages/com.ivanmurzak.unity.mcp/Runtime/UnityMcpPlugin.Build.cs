@@ -147,7 +147,6 @@ namespace com.IvanMurzak.Unity.MCP
                 .WithSkillsFromAssembly(assemblies);
 
             configure?.Invoke(mcpPluginBuilder);
-
             var mcpPlugin = mcpPluginBuilder.Build(reflector);
 
             _pluginConnectionSubscription?.Dispose();

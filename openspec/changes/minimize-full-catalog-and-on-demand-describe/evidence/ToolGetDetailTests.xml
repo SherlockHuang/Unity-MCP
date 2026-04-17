@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="6" result="Passed" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.8348848">
+  <test-suite type="TestSuite" id="1820" name="2022.3.62f3" fullname="2022.3.62f3" runstate="Runnable" testcasecount="725" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.834885" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="2613" name="com.IvanMurzak.Unity.MCP.Editor.Tests.dll" fullname="G:/github/Unity-MCP/Unity-Tests/2022.3.62f3/Library/ScriptAssemblies/com.IvanMurzak.Unity.MCP.Editor.Tests.dll" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.818726" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="3100" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="2614" name="com" fullname="com" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.811454" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="2615" name="IvanMurzak" fullname="com.IvanMurzak" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.804589" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="2616" name="Unity" fullname="com.IvanMurzak.Unity" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.795223" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="2617" name="MCP" fullname="com.IvanMurzak.Unity.MCP" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.788125" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="2618" name="Editor" fullname="com.IvanMurzak.Unity.MCP.Editor" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.779431" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestSuite" id="2619" name="Tests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests" runstate="Runnable" testcasecount="719" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.769775" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-suite type="TestFixture" id="2133" name="ToolGetDetailTests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.761433" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="2139" name="CreateInternalErrorResult_SanitizesClientFacingMessage" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.CreateInternalErrorResult_SanitizesClientFacingMessage" methodname="CreateInternalErrorResult_SanitizesClientFacingMessage" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="521044200" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:58Z" duration="0.136294" asserts="0">
+                      <properties />
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:58:7143] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[37373bc2-5408-4492-b714-962b2389ef6d] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:7148] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[37373bc2-5408-4492-b714-962b2389ef6d] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:7148] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[37373bc2-5408-4492-b714-962b2389ef6d] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ff6b6b>fail:</color> [21:57:58:7375] <color=#B4FF32>[AI]</color> <color=#4ECDC4><b>Tool_Tool</b></color> tool-get-detail failed for 'tool-list': System.InvalidOperationException: sensitive details
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2138" name="GetDetail_AmbiguousCaseInsensitiveLookup_ReturnsStructuredMatches" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.GetDetail_AmbiguousCaseInsensitiveLookup_ReturnsStructuredMatches" methodname="GetDetail_AmbiguousCaseInsensitiveLookup_ReturnsStructuredMatches" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="671760780" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:58Z" duration="0.154270" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:58:8517] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[31a7b826-e54d-4028-9775-105dae12137a] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:8532] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[31a7b826-e54d-4028-9775-105dae12137a] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:8532] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[31a7b826-e54d-4028-9775-105dae12137a] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-get-detail Started with JSON:
+{
+                    "name": "bAtCh-OnE-AmBiGuOuS"
+                }
+tool-get-detail Completed
+tool-get-detail Result:
+{
+  "Value": {
+    "RequestID": "7e8ae171-b8da-4f0a-90e8-bb3b5f08cda8",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022bAtCh-OnE-AmBiGuOuS\u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022ambiguous\u0022,\u0022message\u0022:\u0022Tool \\u0027bAtCh-OnE-AmBiGuOuS\\u0027 matched multiple tools.\u0022,\u0022matches\u0022:[\u0022Batch-One-Ambiguous\u0022,\u0022batch-one-ambiguous\u0022]}}}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": {
+        "success": false,
+        "requestedName": "bAtCh-OnE-AmBiGuOuS",
+        "failure": {
+          "code": "ambiguous",
+          "message": "Tool \u0027bAtCh-OnE-AmBiGuOuS\u0027 matched multiple tools.",
+          "matches": [
+            "Batch-One-Ambiguous",
+            "batch-one-ambiguous"
+          ]
+        }
+      }
+    }
+  },
+  "RequestID": "7e8ae171-b8da-4f0a-90e8-bb3b5f08cda8",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022bAtCh-OnE-AmBiGuOuS\u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022ambiguous\u0022,\u0022message\u0022:\u0022Tool \\u0027bAtCh-OnE-AmBiGuOuS\\u0027 matched multiple tools.\u0022,\u0022matches\u0022:[\u0022Batch-One-Ambiguous\u0022,\u0022batch-one-ambiguous\u0022]}}}"
+}
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2137" name="GetDetail_EmptyName_ReturnsStructuredEmptyNameFailure" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.GetDetail_EmptyName_ReturnsStructuredEmptyNameFailure" methodname="GetDetail_EmptyName_ReturnsStructuredEmptyNameFailure" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="189370606" result="Passed" start-time="2026-04-16 13:57:58Z" end-time="2026-04-16 13:57:59Z" duration="0.109015" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:58:9976] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[4a47572a-ea78-4570-9887-1a5fa7c258b6] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:9976] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[4a47572a-ea78-4570-9887-1a5fa7c258b6] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:58:9976] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[4a47572a-ea78-4570-9887-1a5fa7c258b6] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-get-detail Started with JSON:
+{
+                "name": "   "
+            }
+tool-get-detail Completed
+tool-get-detail Result:
+{
+  "Value": {
+    "RequestID": "901adde7-18fd-41a8-b7a5-bc58bb8d4b07",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022   \u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022empty-name\u0022,\u0022message\u0022:\u0022Tool name is null, empty, or whitespace.\u0022}}}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": {
+        "success": false,
+        "requestedName": "   ",
+        "failure": {
+          "code": "empty-name",
+          "message": "Tool name is null, empty, or whitespace."
+        }
+      }
+    }
+  },
+  "RequestID": "901adde7-18fd-41a8-b7a5-bc58bb8d4b07",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022   \u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022empty-name\u0022,\u0022message\u0022:\u0022Tool name is null, empty, or whitespace.\u0022}}}"
+}
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2134" name="GetDetail_ExactLookup_ReturnsStructuredSuccessWithoutSchemasByDefault" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.GetDetail_ExactLookup_ReturnsStructuredSuccessWithoutSchemasByDefault" methodname="GetDetail_ExactLookup_ReturnsStructuredSuccessWithoutSchemasByDefault" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="1771123033" result="Passed" start-time="2026-04-16 13:57:59Z" end-time="2026-04-16 13:57:59Z" duration="0.128537" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:59:1182] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[11422e73-2f1e-48ee-8e6a-03d35049d031] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:1182] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[11422e73-2f1e-48ee-8e6a-03d35049d031] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:1197] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[11422e73-2f1e-48ee-8e6a-03d35049d031] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-get-detail Started with JSON:
+{
+                "name": "tool-list"
+            }
+tool-get-detail Completed
+tool-get-detail Result:
+{
+  "Value": {
+    "RequestID": "d66b8064-ba90-4c03-9326-865968256374",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:{\u0022success\u0022:true,\u0022requestedName\u0022:\u0022tool-list\u0022,\u0022resolvedName\u0022:\u0022tool-list\u0022,\u0022name\u0022:\u0022tool-list\u0022,\u0022title\u0022:\u0022Tool / List\u0022,\u0022description\u0022:\u0022List all available MCP tools. Optionally filter by regex across tool names, descriptions, and arguments.\u0022,\u0022enabled\u0022:true,\u0022tokenCount\u0022:543,\u0022readOnlyHint\u0022:true,\u0022idempotentHint\u0022:true,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022,\u0022type\u0022:\u0022string\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Regex pattern to filter tools. Matches against tool name, description, and argument names and descriptions.\u0022},{\u0022name\u0022:\u0022includeDescription\u0022,\u0022type\u0022:\u0022boolean\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include tool descriptions in the result. Default: false\u0022},{\u0022name\u0022:\u0022includeInputs\u0022,\u0022type\u0022:\u0022string\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include input arguments in the result. Default: None\u0022}]}}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": {
+        "success": true,
+        "requestedName": "tool-list",
+        "resolvedName": "tool-list",
+        "name": "tool-list",
+        "title": "Tool / List",
+        "description": "List all available MCP tools. Optionally filter by regex across tool names, descriptions, and arguments.",
+        "enabled": true,
+        "tokenCount": 543,
+        "readOnlyHint": true,
+        "idempotentHint": true,
+        "inputs": [
+          {
+            "name": "regexSearch",
+            "type": "string",
+            "required": false,
+            "description": "Regex pattern to filter tools. Matches against tool name, description, and argument names and descriptions."
+          },
+          {
+            "name": "includeDescription",
+            "type": "boolean",
+            "required": false,
+            "description": "Include tool descriptions in the result. Default: false"
+          },
+          {
+            "name": "includeInputs",
+            "type": "string",
+            "required": false,
+            "description": "Include input arguments in the result. Default: None"
+          }
+        ]
+      }
+    }
+  },
+  "RequestID": "d66b8064-ba90-4c03-9326-865968256374",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:{\u0022success\u0022:true,\u0022requestedName\u0022:\u0022tool-list\u0022,\u0022resolvedName\u0022:\u0022tool-list\u0022,\u0022name\u0022:\u0022tool-list\u0022,\u0022title\u0022:\u0022Tool / List\u0022,\u0022description\u0022:\u0022List all available MCP tools. Optionally filter by regex across tool names, descriptions, and arguments.\u0022,\u0022enabled\u0022:true,\u0022tokenCount\u0022:543,\u0022readOnlyHint\u0022:true,\u0022idempotentHint\u0022:true,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022,\u0022type\u0022:\u0022string\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Regex pattern to filter tools. Matches against tool name, description, and argument names and descriptions.\u0022},{\u0022name\u0022:\u0022includeDescription\u0022,\u0022type\u0022:\u0022boolean\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include tool descriptions in the result. Default: false\u0022},{\u0022name\u0022:\u0022includeInputs\u0022,\u0022type\u0022:\u0022string\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include input arguments in the result. Default: None\u0022}]}}"
+}
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2135" name="GetDetail_IncludeSchemas_ReturnsRichSchemaPayload" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.GetDetail_IncludeSchemas_ReturnsRichSchemaPayload" methodname="GetDetail_IncludeSchemas_ReturnsRichSchemaPayload" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="672881049" result="Passed" start-time="2026-04-16 13:57:59Z" end-time="2026-04-16 13:57:59Z" duration="0.111984" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:59:2363] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[6f731dc3-2e16-449f-9c42-4a7d2fde05b0] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:2363] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[6f731dc3-2e16-449f-9c42-4a7d2fde05b0] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:2368] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[6f731dc3-2e16-449f-9c42-4a7d2fde05b0] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-get-detail Started with JSON:
+{
+                "name": "tool-set-enabled-state",
+                "includeSchemas": true
+            }
+tool-get-detail Completed
+tool-get-detail Result:
+{
+  "Value": {
+    "RequestID": "170c3146-d860-48b3-99c5-0ce36d832374",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:{\u0022success\u0022:true,\u0022requestedName\u0022:\u0022tool-set-enabled-state\u0022,\u0022resolvedName\u0022:\u0022tool-set-enabled-state\u0022,\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022title\u0022:\u0022Tool / Set Enabled State\u0022,\u0022description\u0022:\u0022Enable or disable MCP tools by name. Allows controlling which tools are available for the AI agent.\u0022,\u0022enabled\u0022:false,\u0022tokenCount\u0022:588,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022,\u0022type\u0022:\u0022array\\u003Cobject\\u003E\u0022,\u0022required\u0022:true,\u0022description\u0022:\u0022Array of tools with their desired enabled state.\u0022},{\u0022name\u0022:\u0022includeLogs\u0022,\u0022type\u0022:\u0022boolean\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include operation logs in the result. Default: false\u0022}],\u0022inputSchema\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022tools\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData[]\u0022,\u0022description\u0022:\u0022Array of tools with their desired enabled state.\u0022},\u0022includeLogs\u0022:{\u0022$ref\u0022:\u0022#/$defs/System.Boolean\u0022,\u0022description\u0022:\u0022Include operation logs in the result. Default: false\u0022}},\u0022$defs\u0022:{\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Name of the MCP tool to enable or disable.\u0022},\u0022Enabled\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022description\u0022:\u0022Whether the tool should be enabled (true) or disabled (false).\u0022}},\u0022required\u0022:[\u0022Enabled\u0022]},\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData[]\u0022:{\u0022type\u0022:\u0022array\u0022,\u0022items\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData\u0022}},\u0022System.Boolean\u0022:{\u0022type\u0022:\u0022boolean\u0022}},\u0022required\u0022:[\u0022tools\u0022]},\u0022outputSchema\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022result\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BResultData\u0022}},\u0022$defs\u0022:{\u0022com.IvanMurzak.ReflectorNet.Model.Logs\u0022:{\u0022type\u0022:\u0022array\u0022,\u0022items\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.ReflectorNet.Model.LogEntry\u0022}},\u0022com.IvanMurzak.ReflectorNet.Model.LogEntry\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Depth\u0022:{\u0022type\u0022:\u0022integer\u0022},\u0022Message\u0022:{\u0022type\u0022:\u0022string\u0022},\u0022Type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022Trace\u0022,\u0022Debug\u0022,\u0022Info\u0022,\u0022Success\u0022,\u0022Warning\u0022,\u0022Error\u0022,\u0022Critical\u0022]}},\u0022required\u0022:[\u0022Depth\u0022,\u0022Type\u0022]},\u0022System.Collections.Generic.Dictionary\\u003CSystem.String,System.Boolean\\u003E\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022additionalProperties\u0022:{\u0022type\u0022:\u0022boolean\u0022}},\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BResultData\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Logs\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.ReflectorNet.Model.Logs\u0022,\u0022description\u0022:\u0022Optional operation logs. Only included when \\u0027includeLogs\\u0027 is true.\u0022},\u0022Success\u0022:{\u0022$ref\u0022:\u0022#/$defs/System.Collections.Generic.Dictionary\\u003CSystem.String,System.Boolean\\u003E\u0022,\u0022description\u0022:\u0022Result of each tool operation. Key: original input name as provided by the caller (case preserved as-is). Value: true if the enable/disable operation completed successfully, false if the name was unknown, ambiguous, or empty.\u0022}}}},\u0022required\u0022:[\u0022result\u0022]}}}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": {
+        "success": true,
+        "requestedName": "tool-set-enabled-state",
+        "resolvedName": "tool-set-enabled-state",
+        "name": "tool-set-enabled-state",
+        "title": "Tool / Set Enabled State",
+        "description": "Enable or disable MCP tools by name. Allows controlling which tools are available for the AI agent.",
+        "enabled": false,
+        "tokenCount": 588,
+        "inputs": [
+          {
+            "name": "tools",
+            "type": "array\u003Cobject\u003E",
+            "required": true,
+            "description": "Array of tools with their desired enabled state."
+          },
+          {
+            "name": "includeLogs",
+            "type": "boolean",
+            "required": false,
+            "description": "Include operation logs in the result. Default: false"
+          }
+        ],
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "tools": {
+              "$ref": "#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BInputData[]",
+              "description": "Array of tools with their desired enabled state."
+            },
+            "includeLogs": {
+              "$ref": "#/$defs/System.Boolean",
+              "description": "Include operation logs in the result. Default: false"
+            }
+          },
+          "$defs": {
+            "com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BInputData": {
+              "type": "object",
+              "properties": {
+                "Name": {
+                  "type": "string",
+                  "description": "Name of the MCP tool to enable or disable."
+                },
+                "Enabled": {
+                  "type": "boolean",
+                  "description": "Whether the tool should be enabled (true) or disabled (false)."
+                }
+              },
+              "required": [
+                "Enabled"
+              ]
+            },
+            "com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BInputData[]": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BInputData"
+              }
+            },
+            "System.Boolean": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "tools"
+          ]
+        },
+        "outputSchema": {
+          "type": "object",
+          "properties": {
+            "result": {
+              "$ref": "#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BResultData"
+            }
+          },
+          "$defs": {
+            "com.IvanMurzak.ReflectorNet.Model.Logs": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/com.IvanMurzak.ReflectorNet.Model.LogEntry"
+              }
+            },
+            "com.IvanMurzak.ReflectorNet.Model.LogEntry": {
+              "type": "object",
+              "properties": {
+                "Depth": {
+                  "type": "integer"
+                },
+                "Message": {
+                  "type": "string"
+                },
+                "Type": {
+                  "type": "string",
+                  "enum": [
+                    "Trace",
+                    "Debug",
+                    "Info",
+                    "Success",
+                    "Warning",
+                    "Error",
+                    "Critical"
+                  ]
+                }
+              },
+              "required": [
+                "Depth",
+                "Type"
+              ]
+            },
+            "System.Collections.Generic.Dictionary\u003CSystem.String,System.Boolean\u003E": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "boolean"
+              }
+            },
+            "com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\u002BResultData": {
+              "type": "object",
+              "properties": {
+                "Logs": {
+                  "$ref": "#/$defs/com.IvanMurzak.ReflectorNet.Model.Logs",
+                  "description": "Optional operation logs. Only included when \u0027includeLogs\u0027 is true."
+                },
+                "Success": {
+                  "$ref": "#/$defs/System.Collections.Generic.Dictionary\u003CSystem.String,System.Boolean\u003E",
+                  "description": "Result of each tool operation. Key: original input name as provided by the caller (case preserved as-is). Value: true if the enable/disable operation completed successfully, false if the name was unknown, ambiguous, or empty."
+                }
+              }
+            }
+          },
+          "required": [
+            "result"
+          ]
+        }
+      }
+    }
+  },
+  "RequestID": "170c3146-d860-48b3-99c5-0ce36d832374",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:{\u0022success\u0022:true,\u0022requestedName\u0022:\u0022tool-set-enabled-state\u0022,\u0022resolvedName\u0022:\u0022tool-set-enabled-state\u0022,\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022title\u0022:\u0022Tool / Set Enabled State\u0022,\u0022description\u0022:\u0022Enable or disable MCP tools by name. Allows controlling which tools are available for the AI agent.\u0022,\u0022enabled\u0022:false,\u0022tokenCount\u0022:588,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022,\u0022type\u0022:\u0022array\\u003Cobject\\u003E\u0022,\u0022required\u0022:true,\u0022description\u0022:\u0022Array of tools with their desired enabled state.\u0022},{\u0022name\u0022:\u0022includeLogs\u0022,\u0022type\u0022:\u0022boolean\u0022,\u0022required\u0022:false,\u0022description\u0022:\u0022Include operation logs in the result. Default: false\u0022}],\u0022inputSchema\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022tools\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData[]\u0022,\u0022description\u0022:\u0022Array of tools with their desired enabled state.\u0022},\u0022includeLogs\u0022:{\u0022$ref\u0022:\u0022#/$defs/System.Boolean\u0022,\u0022description\u0022:\u0022Include operation logs in the result. Default: false\u0022}},\u0022$defs\u0022:{\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Name of the MCP tool to enable or disable.\u0022},\u0022Enabled\u0022:{\u0022type\u0022:\u0022boolean\u0022,\u0022description\u0022:\u0022Whether the tool should be enabled (true) or disabled (false).\u0022}},\u0022required\u0022:[\u0022Enabled\u0022]},\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData[]\u0022:{\u0022type\u0022:\u0022array\u0022,\u0022items\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BInputData\u0022}},\u0022System.Boolean\u0022:{\u0022type\u0022:\u0022boolean\u0022}},\u0022required\u0022:[\u0022tools\u0022]},\u0022outputSchema\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022result\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BResultData\u0022}},\u0022$defs\u0022:{\u0022com.IvanMurzak.ReflectorNet.Model.Logs\u0022:{\u0022type\u0022:\u0022array\u0022,\u0022items\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.ReflectorNet.Model.LogEntry\u0022}},\u0022com.IvanMurzak.ReflectorNet.Model.LogEntry\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Depth\u0022:{\u0022type\u0022:\u0022integer\u0022},\u0022Message\u0022:{\u0022type\u0022:\u0022string\u0022},\u0022Type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022Trace\u0022,\u0022Debug\u0022,\u0022Info\u0022,\u0022Success\u0022,\u0022Warning\u0022,\u0022Error\u0022,\u0022Critical\u0022]}},\u0022required\u0022:[\u0022Depth\u0022,\u0022Type\u0022]},\u0022System.Collections.Generic.Dictionary\\u003CSystem.String,System.Boolean\\u003E\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022additionalProperties\u0022:{\u0022type\u0022:\u0022boolean\u0022}},\u0022com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool\\u002BResultData\u0022:{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022Logs\u0022:{\u0022$ref\u0022:\u0022#/$defs/com.IvanMurzak.ReflectorNet.Model.Logs\u0022,\u0022description\u0022:\u0022Optional operation logs. Only included when \\u0027includeLogs\\u0027 is true.\u0022},\u0022Success\u0022:{\u0022$ref\u0022:\u0022#/$defs/System.Collections.Generic.Dictionary\\u003CSystem.String,System.Boolean\\u003E\u0022,\u0022description\u0022:\u0022Result of each tool operation. Key: original input name as provided by the caller (case preserved as-is). Value: true if the enable/disable operation completed successfully, false if the name was unknown, ambiguous, or empty.\u0022}}}},\u0022required\u0022:[\u0022result\u0022]}}}"
+}
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2136" name="GetDetail_UnknownTool_ReturnsStructuredNotFoundFailure" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests.GetDetail_UnknownTool_ReturnsStructuredNotFoundFailure" methodname="GetDetail_UnknownTool_ReturnsStructuredNotFoundFailure" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolGetDetailTests" runstate="Runnable" seed="85741244" result="Passed" start-time="2026-04-16 13:57:59Z" end-time="2026-04-16 13:57:59Z" duration="0.112347" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolGetDetailTests] SetUp
+<color=#ffaa00>warn:</color> [21:57:59:3510] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c912425a-b5d7-468c-8760-40ebdd23ca6c] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:3510] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c912425a-b5d7-468c-8760-40ebdd23ca6c] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [21:57:59:3510] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c912425a-b5d7-468c-8760-40ebdd23ca6c] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-get-detail Started with JSON:
+{
+                "name": "definitely-not-a-real-tool"
+            }
+tool-get-detail Completed
+tool-get-detail Result:
+{
+  "Value": {
+    "RequestID": "0bda9501-f502-4734-9585-970f76e191dc",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022definitely-not-a-real-tool\u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022not-found\u0022,\u0022message\u0022:\u0022Tool \\u0027definitely-not-a-real-tool\\u0027 was not found.\u0022}}}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": {
+        "success": false,
+        "requestedName": "definitely-not-a-real-tool",
+        "failure": {
+          "code": "not-found",
+          "message": "Tool \u0027definitely-not-a-real-tool\u0027 was not found."
+        }
+      }
+    }
+  },
+  "RequestID": "0bda9501-f502-4734-9585-970f76e191dc",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:{\u0022success\u0022:false,\u0022requestedName\u0022:\u0022definitely-not-a-real-tool\u0022,\u0022failure\u0022:{\u0022code\u0022:\u0022not-found\u0022,\u0022message\u0022:\u0022Tool \\u0027definitely-not-a-real-tool\\u0027 was not found.\u0022}}}"
+}
+[ToolGetDetailTests] TearDown
+]]></output>
+                    </test-case>
+                  </test-suite>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
