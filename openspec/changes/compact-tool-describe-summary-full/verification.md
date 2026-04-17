@@ -31,7 +31,7 @@ The raw artifacts live under this change directory so the verification claim is 
 
 ## Readiness
 
-This change is ready for `/opsx:apply`.
+This change has been applied and verified.
 
 - Documentation updates for the summary-first workflow are complete.
 - OpenSpec artifacts validate structurally.

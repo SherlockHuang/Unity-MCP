@@ -21,4 +21,4 @@
 
 - [x] 3.1 Update root, plugin, server, installer, and translated README files to describe the recommended workflow: minimized full catalog -> compact detail -> full detail only when needed.
 - [x] 3.2 Run verification in the appropriate Unity test context and record the results under this OpenSpec change in an auditable in-repo artifact.
-- [x] 3.3 Validate the OpenSpec change artifacts and confirm the change is ready for `/opsx:apply`.
+- [x] 3.3 Validate the OpenSpec change artifacts and confirm the applied change remains implementation- and archive-ready.
