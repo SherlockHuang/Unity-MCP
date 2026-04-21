@@ -22,3 +22,16 @@ commands/.env
 
 # Wiki project
 Unity-MCP.wiki
+
+# Local agent and tooling workspaces
+.agents/
+.codex/
+.tmp/
+.tools/
+AGENTS.md
+Temp/
+Unity-MCP-LazyProxy/
+docs/superpowers/
+
+# Local Unity test project churn
+Unity-Tests/**/ProjectSettings/Packages/com.unity.testtools.codecoverage/
