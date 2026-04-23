@@ -50,13 +50,13 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
         }
 
         [UnityTest]
-        public IEnumerator ToolListHelper_StillUsesFullSchemaForRichInputDescriptions()
+        public IEnumerator ToolListHelper_ReturnsInputNamesWithoutDescriptions()
         {
             yield return null;
 
             var json = RunTool(Tool_Tool.ToolListId, @"{
                 ""regexSearch"": ""^tool-set-enabled-state$"",
-                ""includeInputs"": ""InputsWithDescription""
+                ""includeInputs"": ""Inputs""
             }").Value!.GetMessage()!;
 
             using var doc = JsonDocument.Parse(json);
@@ -71,8 +71,9 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             var toolsInput = inputs.EnumerateArray().FirstOrDefault(x => x.GetProperty("name").GetString() == "tools");
             Assert.AreEqual(JsonValueKind.Object, toolsInput.ValueKind, "tools input should be present");
-            Assert.IsTrue(toolsInput.TryGetProperty("description", out var descriptionNode), "Full-schema helper path should still include descriptions");
-            StringAssert.Contains("desired enabled state", descriptionNode.GetString());
+            Assert.IsFalse(
+                toolsInput.TryGetProperty("description", out var descriptionNode) && descriptionNode.ValueKind != JsonValueKind.Null,
+                "tool-list should stay lightweight and omit input descriptions; use tool-get-detail for rich detail");
         }
     }
 }

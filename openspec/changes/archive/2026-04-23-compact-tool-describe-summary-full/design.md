@@ -2,15 +2,16 @@
 
 The previous change reduced the default full catalog payload for standard MCP discovery and positioned `tool-get-detail` as the richer on-demand metadata path. That solved the worst startup schema inflation, but the next context hotspot is the detail response itself: even single-tool detail can still be heavier than most turns need. We now want a disciplined “summary first, full on demand” contract so the typical follow-up after discovery stays small and predictable.
 
-This change is centered on the Unity-side detail surface and the documentation that teaches callers how to use it. It should not reintroduce heavy payloads into the full catalog, and it should not require new client capabilities beyond an explicit `detailLevel: summary|full` request parameter on the existing detail endpoint.
+This change is centered on the Unity-side discovery/detail surfaces and the documentation that teaches callers how to use them. It should not reintroduce heavy payloads into the full catalog or `tool-list`, and it should not require new client capabilities beyond an explicit `detailLevel: summary|full` request parameter on the existing detail endpoint.
 
 ## Goals / Non-Goals
 
 **Goals:**
 - Define a compact default detail response for single-tool inspection.
 - Preserve an explicit opt-in full-detail mode for richer schema transfer.
+- Keep `tool-list` limited to candidate discovery by tool name and input name.
 - Keep the summary and full responses structurally predictable.
-- Update docs so the recommended path becomes: minimized full catalog -> compact detail -> full detail only when required.
+- Update docs so the recommended path becomes: minimized full catalog or `tool-list` -> compact detail -> full detail only when required.
 
 **Non-Goals:**
 - Do not redesign the standard full catalog again in this change.
@@ -19,6 +20,15 @@ This change is centered on the Unity-side detail surface and the documentation t
 - Do not attempt to solve large runtime tool *result* payloads in general.
 
 ## Decisions
+
+### 0. `tool-list` is a lightweight discovery helper
+`tool-list` should answer "which tools might be relevant?" rather than "how do I fully call this tool?" Its response should include only tool names by default and, when `includeInputs=Inputs` is requested, simple input-name entries. It should not return tool descriptions, input descriptions, full schemas, or output schemas.
+
+Filtering should follow the same discovery boundary: `regexSearch` matches tool names and input names only. It should not search tool descriptions or input descriptions, because that makes the helper behave like a full tool manual and encourages agents to over-fetch.
+
+The escalation path for meaning and exact calling rules remains `tool-get-detail`:
+- `detailLevel=summary` for compact description and argument table
+- `detailLevel=full` for full input/output schema
 
 ### 1. `detailLevel: summary` is the default tool-detail mode
 The existing detail endpoint should explicitly accept `detailLevel: summary|full`, with `summary` as the default. The default detail response should be optimized for “can I likely call this tool now?” rather than “show me every schema nuance.” That means identity, concise description, and parsed arguments are the baseline, while raw schemas and other heavier detail become full-only.
@@ -94,7 +104,7 @@ Failure responses should not be required to include success-path fields such as 
 
 ### 8. Documentation should explicitly model escalation
 The docs should make it clear that there are three distinct levels now:
-1. minimized full catalog for discovery
+1. minimized full catalog or `tool-list` for discovery
 2. compact summary detail for normal single-tool inspection
 3. full detail only when the caller needs the complete schema
 
@@ -105,15 +115,17 @@ This avoids regressions where clients/model prompts jump directly from discovery
 - **[Risk] Summary becomes too thin for complex tools** → Mitigation: keep parsed arguments and concise descriptive guidance in the default response, and document the escalation path clearly.
 - **[Risk] Full detail and summary drift apart structurally over time** → Mitigation: define full detail as a superset of summary and cover both modes in tests.
 - **[Risk] Existing callers implicitly depend on current default detail weight** → Mitigation: use an explicit `detailLevel` contract, preserve `full`, and document the default change clearly.
+- **[Risk] `tool-list` becomes a hidden full manual again** → Mitigation: test that it returns only names/input names and never searches or returns descriptions.
 - **[Risk] Silent coercion of invalid detail levels hides caller bugs** → Mitigation: use a structured validation failure for unsupported `detailLevel` values.
 
 ## Migration Plan
 
-1. Refine the Unity-side tool-detail contract so `detailLevel: summary` is the default and `detailLevel: full` is explicitly requested.
-2. Add/update tests for summary-vs-full behavior, structural compatibility, invalid `detailLevel` validation, and preservation of the existing structured failure contract.
-3. Update docs and OpenSpec artifacts so the recommended workflow is clear.
-4. Record verification evidence under this change directory, following the same in-repo evidence approach used by the prior catalog-minimization change.
-5. Verify the changed detail behavior in the same Unity test context used for the previous catalog minimization change.
+1. Refine the Unity-side `tool-list` contract so it only returns tool names and optional input names, and filters only by those names.
+2. Refine the Unity-side tool-detail contract so `detailLevel: summary` is the default and `detailLevel: full` is explicitly requested.
+3. Add/update tests for `tool-list` discovery boundaries, summary-vs-full behavior, structural compatibility, invalid `detailLevel` validation, and preservation of the existing structured failure contract.
+4. Update docs and OpenSpec artifacts so the recommended workflow is clear.
+5. Record verification evidence under this change directory, following the same in-repo evidence approach used by the prior catalog-minimization change.
+6. Verify the changed discovery/detail behavior in the same Unity test context used for the previous catalog minimization change.
 
 Rollback is straightforward: the detail endpoint can revert to its previous default payload if the compact default proves too thin in practice.
 

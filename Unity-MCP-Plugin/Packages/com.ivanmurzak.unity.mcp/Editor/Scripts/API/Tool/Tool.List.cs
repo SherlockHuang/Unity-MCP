@@ -34,10 +34,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             None = 0,
 
             [Description("Include input argument names only.")]
-            Inputs = 1,
-
-            [Description("Include input argument names and descriptions.")]
-            InputsWithDescription = 2
+            Inputs = 1
         }
 
         [Description("MCP tool information.")]
@@ -46,10 +43,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             [JsonInclude, JsonPropertyName("name")]
             [Description("Tool name.")]
             public string Name { get; set; } = string.Empty;
-
-            [JsonInclude, JsonPropertyName("description")]
-            [Description("Tool description.")]
-            public string? Description { get; set; }
 
             [JsonInclude, JsonPropertyName("inputs")]
             [Description("Tool input arguments.")]
@@ -62,10 +55,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             [JsonInclude, JsonPropertyName("name")]
             [Description("Argument name.")]
             public string Name { get; set; } = string.Empty;
-
-            [JsonInclude, JsonPropertyName("description")]
-            [Description("Argument description.")]
-            public string? Description { get; set; }
         }
 
         [McpPluginTool
@@ -75,18 +64,15 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             ReadOnlyHint = true,
             IdempotentHint = true
         )]
-        [Description("List all available MCP tools. " +
-            "Optionally filter by regex across tool names, descriptions, and arguments.")]
+        [Description("List available MCP tools for lightweight discovery. " +
+            "Optionally filter by regex across tool names and argument names.")]
         public ToolInfoData[] List
         (
             [Description("Regex pattern to filter tools. " +
-                "Matches against tool name, description, and argument names and descriptions.")]
+                "Matches against tool name and argument names.")]
             string? regexSearch = null,
 
-            [Description("Include tool descriptions in the result. Default: false")]
-            bool? includeDescription = false,
-
-            [Description("Include input arguments in the result. Default: None")]
+            [Description("Include input argument names in the result. Default: None")]
             InputRequest? includeInputs = InputRequest.None
         )
         {
@@ -110,7 +96,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
                 }
 
                 var inputsRequested = includeInputs ?? InputRequest.None;
-                var descriptionRequested = includeDescription == true;
                 var needInputs = regex != null || inputsRequested != InputRequest.None;
 
                 var results = new List<ToolInfoData>();
@@ -127,13 +112,10 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
 
                     var info = new ToolInfoData { Name = tool.Name };
 
-                    if (descriptionRequested)
-                        info.Description = tool.Description;
-
                     if (inputsRequested != InputRequest.None)
                     {
                         inputs ??= ParseInputs(tool.InputSchema);
-                        info.Inputs = BuildInputResults(inputs, inputsRequested);
+                        info.Inputs = BuildInputResults(inputs);
                     }
 
                     results.Add(info);
@@ -150,9 +132,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             if (regex.IsMatch(tool.Name ?? string.Empty))
                 return true;
 
-            if (tool.Description != null && regex.IsMatch(tool.Description))
-                return true;
-
             if (schema == null)
                 return false;
 
@@ -161,25 +140,19 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             {
                 if (regex.IsMatch(input.Name))
                     return true;
-
-                if (input.Description != null && regex.IsMatch(input.Description))
-                    return true;
             }
 
             return false;
         }
 
-        static ToolInputData[] BuildInputResults(List<ToolInputData> inputs, InputRequest request)
+        static ToolInputData[] BuildInputResults(List<ToolInputData> inputs)
         {
             var result = new ToolInputData[inputs.Count];
             for (int i = 0; i < inputs.Count; i++)
             {
                 result[i] = new ToolInputData
                 {
-                    Name = inputs[i].Name,
-                    Description = request == InputRequest.InputsWithDescription
-                        ? inputs[i].Description
-                        : null
+                    Name = inputs[i].Name
                 };
             }
             return result;
@@ -200,18 +173,9 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
 
             foreach (var (name, element) in propertiesObject)
             {
-                string? description = null;
-                if (element is JsonObject propertyObject &&
-                    propertyObject.TryGetPropertyValue(JsonSchema.Description, out var descriptionNode) &&
-                    descriptionNode != null)
-                {
-                    description = descriptionNode.ToString();
-                }
-
                 result.Add(new ToolInputData
                 {
-                    Name = name,
-                    Description = description
+                    Name = name
                 });
             }
 

@@ -85,33 +85,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
         }
 
         [UnityTest]
-        public IEnumerator List_IncludeDescription_ReturnsDescriptions()
-        {
-            yield return null;
-
-            var json = RunTool(Tool_Tool.ToolListId, @"{
-                ""includeDescription"": true
-            }").Value!.GetMessage()!;
-
-            using var doc = JsonDocument.Parse(json);
-            var arr = GetResultArray(doc);
-
-            var hasAnyDescription = false;
-            for (int i = 0; i < arr.GetArrayLength(); i++)
-            {
-                if (arr[i].TryGetProperty("description", out var desc) &&
-                    desc.ValueKind == JsonValueKind.String &&
-                    desc.GetString()!.Length > 0)
-                {
-                    hasAnyDescription = true;
-                    break;
-                }
-            }
-
-            Assert.IsTrue(hasAnyDescription, "At least one tool should have a description");
-        }
-
-        [UnityTest]
         public IEnumerator List_IncludeInputs_ReturnsInputNames()
         {
             yield return null;
@@ -146,41 +119,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
         }
 
         [UnityTest]
-        public IEnumerator List_IncludeInputsWithDescription_ReturnsInputDescriptions()
-        {
-            yield return null;
-
-            var json = RunTool(Tool_Tool.ToolListId, @"{
-                ""includeInputs"": ""InputsWithDescription""
-            }").Value!.GetMessage()!;
-
-            using var doc = JsonDocument.Parse(json);
-            var arr = GetResultArray(doc);
-
-            var hasAnyInputDescription = false;
-            for (int i = 0; i < arr.GetArrayLength(); i++)
-            {
-                if (arr[i].TryGetProperty("inputs", out var inputs) &&
-                    inputs.ValueKind == JsonValueKind.Array)
-                {
-                    for (int j = 0; j < inputs.GetArrayLength(); j++)
-                    {
-                        if (inputs[j].TryGetProperty("description", out var desc) &&
-                            desc.ValueKind == JsonValueKind.String &&
-                            desc.GetString()!.Length > 0)
-                        {
-                            hasAnyInputDescription = true;
-                            break;
-                        }
-                    }
-                }
-                if (hasAnyInputDescription) break;
-            }
-
-            Assert.IsTrue(hasAnyInputDescription, "At least one input should have a description");
-        }
-
-        [UnityTest]
         public IEnumerator List_RegexSearch_FiltersByToolName()
         {
             yield return null;
@@ -212,7 +150,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
         }
 
         [UnityTest]
-        public IEnumerator List_RegexSearch_MatchesDescription()
+        public IEnumerator List_RegexSearch_DoesNotMatchDescription()
         {
             yield return null;
 
@@ -223,13 +161,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
             using var doc = JsonDocument.Parse(json);
             var arr = GetResultArray(doc);
 
-            Assert.IsTrue(arr.GetArrayLength() > 0, "Should match tool by description content");
-
-            var names = Enumerable.Range(0, arr.GetArrayLength())
-                .Select(i => arr[i].GetProperty("name").GetString())
-                .ToList();
-            Assert.Contains("tool-set-enabled-state", names,
-                "tool-set-enabled-state description contains 'Enable or disable MCP tools'");
+            Assert.AreEqual(0, arr.GetArrayLength(), "tool-list should no longer search tool descriptions");
         }
 
         [UnityTest]
@@ -251,7 +183,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
         }
 
         [UnityTest]
-        public IEnumerator List_RegexSearch_MatchesInputDescription()
+        public IEnumerator List_RegexSearch_DoesNotMatchInputDescription()
         {
             yield return null;
 
@@ -262,10 +194,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
             using var doc = JsonDocument.Parse(json);
             var arr = GetResultArray(doc);
 
-            var names = Enumerable.Range(0, arr.GetArrayLength())
-                .Select(i => arr[i].GetProperty("name").GetString())
-                .ToList();
-            Assert.Contains("tool-list", names, "tool-list input description contains 'regex pattern to filter tools'");
+            Assert.AreEqual(0, arr.GetArrayLength(), "tool-list should no longer search input descriptions");
         }
 
         [UnityTest]
@@ -291,8 +220,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             var json = RunTool(Tool_Tool.ToolListId, @"{
                 ""regexSearch"": ""^tool-list$"",
-                ""includeDescription"": true,
-                ""includeInputs"": ""InputsWithDescription""
+                ""includeInputs"": ""Inputs""
             }").Value!.GetMessage()!;
 
             using var doc = JsonDocument.Parse(json);
@@ -303,9 +231,11 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             Assert.AreEqual("tool-list", tool.GetProperty("name").GetString());
 
-            Assert.IsTrue(
-                tool.TryGetProperty("description", out var desc) && desc.ValueKind == JsonValueKind.String,
-                "Description should be included");
+            var hasDescription = tool.TryGetProperty("description", out var desc) &&
+                                 desc.ValueKind != JsonValueKind.Null;
+            Assert.IsFalse(hasDescription, "Description should not be included by tool-list");
+            AssertSchemaOmitted(tool, "inputSchema");
+            AssertSchemaOmitted(tool, "outputSchema");
 
             Assert.IsTrue(
                 tool.TryGetProperty("inputs", out var inputs) &&
@@ -315,10 +245,11 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             var firstInput = inputs[0];
             Assert.IsTrue(firstInput.TryGetProperty("name", out _), "Input should have name");
-            Assert.IsTrue(
-                firstInput.TryGetProperty("description", out var inputDesc) &&
-                inputDesc.ValueKind == JsonValueKind.String,
-                "Input description should be included with InputsWithDescription");
+            var hasInputDescription = firstInput.TryGetProperty("description", out var inputDesc) &&
+                                      inputDesc.ValueKind != JsonValueKind.Null;
+            Assert.IsFalse(hasInputDescription, "Input description should not be included by tool-list");
+            AssertSchemaOmitted(firstInput, "inputSchema");
+            AssertSchemaOmitted(firstInput, "schema");
         }
 
         [UnityTest]
@@ -357,6 +288,14 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             Assert.AreEqual(JsonValueKind.Array, root.ValueKind, "Result should be an array");
             return root;
+        }
+
+        static void AssertSchemaOmitted(JsonElement element, string propertyName)
+        {
+            Assert.IsTrue(
+                !element.TryGetProperty(propertyName, out var property) ||
+                property.ValueKind == JsonValueKind.Null,
+                $"{propertyName} should not be included by tool-list");
         }
     }
 }

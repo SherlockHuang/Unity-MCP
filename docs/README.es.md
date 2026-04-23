@@ -96,7 +96,7 @@ Eso es todo. Pídele a tu IA *"Crea 3 cubos en un círculo con radio 2"* y obser
 
 El plugin incluye más de 100 herramientas integradas en tres categorías. Cada herramienta aporta una habilidad a la IA. Todas las herramientas están disponibles inmediatamente después de la instalación — no se requiere configuración adicional. Consulta [docs/default-mcp-tools.md](docs/default-mcp-tools.md) para la referencia completa con descripciones detalladas.
 
-El catálogo estándar de MCP `tools/list` está pensado explícitamente para el descubrimiento: Unity-MCP mantiene visible allí todo el conjunto de herramientas habilitadas, pero el `inputSchema` predeterminado se reduce a nombres, campos obligatorios y estructura básica. El flujo recomendado es `tools/list` para descubrir, `tool-get-detail` para el resumen compacto predeterminado de una sola herramienta y `tool-get-detail` con `detailLevel: full` solo cuando ese resumen no sea suficiente.
+El catálogo estándar de MCP `tools/list` está pensado explícitamente para el descubrimiento: Unity-MCP mantiene visible allí todo el conjunto de herramientas habilitadas, pero el `inputSchema` predeterminado se reduce a nombres, campos obligatorios y estructura básica. El flujo recomendado es `tools/list` o `tool-list` para descubrir, `tool-get-detail` para el resumen compacto predeterminado de una sola herramienta y `tool-get-detail` con `detailLevel: full` solo cuando ese resumen no sea suficiente. El helper de Unity `tool-list` devuelve nombres de herramientas y, con `includeInputs: "Inputs"`, solo nombres de entradas; su `regexSearch` coincide con nombres de herramientas y entradas, no con descripciones.
 
 <details>
   <summary>Proyecto y assets</summary>

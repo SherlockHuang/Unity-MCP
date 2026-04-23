@@ -1,0 +1,1590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Passed" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.4075825">
+  <test-suite type="TestSuite" id="1906" name="2022.3.62f3" fullname="2022.3.62f3" runstate="Runnable" testcasecount="807" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.407583" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="2785" name="com.IvanMurzak.Unity.MCP.Editor.Tests.dll" fullname="G:/github/Unity-MCP/Unity-Tests/2022.3.62f3/Library/ScriptAssemblies/com.IvanMurzak.Unity.MCP.Editor.Tests.dll" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.392189" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="89984" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="2786" name="com" fullname="com" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.384295" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="2787" name="IvanMurzak" fullname="com.IvanMurzak" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.372982" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="2788" name="Unity" fullname="com.IvanMurzak.Unity" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.365329" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="2789" name="MCP" fullname="com.IvanMurzak.Unity.MCP" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.354332" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="2790" name="Editor" fullname="com.IvanMurzak.Unity.MCP.Editor" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.344949" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestSuite" id="2791" name="Tests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.337001" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-suite type="TestFixture" id="2262" name="ToolListTests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.324276" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="2265" name="List_IncludeInputs_ReturnsInputNames" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_IncludeInputs_ReturnsInputNames" methodname="List_IncludeInputs_ReturnsInputNames" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="2138717942" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.075219" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+<color=#ffaa00>warn:</color> [20:35:01:4796] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[50a4e7ba-0052-4463-af43-0502f78a2c69] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-list Started with JSON:
+{
+                "includeInputs": "Inputs"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "27922b49-de87-4f61-a346-bc981b3c7f36",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourcePaths\u0022},{\u0022name\u0022:\u0022destinationPaths\u0022}]},{\u0022name\u0022:\u0022assets-create-folder\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022inputs\u0022}]},{\u0022name\u0022:\u0022assets-delete\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022paths\u0022}]},{\u0022name\u0022:\u0022assets-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022searchInFolders\u0022},{\u0022name\u0022:\u0022maxResults\u0022}]},{\u0022name\u0022:\u0022assets-find-built-in\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022type\u0022},{\u0022name\u0022:\u0022maxResults\u0022}]},{\u0022name\u0022:\u0022assets-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022}]},{\u0022name\u0022:\u0022assets-material-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetPath\u0022},{\u0022name\u0022:\u0022shaderName\u0022}]},{\u0022name\u0022:\u0022assets-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022},{\u0022name\u0022:\u0022content\u0022}]},{\u0022name\u0022:\u0022assets-move\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourcePaths\u0022},{\u0022name\u0022:\u0022destinationPaths\u0022}]},{\u0022name\u0022:\u0022assets-refresh\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022options\u0022}]},{\u0022name\u0022:\u0022assets-prefab-close\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022save\u0022}]},{\u0022name\u0022:\u0022assets-prefab-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022prefabAssetPath\u0022},{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022sourcePrefabAssetPath\u0022},{\u0022name\u0022:\u0022connectGameObjectToPrefab\u0022}]},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022prefabAssetPath\u0022},{\u0022name\u0022:\u0022gameObjectPath\u0022},{\u0022name\u0022:\u0022position\u0022},{\u0022name\u0022:\u0022rotation\u0022},{\u0022name\u0022:\u0022scale\u0022},{\u0022name\u0022:\u0022isLocalSpace\u0022}]},{\u0022name\u0022:\u0022assets-prefab-open\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022assets-prefab-save\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022assets-shader-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022},{\u0022name\u0022:\u0022includeMessages\u0022},{\u0022name\u0022:\u0022includeProperties\u0022},{\u0022name\u0022:\u0022includeSubshaders\u0022},{\u0022name\u0022:\u0022includeSourceCode\u0022}]},{\u0022name\u0022:\u0022assets-shader-list-all\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022console-clear-logs\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022console-get-logs\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022maxEntries\u0022},{\u0022name\u0022:\u0022logTypeFilter\u0022},{\u0022name\u0022:\u0022includeStackTrace\u0022},{\u0022name\u0022:\u0022lastMinutes\u0022}]},{\u0022name\u0022:\u0022editor-application-get-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022editor-application-set-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022isPlaying\u0022},{\u0022name\u0022:\u0022isPaused\u0022}]},{\u0022name\u0022:\u0022editor-selection-get\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022includeGameObjects\u0022},{\u0022name\u0022:\u0022includeTransforms\u0022},{\u0022name\u0022:\u0022includeInstanceIDs\u0022},{\u0022name\u0022:\u0022includeAssetGUIDs\u0022},{\u0022name\u0022:\u0022includeActiveObject\u0022},{\u0022name\u0022:\u0022includeActiveTransform\u0022}]},{\u0022name\u0022:\u0022editor-selection-set\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022select\u0022}]},{\u0022name\u0022:\u0022gameobject-component-add\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022componentNames\u0022},{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022destroyComponentRefs\u0022}]},{\u0022name\u0022:\u0022gameobject-component-get\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022componentRef\u0022},{\u0022name\u0022:\u0022includeFields\u0022},{\u0022name\u0022:\u0022includeProperties\u0022},{\u0022name\u0022:\u0022deepSerialization\u0022}]},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022search\u0022},{\u0022name\u0022:\u0022page\u0022},{\u0022name\u0022:\u0022pageSize\u0022}]},{\u0022name\u0022:\u0022gameobject-component-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022componentRef\u0022},{\u0022name\u0022:\u0022componentDiff\u0022}]},{\u0022name\u0022:\u0022gameobject-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022parentGameObjectRef\u0022},{\u0022name\u0022:\u0022position\u0022},{\u0022name\u0022:\u0022rotation\u0022},{\u0022name\u0022:\u0022scale\u0022},{\u0022name\u0022:\u0022isLocalSpace\u0022},{\u0022name\u0022:\u0022primitiveType\u0022}]},{\u0022name\u0022:\u0022gameobject-destroy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022gameobject-duplicate\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022}]},{\u0022name\u0022:\u0022gameobject-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022includeData\u0022},{\u0022name\u0022:\u0022includeComponents\u0022},{\u0022name\u0022:\u0022includeBounds\u0022},{\u0022name\u0022:\u0022includeHierarchy\u0022},{\u0022name\u0022:\u0022hierarchyDepth\u0022}]},{\u0022name\u0022:\u0022gameobject-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022},{\u0022name\u0022:\u0022gameObjectDiffs\u0022}]},{\u0022name\u0022:\u0022gameobject-set-parent\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022},{\u0022name\u0022:\u0022parentGameObjectRef\u0022},{\u0022name\u0022:\u0022worldPositionStays\u0022}]},{\u0022name\u0022:\u0022object-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022objectRef\u0022}]},{\u0022name\u0022:\u0022object-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022objectRef\u0022},{\u0022name\u0022:\u0022objectDiff\u0022}]},{\u0022name\u0022:\u0022package-add\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022packageId\u0022}]},{\u0022name\u0022:\u0022package-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourceFilter\u0022},{\u0022name\u0022:\u0022nameFilter\u0022},{\u0022name\u0022:\u0022directDependenciesOnly\u0022}]},{\u0022name\u0022:\u0022package-remove\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022packageId\u0022}]},{\u0022name\u0022:\u0022package-search\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022query\u0022},{\u0022name\u0022:\u0022maxResults\u0022},{\u0022name\u0022:\u0022offlineMode\u0022}]},{\u0022name\u0022:\u0022reflection-method-call\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022knownNamespace\u0022},{\u0022name\u0022:\u0022typeNameMatchLevel\u0022},{\u0022name\u0022:\u0022methodNameMatchLevel\u0022},{\u0022name\u0022:\u0022parametersMatchLevel\u0022},{\u0022name\u0022:\u0022targetObject\u0022},{\u0022name\u0022:\u0022inputParameters\u0022},{\u0022name\u0022:\u0022executeInMainThread\u0022}]},{\u0022name\u0022:\u0022reflection-method-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022knownNamespace\u0022},{\u0022name\u0022:\u0022typeNameMatchLevel\u0022},{\u0022name\u0022:\u0022methodNameMatchLevel\u0022},{\u0022name\u0022:\u0022parametersMatchLevel\u0022}]},{\u0022name\u0022:\u0022scene-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022path\u0022},{\u0022name\u0022:\u0022newSceneSetup\u0022},{\u0022name\u0022:\u0022newSceneMode\u0022}]},{\u0022name\u0022:\u0022scene-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022openedSceneName\u0022},{\u0022name\u0022:\u0022includeRootGameObjects\u0022},{\u0022name\u0022:\u0022includeChildrenDepth\u0022},{\u0022name\u0022:\u0022includeBounds\u0022},{\u0022name\u0022:\u0022includeData\u0022}]},{\u0022name\u0022:\u0022scene-list-opened\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022scene-open\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sceneRef\u0022},{\u0022name\u0022:\u0022loadSceneMode\u0022}]},{\u0022name\u0022:\u0022scene-save\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022openedSceneName\u0022},{\u0022name\u0022:\u0022path\u0022}]},{\u0022name\u0022:\u0022scene-set-active\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sceneRef\u0022}]},{\u0022name\u0022:\u0022scene-unload\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022}]},{\u0022name\u0022:\u0022screenshot-camera\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022cameraRef\u0022},{\u0022name\u0022:\u0022width\u0022},{\u0022name\u0022:\u0022height\u0022}]},{\u0022name\u0022:\u0022screenshot-game-view\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022screenshot-scene-view\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022width\u0022},{\u0022name\u0022:\u0022height\u0022}]},{\u0022name\u0022:\u0022script-delete\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022files\u0022}]},{\u0022name\u0022:\u0022script-execute\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022csharpCode\u0022},{\u0022name\u0022:\u0022className\u0022},{\u0022name\u0022:\u0022methodName\u0022},{\u0022name\u0022:\u0022parameters\u0022}]},{\u0022name\u0022:\u0022script-read\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filePath\u0022},{\u0022name\u0022:\u0022lineFrom\u0022},{\u0022name\u0022:\u0022lineTo\u0022}]},{\u0022name\u0022:\u0022script-update-or-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filePath\u0022},{\u0022name\u0022:\u0022content\u0022}]},{\u0022name\u0022:\u0022tests-run\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022testMode\u0022},{\u0022name\u0022:\u0022testAssembly\u0022},{\u0022name\u0022:\u0022testNamespace\u0022},{\u0022name\u0022:\u0022testClass\u0022},{\u0022name\u0022:\u0022testMethod\u0022},{\u0022name\u0022:\u0022includePassingTests\u0022},{\u0022name\u0022:\u0022includeMessages\u0022},{\u0022name\u0022:\u0022includeStacktrace\u0022},{\u0022name\u0022:\u0022includeLogs\u0022},{\u0022name\u0022:\u0022logType\u0022},{\u0022name\u0022:\u0022includeLogsStacktrace\u0022}]},{\u0022name\u0022:\u0022tool-get-detail\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022detailLevel\u0022},{\u0022name\u0022:\u0022includeSchemas\u0022},{\u0022name\u0022:\u0022includeParsedArguments\u0022}]},{\u0022name\u0022:\u0022tool-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022},{\u0022name\u0022:\u0022includeInputs\u0022}]},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022},{\u0022name\u0022:\u0022includeLogs\u0022}]},{\u0022name\u0022:\u0022type-get-json-schema\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022typeName\u0022},{\u0022name\u0022:\u0022descriptionMode\u0022},{\u0022name\u0022:\u0022propertyDescriptionMode\u0022},{\u0022name\u0022:\u0022includeNestedTypes\u0022},{\u0022name\u0022:\u0022writeIndented\u0022}]}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "assets-copy",
+          "inputs": [
+            {
+              "name": "sourcePaths"
+            },
+            {
+              "name": "destinationPaths"
+            }
+          ]
+        },
+        {
+          "name": "assets-create-folder",
+          "inputs": [
+            {
+              "name": "inputs"
+            }
+          ]
+        },
+        {
+          "name": "assets-delete",
+          "inputs": [
+            {
+              "name": "paths"
+            }
+          ]
+        },
+        {
+          "name": "assets-find",
+          "inputs": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "searchInFolders"
+            },
+            {
+              "name": "maxResults"
+            }
+          ]
+        },
+        {
+          "name": "assets-find-built-in",
+          "inputs": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "type"
+            },
+            {
+              "name": "maxResults"
+            }
+          ]
+        },
+        {
+          "name": "assets-get-data",
+          "inputs": [
+            {
+              "name": "assetRef"
+            }
+          ]
+        },
+        {
+          "name": "assets-material-create",
+          "inputs": [
+            {
+              "name": "assetPath"
+            },
+            {
+              "name": "shaderName"
+            }
+          ]
+        },
+        {
+          "name": "assets-modify",
+          "inputs": [
+            {
+              "name": "assetRef"
+            },
+            {
+              "name": "content"
+            }
+          ]
+        },
+        {
+          "name": "assets-move",
+          "inputs": [
+            {
+              "name": "sourcePaths"
+            },
+            {
+              "name": "destinationPaths"
+            }
+          ]
+        },
+        {
+          "name": "assets-refresh",
+          "inputs": [
+            {
+              "name": "options"
+            }
+          ]
+        },
+        {
+          "name": "assets-prefab-close",
+          "inputs": [
+            {
+              "name": "save"
+            }
+          ]
+        },
+        {
+          "name": "assets-prefab-create",
+          "inputs": [
+            {
+              "name": "prefabAssetPath"
+            },
+            {
+              "name": "gameObjectRef"
+            },
+            {
+              "name": "sourcePrefabAssetPath"
+            },
+            {
+              "name": "connectGameObjectToPrefab"
+            }
+          ]
+        },
+        {
+          "name": "assets-prefab-instantiate",
+          "inputs": [
+            {
+              "name": "prefabAssetPath"
+            },
+            {
+              "name": "gameObjectPath"
+            },
+            {
+              "name": "position"
+            },
+            {
+              "name": "rotation"
+            },
+            {
+              "name": "scale"
+            },
+            {
+              "name": "isLocalSpace"
+            }
+          ]
+        },
+        {
+          "name": "assets-prefab-open",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            }
+          ]
+        },
+        {
+          "name": "assets-prefab-save",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "assets-shader-get-data",
+          "inputs": [
+            {
+              "name": "assetRef"
+            },
+            {
+              "name": "includeMessages"
+            },
+            {
+              "name": "includeProperties"
+            },
+            {
+              "name": "includeSubshaders"
+            },
+            {
+              "name": "includeSourceCode"
+            }
+          ]
+        },
+        {
+          "name": "assets-shader-list-all",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "console-clear-logs",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "console-get-logs",
+          "inputs": [
+            {
+              "name": "maxEntries"
+            },
+            {
+              "name": "logTypeFilter"
+            },
+            {
+              "name": "includeStackTrace"
+            },
+            {
+              "name": "lastMinutes"
+            }
+          ]
+        },
+        {
+          "name": "editor-application-get-state",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "editor-application-set-state",
+          "inputs": [
+            {
+              "name": "isPlaying"
+            },
+            {
+              "name": "isPaused"
+            }
+          ]
+        },
+        {
+          "name": "editor-selection-get",
+          "inputs": [
+            {
+              "name": "includeGameObjects"
+            },
+            {
+              "name": "includeTransforms"
+            },
+            {
+              "name": "includeInstanceIDs"
+            },
+            {
+              "name": "includeAssetGUIDs"
+            },
+            {
+              "name": "includeActiveObject"
+            },
+            {
+              "name": "includeActiveTransform"
+            }
+          ]
+        },
+        {
+          "name": "editor-selection-set",
+          "inputs": [
+            {
+              "name": "select"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-component-add",
+          "inputs": [
+            {
+              "name": "componentNames"
+            },
+            {
+              "name": "gameObjectRef"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-component-destroy",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            },
+            {
+              "name": "destroyComponentRefs"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-component-get",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            },
+            {
+              "name": "componentRef"
+            },
+            {
+              "name": "includeFields"
+            },
+            {
+              "name": "includeProperties"
+            },
+            {
+              "name": "deepSerialization"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-component-list-all",
+          "inputs": [
+            {
+              "name": "search"
+            },
+            {
+              "name": "page"
+            },
+            {
+              "name": "pageSize"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-component-modify",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            },
+            {
+              "name": "componentRef"
+            },
+            {
+              "name": "componentDiff"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-create",
+          "inputs": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "parentGameObjectRef"
+            },
+            {
+              "name": "position"
+            },
+            {
+              "name": "rotation"
+            },
+            {
+              "name": "scale"
+            },
+            {
+              "name": "isLocalSpace"
+            },
+            {
+              "name": "primitiveType"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-destroy",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-duplicate",
+          "inputs": [
+            {
+              "name": "gameObjectRefs"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-find",
+          "inputs": [
+            {
+              "name": "gameObjectRef"
+            },
+            {
+              "name": "includeData"
+            },
+            {
+              "name": "includeComponents"
+            },
+            {
+              "name": "includeBounds"
+            },
+            {
+              "name": "includeHierarchy"
+            },
+            {
+              "name": "hierarchyDepth"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-modify",
+          "inputs": [
+            {
+              "name": "gameObjectRefs"
+            },
+            {
+              "name": "gameObjectDiffs"
+            }
+          ]
+        },
+        {
+          "name": "gameobject-set-parent",
+          "inputs": [
+            {
+              "name": "gameObjectRefs"
+            },
+            {
+              "name": "parentGameObjectRef"
+            },
+            {
+              "name": "worldPositionStays"
+            }
+          ]
+        },
+        {
+          "name": "object-get-data",
+          "inputs": [
+            {
+              "name": "objectRef"
+            }
+          ]
+        },
+        {
+          "name": "object-modify",
+          "inputs": [
+            {
+              "name": "objectRef"
+            },
+            {
+              "name": "objectDiff"
+            }
+          ]
+        },
+        {
+          "name": "package-add",
+          "inputs": [
+            {
+              "name": "packageId"
+            }
+          ]
+        },
+        {
+          "name": "package-list",
+          "inputs": [
+            {
+              "name": "sourceFilter"
+            },
+            {
+              "name": "nameFilter"
+            },
+            {
+              "name": "directDependenciesOnly"
+            }
+          ]
+        },
+        {
+          "name": "package-remove",
+          "inputs": [
+            {
+              "name": "packageId"
+            }
+          ]
+        },
+        {
+          "name": "package-search",
+          "inputs": [
+            {
+              "name": "query"
+            },
+            {
+              "name": "maxResults"
+            },
+            {
+              "name": "offlineMode"
+            }
+          ]
+        },
+        {
+          "name": "reflection-method-call",
+          "inputs": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "knownNamespace"
+            },
+            {
+              "name": "typeNameMatchLevel"
+            },
+            {
+              "name": "methodNameMatchLevel"
+            },
+            {
+              "name": "parametersMatchLevel"
+            },
+            {
+              "name": "targetObject"
+            },
+            {
+              "name": "inputParameters"
+            },
+            {
+              "name": "executeInMainThread"
+            }
+          ]
+        },
+        {
+          "name": "reflection-method-find",
+          "inputs": [
+            {
+              "name": "filter"
+            },
+            {
+              "name": "knownNamespace"
+            },
+            {
+              "name": "typeNameMatchLevel"
+            },
+            {
+              "name": "methodNameMatchLevel"
+            },
+            {
+              "name": "parametersMatchLevel"
+            }
+          ]
+        },
+        {
+          "name": "scene-create",
+          "inputs": [
+            {
+              "name": "path"
+            },
+            {
+              "name": "newSceneSetup"
+            },
+            {
+              "name": "newSceneMode"
+            }
+          ]
+        },
+        {
+          "name": "scene-get-data",
+          "inputs": [
+            {
+              "name": "openedSceneName"
+            },
+            {
+              "name": "includeRootGameObjects"
+            },
+            {
+              "name": "includeChildrenDepth"
+            },
+            {
+              "name": "includeBounds"
+            },
+            {
+              "name": "includeData"
+            }
+          ]
+        },
+        {
+          "name": "scene-list-opened",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "scene-open",
+          "inputs": [
+            {
+              "name": "sceneRef"
+            },
+            {
+              "name": "loadSceneMode"
+            }
+          ]
+        },
+        {
+          "name": "scene-save",
+          "inputs": [
+            {
+              "name": "openedSceneName"
+            },
+            {
+              "name": "path"
+            }
+          ]
+        },
+        {
+          "name": "scene-set-active",
+          "inputs": [
+            {
+              "name": "sceneRef"
+            }
+          ]
+        },
+        {
+          "name": "scene-unload",
+          "inputs": [
+            {
+              "name": "name"
+            }
+          ]
+        },
+        {
+          "name": "screenshot-camera",
+          "inputs": [
+            {
+              "name": "cameraRef"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ]
+        },
+        {
+          "name": "screenshot-game-view",
+          "inputs": [
+            {
+              "name": "nothing"
+            }
+          ]
+        },
+        {
+          "name": "screenshot-scene-view",
+          "inputs": [
+            {
+              "name": "width"
+            },
+            {
+              "name": "height"
+            }
+          ]
+        },
+        {
+          "name": "script-delete",
+          "inputs": [
+            {
+              "name": "files"
+            }
+          ]
+        },
+        {
+          "name": "script-execute",
+          "inputs": [
+            {
+              "name": "csharpCode"
+            },
+            {
+              "name": "className"
+            },
+            {
+              "name": "methodName"
+            },
+            {
+              "name": "parameters"
+            }
+          ]
+        },
+        {
+          "name": "script-read",
+          "inputs": [
+            {
+              "name": "filePath"
+            },
+            {
+              "name": "lineFrom"
+            },
+            {
+              "name": "lineTo"
+            }
+          ]
+        },
+        {
+          "name": "script-update-or-create",
+          "inputs": [
+            {
+              "name": "filePath"
+            },
+            {
+              "name": "content"
+            }
+          ]
+        },
+        {
+          "name": "tests-run",
+          "inputs": [
+            {
+              "name": "testMode"
+            },
+            {
+              "name": "testAssembly"
+            },
+            {
+              "name": "testNamespace"
+            },
+            {
+              "name": "testClass"
+            },
+            {
+              "name": "testMethod"
+            },
+            {
+              "name": "includePassingTests"
+            },
+            {
+              "name": "includeMessages"
+            },
+            {
+              "name": "includeStacktrace"
+            },
+            {
+              "name": "includeLogs"
+            },
+            {
+              "name": "logType"
+            },
+            {
+              "name": "includeLogsStacktrace"
+            }
+          ]
+        },
+        {
+          "name": "tool-get-detail",
+          "inputs": [
+            {
+              "name": "name"
+            },
+            {
+              "name": "detailLevel"
+            },
+            {
+              "name": "includeSchemas"
+            },
+            {
+              "name": "includeParsedArguments"
+            }
+          ]
+        },
+        {
+          "name": "tool-list",
+          "inputs": [
+            {
+              "name": "regexSearch"
+            },
+            {
+              "name": "includeInputs"
+            }
+          ]
+        },
+        {
+          "name": "tool-set-enabled-state",
+          "inputs": [
+            {
+              "name": "tools"
+            },
+            {
+              "name": "includeLogs"
+            }
+          ]
+        },
+        {
+          "name": "type-get-json-schema",
+          "inputs": [
+            {
+              "name": "typeName"
+            },
+            {
+              "name": "descriptionMode"
+            },
+            {
+              "name": "propertyDescriptionMode"
+            },
+            {
+              "name": "includeNestedTypes"
+            },
+            {
+              "name": "writeIndented"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "RequestID": "27922b49-de87-4f61-a346-bc981b3c7f36",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourcePaths\u0022},{\u0022name\u0022:\u0022destinationPaths\u0022}]},{\u0022name\u0022:\u0022assets-create-folder\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022inputs\u0022}]},{\u0022name\u0022:\u0022assets-delete\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022paths\u0022}]},{\u0022name\u0022:\u0022assets-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022searchInFolders\u0022},{\u0022name\u0022:\u0022maxResults\u0022}]},{\u0022name\u0022:\u0022assets-find-built-in\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022type\u0022},{\u0022name\u0022:\u0022maxResults\u0022}]},{\u0022name\u0022:\u0022assets-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022}]},{\u0022name\u0022:\u0022assets-material-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetPath\u0022},{\u0022name\u0022:\u0022shaderName\u0022}]},{\u0022name\u0022:\u0022assets-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022},{\u0022name\u0022:\u0022content\u0022}]},{\u0022name\u0022:\u0022assets-move\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourcePaths\u0022},{\u0022name\u0022:\u0022destinationPaths\u0022}]},{\u0022name\u0022:\u0022assets-refresh\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022options\u0022}]},{\u0022name\u0022:\u0022assets-prefab-close\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022save\u0022}]},{\u0022name\u0022:\u0022assets-prefab-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022prefabAssetPath\u0022},{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022sourcePrefabAssetPath\u0022},{\u0022name\u0022:\u0022connectGameObjectToPrefab\u0022}]},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022prefabAssetPath\u0022},{\u0022name\u0022:\u0022gameObjectPath\u0022},{\u0022name\u0022:\u0022position\u0022},{\u0022name\u0022:\u0022rotation\u0022},{\u0022name\u0022:\u0022scale\u0022},{\u0022name\u0022:\u0022isLocalSpace\u0022}]},{\u0022name\u0022:\u0022assets-prefab-open\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022assets-prefab-save\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022assets-shader-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022assetRef\u0022},{\u0022name\u0022:\u0022includeMessages\u0022},{\u0022name\u0022:\u0022includeProperties\u0022},{\u0022name\u0022:\u0022includeSubshaders\u0022},{\u0022name\u0022:\u0022includeSourceCode\u0022}]},{\u0022name\u0022:\u0022assets-shader-list-all\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022console-clear-logs\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022console-get-logs\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022maxEntries\u0022},{\u0022name\u0022:\u0022logTypeFilter\u0022},{\u0022name\u0022:\u0022includeStackTrace\u0022},{\u0022name\u0022:\u0022lastMinutes\u0022}]},{\u0022name\u0022:\u0022editor-application-get-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022editor-application-set-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022isPlaying\u0022},{\u0022name\u0022:\u0022isPaused\u0022}]},{\u0022name\u0022:\u0022editor-selection-get\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022includeGameObjects\u0022},{\u0022name\u0022:\u0022includeTransforms\u0022},{\u0022name\u0022:\u0022includeInstanceIDs\u0022},{\u0022name\u0022:\u0022includeAssetGUIDs\u0022},{\u0022name\u0022:\u0022includeActiveObject\u0022},{\u0022name\u0022:\u0022includeActiveTransform\u0022}]},{\u0022name\u0022:\u0022editor-selection-set\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022select\u0022}]},{\u0022name\u0022:\u0022gameobject-component-add\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022componentNames\u0022},{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022destroyComponentRefs\u0022}]},{\u0022name\u0022:\u0022gameobject-component-get\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022componentRef\u0022},{\u0022name\u0022:\u0022includeFields\u0022},{\u0022name\u0022:\u0022includeProperties\u0022},{\u0022name\u0022:\u0022deepSerialization\u0022}]},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022search\u0022},{\u0022name\u0022:\u0022page\u0022},{\u0022name\u0022:\u0022pageSize\u0022}]},{\u0022name\u0022:\u0022gameobject-component-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022componentRef\u0022},{\u0022name\u0022:\u0022componentDiff\u0022}]},{\u0022name\u0022:\u0022gameobject-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022parentGameObjectRef\u0022},{\u0022name\u0022:\u0022position\u0022},{\u0022name\u0022:\u0022rotation\u0022},{\u0022name\u0022:\u0022scale\u0022},{\u0022name\u0022:\u0022isLocalSpace\u0022},{\u0022name\u0022:\u0022primitiveType\u0022}]},{\u0022name\u0022:\u0022gameobject-destroy\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022}]},{\u0022name\u0022:\u0022gameobject-duplicate\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022}]},{\u0022name\u0022:\u0022gameobject-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRef\u0022},{\u0022name\u0022:\u0022includeData\u0022},{\u0022name\u0022:\u0022includeComponents\u0022},{\u0022name\u0022:\u0022includeBounds\u0022},{\u0022name\u0022:\u0022includeHierarchy\u0022},{\u0022name\u0022:\u0022hierarchyDepth\u0022}]},{\u0022name\u0022:\u0022gameobject-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022},{\u0022name\u0022:\u0022gameObjectDiffs\u0022}]},{\u0022name\u0022:\u0022gameobject-set-parent\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022gameObjectRefs\u0022},{\u0022name\u0022:\u0022parentGameObjectRef\u0022},{\u0022name\u0022:\u0022worldPositionStays\u0022}]},{\u0022name\u0022:\u0022object-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022objectRef\u0022}]},{\u0022name\u0022:\u0022object-modify\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022objectRef\u0022},{\u0022name\u0022:\u0022objectDiff\u0022}]},{\u0022name\u0022:\u0022package-add\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022packageId\u0022}]},{\u0022name\u0022:\u0022package-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sourceFilter\u0022},{\u0022name\u0022:\u0022nameFilter\u0022},{\u0022name\u0022:\u0022directDependenciesOnly\u0022}]},{\u0022name\u0022:\u0022package-remove\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022packageId\u0022}]},{\u0022name\u0022:\u0022package-search\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022query\u0022},{\u0022name\u0022:\u0022maxResults\u0022},{\u0022name\u0022:\u0022offlineMode\u0022}]},{\u0022name\u0022:\u0022reflection-method-call\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022knownNamespace\u0022},{\u0022name\u0022:\u0022typeNameMatchLevel\u0022},{\u0022name\u0022:\u0022methodNameMatchLevel\u0022},{\u0022name\u0022:\u0022parametersMatchLevel\u0022},{\u0022name\u0022:\u0022targetObject\u0022},{\u0022name\u0022:\u0022inputParameters\u0022},{\u0022name\u0022:\u0022executeInMainThread\u0022}]},{\u0022name\u0022:\u0022reflection-method-find\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filter\u0022},{\u0022name\u0022:\u0022knownNamespace\u0022},{\u0022name\u0022:\u0022typeNameMatchLevel\u0022},{\u0022name\u0022:\u0022methodNameMatchLevel\u0022},{\u0022name\u0022:\u0022parametersMatchLevel\u0022}]},{\u0022name\u0022:\u0022scene-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022path\u0022},{\u0022name\u0022:\u0022newSceneSetup\u0022},{\u0022name\u0022:\u0022newSceneMode\u0022}]},{\u0022name\u0022:\u0022scene-get-data\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022openedSceneName\u0022},{\u0022name\u0022:\u0022includeRootGameObjects\u0022},{\u0022name\u0022:\u0022includeChildrenDepth\u0022},{\u0022name\u0022:\u0022includeBounds\u0022},{\u0022name\u0022:\u0022includeData\u0022}]},{\u0022name\u0022:\u0022scene-list-opened\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022scene-open\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sceneRef\u0022},{\u0022name\u0022:\u0022loadSceneMode\u0022}]},{\u0022name\u0022:\u0022scene-save\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022openedSceneName\u0022},{\u0022name\u0022:\u0022path\u0022}]},{\u0022name\u0022:\u0022scene-set-active\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022sceneRef\u0022}]},{\u0022name\u0022:\u0022scene-unload\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022}]},{\u0022name\u0022:\u0022screenshot-camera\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022cameraRef\u0022},{\u0022name\u0022:\u0022width\u0022},{\u0022name\u0022:\u0022height\u0022}]},{\u0022name\u0022:\u0022screenshot-game-view\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022nothing\u0022}]},{\u0022name\u0022:\u0022screenshot-scene-view\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022width\u0022},{\u0022name\u0022:\u0022height\u0022}]},{\u0022name\u0022:\u0022script-delete\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022files\u0022}]},{\u0022name\u0022:\u0022script-execute\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022csharpCode\u0022},{\u0022name\u0022:\u0022className\u0022},{\u0022name\u0022:\u0022methodName\u0022},{\u0022name\u0022:\u0022parameters\u0022}]},{\u0022name\u0022:\u0022script-read\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filePath\u0022},{\u0022name\u0022:\u0022lineFrom\u0022},{\u0022name\u0022:\u0022lineTo\u0022}]},{\u0022name\u0022:\u0022script-update-or-create\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022filePath\u0022},{\u0022name\u0022:\u0022content\u0022}]},{\u0022name\u0022:\u0022tests-run\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022testMode\u0022},{\u0022name\u0022:\u0022testAssembly\u0022},{\u0022name\u0022:\u0022testNamespace\u0022},{\u0022name\u0022:\u0022testClass\u0022},{\u0022name\u0022:\u0022testMethod\u0022},{\u0022name\u0022:\u0022includePassingTests\u0022},{\u0022name\u0022:\u0022includeMessages\u0022},{\u0022name\u0022:\u0022includeStacktrace\u0022},{\u0022name\u0022:\u0022includeLogs\u0022},{\u0022name\u0022:\u0022logType\u0022},{\u0022name\u0022:\u0022includeLogsStacktrace\u0022}]},{\u0022name\u0022:\u0022tool-get-detail\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022name\u0022},{\u0022name\u0022:\u0022detailLevel\u0022},{\u0022name\u0022:\u0022includeSchemas\u0022},{\u0022name\u0022:\u0022includeParsedArguments\u0022}]},{\u0022name\u0022:\u0022tool-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022},{\u0022name\u0022:\u0022includeInputs\u0022}]},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022},{\u0022name\u0022:\u0022includeLogs\u0022}]},{\u0022name\u0022:\u0022type-get-json-schema\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022typeName\u0022},{\u0022name\u0022:\u0022descriptionMode\u0022},{\u0022name\u0022:\u0022propertyDescriptionMode\u0022},{\u0022name\u0022:\u0022includeNestedTypes\u0022},{\u0022name\u0022:\u0022writeIndented\u0022}]}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2264" name="List_NoArgs_ContainsOnlyNames" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_NoArgs_ContainsOnlyNames" methodname="List_NoArgs_ContainsOnlyNames" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="552008023" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.018394" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{}
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "be66891a-fd75-44df-a250-5192f0d53bb9",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022},{\u0022name\u0022:\u0022assets-create-folder\u0022},{\u0022name\u0022:\u0022assets-delete\u0022},{\u0022name\u0022:\u0022assets-find\u0022},{\u0022name\u0022:\u0022assets-find-built-in\u0022},{\u0022name\u0022:\u0022assets-get-data\u0022},{\u0022name\u0022:\u0022assets-material-create\u0022},{\u0022name\u0022:\u0022assets-modify\u0022},{\u0022name\u0022:\u0022assets-move\u0022},{\u0022name\u0022:\u0022assets-refresh\u0022},{\u0022name\u0022:\u0022assets-prefab-close\u0022},{\u0022name\u0022:\u0022assets-prefab-create\u0022},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022},{\u0022name\u0022:\u0022assets-prefab-open\u0022},{\u0022name\u0022:\u0022assets-prefab-save\u0022},{\u0022name\u0022:\u0022assets-shader-get-data\u0022},{\u0022name\u0022:\u0022assets-shader-list-all\u0022},{\u0022name\u0022:\u0022console-clear-logs\u0022},{\u0022name\u0022:\u0022console-get-logs\u0022},{\u0022name\u0022:\u0022editor-application-get-state\u0022},{\u0022name\u0022:\u0022editor-application-set-state\u0022},{\u0022name\u0022:\u0022editor-selection-get\u0022},{\u0022name\u0022:\u0022editor-selection-set\u0022},{\u0022name\u0022:\u0022gameobject-component-add\u0022},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022},{\u0022name\u0022:\u0022gameobject-component-get\u0022},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022},{\u0022name\u0022:\u0022gameobject-component-modify\u0022},{\u0022name\u0022:\u0022gameobject-create\u0022},{\u0022name\u0022:\u0022gameobject-destroy\u0022},{\u0022name\u0022:\u0022gameobject-duplicate\u0022},{\u0022name\u0022:\u0022gameobject-find\u0022},{\u0022name\u0022:\u0022gameobject-modify\u0022},{\u0022name\u0022:\u0022gameobject-set-parent\u0022},{\u0022name\u0022:\u0022object-get-data\u0022},{\u0022name\u0022:\u0022object-modify\u0022},{\u0022name\u0022:\u0022package-add\u0022},{\u0022name\u0022:\u0022package-list\u0022},{\u0022name\u0022:\u0022package-remove\u0022},{\u0022name\u0022:\u0022package-search\u0022},{\u0022name\u0022:\u0022reflection-method-call\u0022},{\u0022name\u0022:\u0022reflection-method-find\u0022},{\u0022name\u0022:\u0022scene-create\u0022},{\u0022name\u0022:\u0022scene-get-data\u0022},{\u0022name\u0022:\u0022scene-list-opened\u0022},{\u0022name\u0022:\u0022scene-open\u0022},{\u0022name\u0022:\u0022scene-save\u0022},{\u0022name\u0022:\u0022scene-set-active\u0022},{\u0022name\u0022:\u0022scene-unload\u0022},{\u0022name\u0022:\u0022screenshot-camera\u0022},{\u0022name\u0022:\u0022screenshot-game-view\u0022},{\u0022name\u0022:\u0022screenshot-scene-view\u0022},{\u0022name\u0022:\u0022script-delete\u0022},{\u0022name\u0022:\u0022script-execute\u0022},{\u0022name\u0022:\u0022script-read\u0022},{\u0022name\u0022:\u0022script-update-or-create\u0022},{\u0022name\u0022:\u0022tests-run\u0022},{\u0022name\u0022:\u0022tool-get-detail\u0022},{\u0022name\u0022:\u0022tool-list\u0022},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022},{\u0022name\u0022:\u0022type-get-json-schema\u0022}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "assets-copy"
+        },
+        {
+          "name": "assets-create-folder"
+        },
+        {
+          "name": "assets-delete"
+        },
+        {
+          "name": "assets-find"
+        },
+        {
+          "name": "assets-find-built-in"
+        },
+        {
+          "name": "assets-get-data"
+        },
+        {
+          "name": "assets-material-create"
+        },
+        {
+          "name": "assets-modify"
+        },
+        {
+          "name": "assets-move"
+        },
+        {
+          "name": "assets-refresh"
+        },
+        {
+          "name": "assets-prefab-close"
+        },
+        {
+          "name": "assets-prefab-create"
+        },
+        {
+          "name": "assets-prefab-instantiate"
+        },
+        {
+          "name": "assets-prefab-open"
+        },
+        {
+          "name": "assets-prefab-save"
+        },
+        {
+          "name": "assets-shader-get-data"
+        },
+        {
+          "name": "assets-shader-list-all"
+        },
+        {
+          "name": "console-clear-logs"
+        },
+        {
+          "name": "console-get-logs"
+        },
+        {
+          "name": "editor-application-get-state"
+        },
+        {
+          "name": "editor-application-set-state"
+        },
+        {
+          "name": "editor-selection-get"
+        },
+        {
+          "name": "editor-selection-set"
+        },
+        {
+          "name": "gameobject-component-add"
+        },
+        {
+          "name": "gameobject-component-destroy"
+        },
+        {
+          "name": "gameobject-component-get"
+        },
+        {
+          "name": "gameobject-component-list-all"
+        },
+        {
+          "name": "gameobject-component-modify"
+        },
+        {
+          "name": "gameobject-create"
+        },
+        {
+          "name": "gameobject-destroy"
+        },
+        {
+          "name": "gameobject-duplicate"
+        },
+        {
+          "name": "gameobject-find"
+        },
+        {
+          "name": "gameobject-modify"
+        },
+        {
+          "name": "gameobject-set-parent"
+        },
+        {
+          "name": "object-get-data"
+        },
+        {
+          "name": "object-modify"
+        },
+        {
+          "name": "package-add"
+        },
+        {
+          "name": "package-list"
+        },
+        {
+          "name": "package-remove"
+        },
+        {
+          "name": "package-search"
+        },
+        {
+          "name": "reflection-method-call"
+        },
+        {
+          "name": "reflection-method-find"
+        },
+        {
+          "name": "scene-create"
+        },
+        {
+          "name": "scene-get-data"
+        },
+        {
+          "name": "scene-list-opened"
+        },
+        {
+          "name": "scene-open"
+        },
+        {
+          "name": "scene-save"
+        },
+        {
+          "name": "scene-set-active"
+        },
+        {
+          "name": "scene-unload"
+        },
+        {
+          "name": "screenshot-camera"
+        },
+        {
+          "name": "screenshot-game-view"
+        },
+        {
+          "name": "screenshot-scene-view"
+        },
+        {
+          "name": "script-delete"
+        },
+        {
+          "name": "script-execute"
+        },
+        {
+          "name": "script-read"
+        },
+        {
+          "name": "script-update-or-create"
+        },
+        {
+          "name": "tests-run"
+        },
+        {
+          "name": "tool-get-detail"
+        },
+        {
+          "name": "tool-list"
+        },
+        {
+          "name": "tool-set-enabled-state"
+        },
+        {
+          "name": "type-get-json-schema"
+        }
+      ]
+    }
+  },
+  "RequestID": "be66891a-fd75-44df-a250-5192f0d53bb9",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022},{\u0022name\u0022:\u0022assets-create-folder\u0022},{\u0022name\u0022:\u0022assets-delete\u0022},{\u0022name\u0022:\u0022assets-find\u0022},{\u0022name\u0022:\u0022assets-find-built-in\u0022},{\u0022name\u0022:\u0022assets-get-data\u0022},{\u0022name\u0022:\u0022assets-material-create\u0022},{\u0022name\u0022:\u0022assets-modify\u0022},{\u0022name\u0022:\u0022assets-move\u0022},{\u0022name\u0022:\u0022assets-refresh\u0022},{\u0022name\u0022:\u0022assets-prefab-close\u0022},{\u0022name\u0022:\u0022assets-prefab-create\u0022},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022},{\u0022name\u0022:\u0022assets-prefab-open\u0022},{\u0022name\u0022:\u0022assets-prefab-save\u0022},{\u0022name\u0022:\u0022assets-shader-get-data\u0022},{\u0022name\u0022:\u0022assets-shader-list-all\u0022},{\u0022name\u0022:\u0022console-clear-logs\u0022},{\u0022name\u0022:\u0022console-get-logs\u0022},{\u0022name\u0022:\u0022editor-application-get-state\u0022},{\u0022name\u0022:\u0022editor-application-set-state\u0022},{\u0022name\u0022:\u0022editor-selection-get\u0022},{\u0022name\u0022:\u0022editor-selection-set\u0022},{\u0022name\u0022:\u0022gameobject-component-add\u0022},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022},{\u0022name\u0022:\u0022gameobject-component-get\u0022},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022},{\u0022name\u0022:\u0022gameobject-component-modify\u0022},{\u0022name\u0022:\u0022gameobject-create\u0022},{\u0022name\u0022:\u0022gameobject-destroy\u0022},{\u0022name\u0022:\u0022gameobject-duplicate\u0022},{\u0022name\u0022:\u0022gameobject-find\u0022},{\u0022name\u0022:\u0022gameobject-modify\u0022},{\u0022name\u0022:\u0022gameobject-set-parent\u0022},{\u0022name\u0022:\u0022object-get-data\u0022},{\u0022name\u0022:\u0022object-modify\u0022},{\u0022name\u0022:\u0022package-add\u0022},{\u0022name\u0022:\u0022package-list\u0022},{\u0022name\u0022:\u0022package-remove\u0022},{\u0022name\u0022:\u0022package-search\u0022},{\u0022name\u0022:\u0022reflection-method-call\u0022},{\u0022name\u0022:\u0022reflection-method-find\u0022},{\u0022name\u0022:\u0022scene-create\u0022},{\u0022name\u0022:\u0022scene-get-data\u0022},{\u0022name\u0022:\u0022scene-list-opened\u0022},{\u0022name\u0022:\u0022scene-open\u0022},{\u0022name\u0022:\u0022scene-save\u0022},{\u0022name\u0022:\u0022scene-set-active\u0022},{\u0022name\u0022:\u0022scene-unload\u0022},{\u0022name\u0022:\u0022screenshot-camera\u0022},{\u0022name\u0022:\u0022screenshot-game-view\u0022},{\u0022name\u0022:\u0022screenshot-scene-view\u0022},{\u0022name\u0022:\u0022script-delete\u0022},{\u0022name\u0022:\u0022script-execute\u0022},{\u0022name\u0022:\u0022script-read\u0022},{\u0022name\u0022:\u0022script-update-or-create\u0022},{\u0022name\u0022:\u0022tests-run\u0022},{\u0022name\u0022:\u0022tool-get-detail\u0022},{\u0022name\u0022:\u0022tool-list\u0022},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022},{\u0022name\u0022:\u0022type-get-json-schema\u0022}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2263" name="List_NoArgs_ReturnsAllTools" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_NoArgs_ReturnsAllTools" methodname="List_NoArgs_ReturnsAllTools" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="1303477202" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.024049" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{}
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "9959259d-4fce-4496-8d2a-824afdbf7501",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022},{\u0022name\u0022:\u0022assets-create-folder\u0022},{\u0022name\u0022:\u0022assets-delete\u0022},{\u0022name\u0022:\u0022assets-find\u0022},{\u0022name\u0022:\u0022assets-find-built-in\u0022},{\u0022name\u0022:\u0022assets-get-data\u0022},{\u0022name\u0022:\u0022assets-material-create\u0022},{\u0022name\u0022:\u0022assets-modify\u0022},{\u0022name\u0022:\u0022assets-move\u0022},{\u0022name\u0022:\u0022assets-refresh\u0022},{\u0022name\u0022:\u0022assets-prefab-close\u0022},{\u0022name\u0022:\u0022assets-prefab-create\u0022},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022},{\u0022name\u0022:\u0022assets-prefab-open\u0022},{\u0022name\u0022:\u0022assets-prefab-save\u0022},{\u0022name\u0022:\u0022assets-shader-get-data\u0022},{\u0022name\u0022:\u0022assets-shader-list-all\u0022},{\u0022name\u0022:\u0022console-clear-logs\u0022},{\u0022name\u0022:\u0022console-get-logs\u0022},{\u0022name\u0022:\u0022editor-application-get-state\u0022},{\u0022name\u0022:\u0022editor-application-set-state\u0022},{\u0022name\u0022:\u0022editor-selection-get\u0022},{\u0022name\u0022:\u0022editor-selection-set\u0022},{\u0022name\u0022:\u0022gameobject-component-add\u0022},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022},{\u0022name\u0022:\u0022gameobject-component-get\u0022},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022},{\u0022name\u0022:\u0022gameobject-component-modify\u0022},{\u0022name\u0022:\u0022gameobject-create\u0022},{\u0022name\u0022:\u0022gameobject-destroy\u0022},{\u0022name\u0022:\u0022gameobject-duplicate\u0022},{\u0022name\u0022:\u0022gameobject-find\u0022},{\u0022name\u0022:\u0022gameobject-modify\u0022},{\u0022name\u0022:\u0022gameobject-set-parent\u0022},{\u0022name\u0022:\u0022object-get-data\u0022},{\u0022name\u0022:\u0022object-modify\u0022},{\u0022name\u0022:\u0022package-add\u0022},{\u0022name\u0022:\u0022package-list\u0022},{\u0022name\u0022:\u0022package-remove\u0022},{\u0022name\u0022:\u0022package-search\u0022},{\u0022name\u0022:\u0022reflection-method-call\u0022},{\u0022name\u0022:\u0022reflection-method-find\u0022},{\u0022name\u0022:\u0022scene-create\u0022},{\u0022name\u0022:\u0022scene-get-data\u0022},{\u0022name\u0022:\u0022scene-list-opened\u0022},{\u0022name\u0022:\u0022scene-open\u0022},{\u0022name\u0022:\u0022scene-save\u0022},{\u0022name\u0022:\u0022scene-set-active\u0022},{\u0022name\u0022:\u0022scene-unload\u0022},{\u0022name\u0022:\u0022screenshot-camera\u0022},{\u0022name\u0022:\u0022screenshot-game-view\u0022},{\u0022name\u0022:\u0022screenshot-scene-view\u0022},{\u0022name\u0022:\u0022script-delete\u0022},{\u0022name\u0022:\u0022script-execute\u0022},{\u0022name\u0022:\u0022script-read\u0022},{\u0022name\u0022:\u0022script-update-or-create\u0022},{\u0022name\u0022:\u0022tests-run\u0022},{\u0022name\u0022:\u0022tool-get-detail\u0022},{\u0022name\u0022:\u0022tool-list\u0022},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022},{\u0022name\u0022:\u0022type-get-json-schema\u0022}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "assets-copy"
+        },
+        {
+          "name": "assets-create-folder"
+        },
+        {
+          "name": "assets-delete"
+        },
+        {
+          "name": "assets-find"
+        },
+        {
+          "name": "assets-find-built-in"
+        },
+        {
+          "name": "assets-get-data"
+        },
+        {
+          "name": "assets-material-create"
+        },
+        {
+          "name": "assets-modify"
+        },
+        {
+          "name": "assets-move"
+        },
+        {
+          "name": "assets-refresh"
+        },
+        {
+          "name": "assets-prefab-close"
+        },
+        {
+          "name": "assets-prefab-create"
+        },
+        {
+          "name": "assets-prefab-instantiate"
+        },
+        {
+          "name": "assets-prefab-open"
+        },
+        {
+          "name": "assets-prefab-save"
+        },
+        {
+          "name": "assets-shader-get-data"
+        },
+        {
+          "name": "assets-shader-list-all"
+        },
+        {
+          "name": "console-clear-logs"
+        },
+        {
+          "name": "console-get-logs"
+        },
+        {
+          "name": "editor-application-get-state"
+        },
+        {
+          "name": "editor-application-set-state"
+        },
+        {
+          "name": "editor-selection-get"
+        },
+        {
+          "name": "editor-selection-set"
+        },
+        {
+          "name": "gameobject-component-add"
+        },
+        {
+          "name": "gameobject-component-destroy"
+        },
+        {
+          "name": "gameobject-component-get"
+        },
+        {
+          "name": "gameobject-component-list-all"
+        },
+        {
+          "name": "gameobject-component-modify"
+        },
+        {
+          "name": "gameobject-create"
+        },
+        {
+          "name": "gameobject-destroy"
+        },
+        {
+          "name": "gameobject-duplicate"
+        },
+        {
+          "name": "gameobject-find"
+        },
+        {
+          "name": "gameobject-modify"
+        },
+        {
+          "name": "gameobject-set-parent"
+        },
+        {
+          "name": "object-get-data"
+        },
+        {
+          "name": "object-modify"
+        },
+        {
+          "name": "package-add"
+        },
+        {
+          "name": "package-list"
+        },
+        {
+          "name": "package-remove"
+        },
+        {
+          "name": "package-search"
+        },
+        {
+          "name": "reflection-method-call"
+        },
+        {
+          "name": "reflection-method-find"
+        },
+        {
+          "name": "scene-create"
+        },
+        {
+          "name": "scene-get-data"
+        },
+        {
+          "name": "scene-list-opened"
+        },
+        {
+          "name": "scene-open"
+        },
+        {
+          "name": "scene-save"
+        },
+        {
+          "name": "scene-set-active"
+        },
+        {
+          "name": "scene-unload"
+        },
+        {
+          "name": "screenshot-camera"
+        },
+        {
+          "name": "screenshot-game-view"
+        },
+        {
+          "name": "screenshot-scene-view"
+        },
+        {
+          "name": "script-delete"
+        },
+        {
+          "name": "script-execute"
+        },
+        {
+          "name": "script-read"
+        },
+        {
+          "name": "script-update-or-create"
+        },
+        {
+          "name": "tests-run"
+        },
+        {
+          "name": "tool-get-detail"
+        },
+        {
+          "name": "tool-list"
+        },
+        {
+          "name": "tool-set-enabled-state"
+        },
+        {
+          "name": "type-get-json-schema"
+        }
+      ]
+    }
+  },
+  "RequestID": "9959259d-4fce-4496-8d2a-824afdbf7501",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022assets-copy\u0022},{\u0022name\u0022:\u0022assets-create-folder\u0022},{\u0022name\u0022:\u0022assets-delete\u0022},{\u0022name\u0022:\u0022assets-find\u0022},{\u0022name\u0022:\u0022assets-find-built-in\u0022},{\u0022name\u0022:\u0022assets-get-data\u0022},{\u0022name\u0022:\u0022assets-material-create\u0022},{\u0022name\u0022:\u0022assets-modify\u0022},{\u0022name\u0022:\u0022assets-move\u0022},{\u0022name\u0022:\u0022assets-refresh\u0022},{\u0022name\u0022:\u0022assets-prefab-close\u0022},{\u0022name\u0022:\u0022assets-prefab-create\u0022},{\u0022name\u0022:\u0022assets-prefab-instantiate\u0022},{\u0022name\u0022:\u0022assets-prefab-open\u0022},{\u0022name\u0022:\u0022assets-prefab-save\u0022},{\u0022name\u0022:\u0022assets-shader-get-data\u0022},{\u0022name\u0022:\u0022assets-shader-list-all\u0022},{\u0022name\u0022:\u0022console-clear-logs\u0022},{\u0022name\u0022:\u0022console-get-logs\u0022},{\u0022name\u0022:\u0022editor-application-get-state\u0022},{\u0022name\u0022:\u0022editor-application-set-state\u0022},{\u0022name\u0022:\u0022editor-selection-get\u0022},{\u0022name\u0022:\u0022editor-selection-set\u0022},{\u0022name\u0022:\u0022gameobject-component-add\u0022},{\u0022name\u0022:\u0022gameobject-component-destroy\u0022},{\u0022name\u0022:\u0022gameobject-component-get\u0022},{\u0022name\u0022:\u0022gameobject-component-list-all\u0022},{\u0022name\u0022:\u0022gameobject-component-modify\u0022},{\u0022name\u0022:\u0022gameobject-create\u0022},{\u0022name\u0022:\u0022gameobject-destroy\u0022},{\u0022name\u0022:\u0022gameobject-duplicate\u0022},{\u0022name\u0022:\u0022gameobject-find\u0022},{\u0022name\u0022:\u0022gameobject-modify\u0022},{\u0022name\u0022:\u0022gameobject-set-parent\u0022},{\u0022name\u0022:\u0022object-get-data\u0022},{\u0022name\u0022:\u0022object-modify\u0022},{\u0022name\u0022:\u0022package-add\u0022},{\u0022name\u0022:\u0022package-list\u0022},{\u0022name\u0022:\u0022package-remove\u0022},{\u0022name\u0022:\u0022package-search\u0022},{\u0022name\u0022:\u0022reflection-method-call\u0022},{\u0022name\u0022:\u0022reflection-method-find\u0022},{\u0022name\u0022:\u0022scene-create\u0022},{\u0022name\u0022:\u0022scene-get-data\u0022},{\u0022name\u0022:\u0022scene-list-opened\u0022},{\u0022name\u0022:\u0022scene-open\u0022},{\u0022name\u0022:\u0022scene-save\u0022},{\u0022name\u0022:\u0022scene-set-active\u0022},{\u0022name\u0022:\u0022scene-unload\u0022},{\u0022name\u0022:\u0022screenshot-camera\u0022},{\u0022name\u0022:\u0022screenshot-game-view\u0022},{\u0022name\u0022:\u0022screenshot-scene-view\u0022},{\u0022name\u0022:\u0022script-delete\u0022},{\u0022name\u0022:\u0022script-execute\u0022},{\u0022name\u0022:\u0022script-read\u0022},{\u0022name\u0022:\u0022script-update-or-create\u0022},{\u0022name\u0022:\u0022tests-run\u0022},{\u0022name\u0022:\u0022tool-get-detail\u0022},{\u0022name\u0022:\u0022tool-list\u0022},{\u0022name\u0022:\u0022tool-set-enabled-state\u0022},{\u0022name\u0022:\u0022type-get-json-schema\u0022}]}"
+}
+<color=#ffaa00>warn:</color> [20:35:01:5823] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[50a4e7ba-0052-4463-af43-0502f78a2c69] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2271" name="List_RegexSearch_CaseInsensitive" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_CaseInsensitive" methodname="List_RegexSearch_CaseInsensitive" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="1830454930" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.026870" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "^TOOL-LIST$"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "d6b7e44d-c102-4a0c-ab14-23e8057dbd7f",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "tool-list"
+        }
+      ]
+    }
+  },
+  "RequestID": "d6b7e44d-c102-4a0c-ab14-23e8057dbd7f",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2268" name="List_RegexSearch_DoesNotMatchDescription" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_DoesNotMatchDescription" methodname="List_RegexSearch_DoesNotMatchDescription" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="175851109" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.024647" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "Enable or disable MCP tools"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "57e658c5-4135-4ad5-b582-dabaab750e98",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": []
+    }
+  },
+  "RequestID": "57e658c5-4135-4ad5-b582-dabaab750e98",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2270" name="List_RegexSearch_DoesNotMatchInputDescription" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_DoesNotMatchInputDescription" methodname="List_RegexSearch_DoesNotMatchInputDescription" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="2142817554" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.024090" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "regex pattern to filter tools"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "0d764d4d-b957-4806-a457-fcc7783baac5",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": []
+    }
+  },
+  "RequestID": "0d764d4d-b957-4806-a457-fcc7783baac5",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2266" name="List_RegexSearch_FiltersByToolName" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_FiltersByToolName" methodname="List_RegexSearch_FiltersByToolName" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="1888224742" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.023736" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "^tool-list$"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "5afb7177-9c24-4beb-b401-ced9944c0677",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "tool-list"
+        }
+      ]
+    }
+  },
+  "RequestID": "5afb7177-9c24-4beb-b401-ced9944c0677",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2273" name="List_RegexSearch_InvalidPattern_ReturnsError" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_InvalidPattern_ReturnsError" methodname="List_RegexSearch_InvalidPattern_ReturnsError" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="938396430" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.029660" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+<color=#ffaa00>warn:</color> [20:35:01:6982] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[50a4e7ba-0052-4463-af43-0502f78a2c69] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-list Started with JSON:
+{
+                    "regexSearch": "[invalid"
+                }
+ArgumentException: Invalid regex pattern '[invalid': parsing "[invalid" - Unterminated [] set.
+Parameter name: regexSearch
+<color=#ff6b6b>fail:</color> [20:35:01:7090] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>ToolRunnerCollection</b></color> Tool execution failed for 'Tool / List': Invalid regex pattern '[invalid': parsing "[invalid" - Unterminated [] set.
+Parameter name: regexSearch
+  at System.Reflection.RuntimeMethodInfo.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00083] in <1071a2cb0cb3433aae80a793c277a048>:0
+  at System.Reflection.MethodBase.Invoke (System.Object obj, System.Object[] parameters) [0x00000] in <1071a2cb0cb3433aae80a793c277a048>:0
+  at com.IvanMurzak.ReflectorNet.MethodWrapper.InvokeDict (System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue] namedParameters, System.Threading.CancellationToken cancellationToken) [0x0005d] in <bffc88d4b19442e8adf0285689045d95>:0
+  at com.IvanMurzak.McpPlugin.RunTool.Run (System.String requestId, System.Collections.Generic.IReadOnlyDictionary`2[TKey,TValue] namedParameters, System.Threading.CancellationToken cancellationToken) [0x000ab] in <7601e79e7fba4db6a37db2792fcc74d7>:0
+<color=#ff6b6b>fail:</color> [20:35:01:7120] <color=#B4FF32>[AI]</color> <color=#5DADE2><b>McpToolManager</b></color> Error Response to AI:
+Tool execution failed for 'Tool / List': Invalid regex pattern '[invalid': parsing "[invalid" - Unterminated [] set.
+Parameter name: regexSearch
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "89beedc6-4d19-4524-9bbb-4c500031a284",
+    "Status": "Error",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "Tool execution failed for \u0027Tool / List\u0027: Invalid regex pattern \u0027[invalid\u0027: parsing \u0022[invalid\u0022 - Unterminated [] set.\r\nParameter name: regexSearch",
+        "MimeType": "text/plain"
+      }
+    ]
+  },
+  "RequestID": "89beedc6-4d19-4524-9bbb-4c500031a284",
+  "Status": "Error",
+  "Message": "Tool execution failed for \u0027Tool / List\u0027: Invalid regex pattern \u0027[invalid\u0027: parsing \u0022[invalid\u0022 - Unterminated [] set.\r\nParameter name: regexSearch"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2269" name="List_RegexSearch_MatchesInputName" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_MatchesInputName" methodname="List_RegexSearch_MatchesInputName" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="214513751" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.023055" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "^regexSearch$"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "048f3d51-c03e-44b2-9991-12bb3a2c23de",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "tool-list"
+        }
+      ]
+    }
+  },
+  "RequestID": "048f3d51-c03e-44b2-9991-12bb3a2c23de",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2267" name="List_RegexSearch_NoMatch_ReturnsEmpty" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexSearch_NoMatch_ReturnsEmpty" methodname="List_RegexSearch_NoMatch_ReturnsEmpty" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="2112836204" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.021586" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "^nonexistent-tool-xyz-99999$"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "beec7233-a8a2-4d88-b0ca-9eda8d6c9d4a",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": []
+    }
+  },
+  "RequestID": "beec7233-a8a2-4d88-b0ca-9eda8d6c9d4a",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2272" name="List_RegexWithIncludeOptions_ReturnsCombinedResult" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests.List_RegexWithIncludeOptions_ReturnsCombinedResult" methodname="List_RegexWithIncludeOptions_ReturnsCombinedResult" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolListTests" runstate="Runnable" seed="620479001" result="Passed" start-time="2026-04-23 12:35:01Z" end-time="2026-04-23 12:35:01Z" duration="0.022875" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolListTests] SetUp
+tool-list Started with JSON:
+{
+                "regexSearch": "^tool-list$",
+                "includeInputs": "Inputs"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "907d546c-5731-4a79-a486-2372eb78214d",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022},{\u0022name\u0022:\u0022includeInputs\u0022}]}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "tool-list",
+          "inputs": [
+            {
+              "name": "regexSearch"
+            },
+            {
+              "name": "includeInputs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "RequestID": "907d546c-5731-4a79-a486-2372eb78214d",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-list\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022regexSearch\u0022},{\u0022name\u0022:\u0022includeInputs\u0022}]}]}"
+}
+[ToolListTests] TearDown
+]]></output>
+                    </test-case>
+                  </test-suite>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

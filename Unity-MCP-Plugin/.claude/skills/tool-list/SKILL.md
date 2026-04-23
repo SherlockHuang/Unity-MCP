@@ -1,16 +1,17 @@
 ---
 name: tool-list
-description: List all available MCP tools. Optionally filter by regex across tool names, descriptions, and arguments.
+description: List available MCP tools for lightweight discovery. Optionally filter by regex across tool names and argument names.
 ---
 
 # Tool / List
+
+Lightweight discovery only: this tool returns tool names and, when requested, input names. It does not return tool descriptions, input descriptions, or schemas. Use `tool-get-detail` with `detailLevel: summary` for compact usage details, and `detailLevel: full` for complete schemas.
 
 ## How to Call
 
 ```bash
 unity-mcp-cli run-tool tool-list --input '{
   "regexSearch": "string_value",
-  "includeDescription": "string_value",
   "includeInputs": "string_value"
 }'
 ```
@@ -37,9 +38,8 @@ Read the /unity-initial-setup skill for detailed installation instructions.
 
 | Name | Type | Required | Description |
 |------|------|----------|-------------|
-| `regexSearch` | `string` | No | Regex pattern to filter tools. Matches against tool name, description, and argument names and descriptions. |
-| `includeDescription` | `any` | No | Include tool descriptions in the result. Default: false |
-| `includeInputs` | `any` | No | Include input arguments in the result. Default: None |
+| `regexSearch` | `string` | No | Regex pattern to filter tools. Matches against tool name and argument names. |
+| `includeInputs` | `any` | No | Include input argument names in the result. Default: None |
 
 ### Input JSON Schema
 
@@ -50,25 +50,17 @@ Read the /unity-initial-setup skill for detailed installation instructions.
     "regexSearch": {
       "type": "string"
     },
-    "includeDescription": {
-      "$ref": "#/$defs/System.Boolean"
-    },
     "includeInputs": {
       "$ref": "#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool+InputRequest"
     }
   },
   "$defs": {
-    "System.Boolean": {
-      "type": "boolean"
-    },
     "com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool+InputRequest": {
       "type": "string",
       "enum": [
         "None",
-        "Inputs",
-        "InputsWithDescription"
-      ],
-      "description": "Specifies what to include for tool input arguments."
+        "Inputs"
+      ]
     }
   }
 }
@@ -94,10 +86,6 @@ Read the /unity-initial-setup skill for detailed installation instructions.
           "type": "string",
           "description": "Tool name."
         },
-        "description": {
-          "type": "string",
-          "description": "Tool description."
-        },
         "inputs": {
           "$ref": "#/$defs/com.IvanMurzak.Unity.MCP.Editor.API.Tool_Tool+ToolInputData[]",
           "description": "Tool input arguments."
@@ -118,10 +106,6 @@ Read the /unity-initial-setup skill for detailed installation instructions.
         "name": {
           "type": "string",
           "description": "Argument name."
-        },
-        "description": {
-          "type": "string",
-          "description": "Argument description."
         }
       },
       "description": "MCP tool input argument."

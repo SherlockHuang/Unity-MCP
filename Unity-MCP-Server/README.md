@@ -25,7 +25,7 @@ Required to install [Unity MCP Plugin](https://github.com/IvanMurzak/Unity-MCP) 
 
 Unity-MCP keeps the standard MCP `tools/list` flow compatible for discovery: the full enabled tool set is still returned there, but the default `inputSchema` is minimized to parameter names, required fields, and core type structure.
 
-The recommended escalation path is `tools/list` for discovery, `tool-get-detail` for the default compact single-tool summary, and `tool-get-detail` with `detailLevel: full` only when that summary still is not enough and the full schema for one tool is required.
+The recommended escalation path is `tools/list` or `tool-list` for discovery, `tool-get-detail` for the default compact single-tool summary, and `tool-get-detail` with `detailLevel: full` only when that summary still is not enough and the full schema for one tool is required. The Unity helper `tool-list` returns tool names and, with `includeInputs: "Inputs"`, input names only; its `regexSearch` matches tool names and input names, not descriptions.
 
 ---
 

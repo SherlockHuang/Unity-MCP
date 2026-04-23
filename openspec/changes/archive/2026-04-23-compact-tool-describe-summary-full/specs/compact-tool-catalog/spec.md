@@ -1,4 +1,30 @@
-## MODIFIED Requirements
+## ADDED Requirements
+
+### Requirement: Tool list SHALL remain a lightweight discovery helper
+The Unity-side `tool-list` helper SHALL be limited to discovering candidate tools. By default it SHALL return tool names only. When the caller requests `includeInputs: Inputs`, it SHALL additionally return input names only. It SHALL NOT return tool descriptions, input descriptions, full input schemas, or output schemas.
+
+Filtering SHALL stay aligned with discovery: `regexSearch` SHALL match tool names and input names only. It SHALL NOT match tool descriptions or input descriptions.
+
+#### Scenario: Caller lists tools without inputs
+- **WHEN** a caller invokes `tool-list` without `includeInputs`
+- **THEN** the result includes each candidate tool's `name`
+- **AND** the result omits tool descriptions
+- **AND** the result omits input and output schemas
+
+#### Scenario: Caller lists tools with input names
+- **WHEN** a caller invokes `tool-list` with `includeInputs: Inputs`
+- **THEN** each returned input entry includes its `name`
+- **AND** each returned input entry omits its description
+- **AND** no full schema payload is returned
+
+#### Scenario: Caller filters by input name
+- **WHEN** a caller invokes `tool-list` with a `regexSearch` value that matches an input name
+- **THEN** tools containing that input name are returned as candidates
+
+#### Scenario: Caller filters by description text
+- **WHEN** a caller invokes `tool-list` with a `regexSearch` value that matches only tool or input description text
+- **THEN** those descriptions do not cause a match
+- **AND** the caller can use `tool-get-detail` to inspect descriptions for a selected tool
 
 ### Requirement: Tool detail SHALL default to a compact summary payload
 The system SHALL provide a default tool-detail response that is intentionally compact and optimized for model comprehension and invocation planning. The detail request contract SHALL use `detailLevel: summary|full`, where `summary` is the default when the caller omits the field. The default summary MUST avoid returning the heaviest schema payload unless the caller explicitly asks for it.
@@ -96,9 +122,9 @@ Failure responses SHALL NOT be required to include success-path fields such as `
 - **AND** the client-facing message remains sanitized
 
 ### Requirement: Documentation SHALL guide callers toward summary-first usage
-The system SHALL document the intended discovery workflow so callers start with the minimized full catalog, escalate to compact summary detail next, and request the full detail payload only when necessary.
+The system SHALL document the intended discovery workflow so callers start with the minimized full catalog or `tool-list`, escalate to compact summary detail next, and request the full detail payload only when necessary.
 
 #### Scenario: Reader follows documented workflow
 - **WHEN** a developer or model reads the updated documentation
-- **THEN** the documentation explains that compact summary detail is the default next step after full-catalog discovery
+- **THEN** the documentation explains that compact summary detail is the default next step after full-catalog or `tool-list` discovery
 - **AND** it explains that `detailLevel: full` should be requested only when the summary contract is insufficient

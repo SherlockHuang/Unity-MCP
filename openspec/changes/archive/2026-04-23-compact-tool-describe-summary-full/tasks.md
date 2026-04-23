@@ -1,6 +1,6 @@
 ## 1. Define compact summary detail as the default
 
-- [x] 1.1 Trace the current `tool-get-detail` response contract and identify which fields are currently always returned versus optionally returned.
+- [x] 1.1 Trace the current `tool-list` and `tool-get-detail` response contracts and identify which fields are currently always returned versus optionally returned.
 - [x] 1.2 Write or update failing tests that define the `detailLevel: summary|full` request contract, including the required summary/full field boundary.
 - [x] 1.3 Write or update failing tests for compatibility with existing request flags (`includeSchemas`, `includeParsedArguments`) and for invalid `detailLevel` handling.
 - [x] 1.4 Implement the request contract so `detailLevel: summary|full` is explicit, `summary` is the default, and the heavier fields are reserved for explicit full-detail requests.
@@ -9,6 +9,7 @@
 
 ## 2. Add regression coverage for summary versus full
 
+- [x] 2.0 Add or update Unity-side tests proving `tool-list` returns only tool names and optional input names, and does not return/search descriptions or schemas.
 - [x] 2.1 Add or update Unity-side tests for default summary detail behavior.
 - [x] 2.2 Add or update Unity-side tests for explicit full-detail behavior.
 - [x] 2.3 Add or update tests that compare summary and full responses to verify the expected superset relationship.

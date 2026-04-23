@@ -96,7 +96,7 @@ unity-mcp-cli open ./MyUnityProject
 
 插件内置 100+ 个工具，分为三个类别。每个工具都为 AI 带来技能。安装后所有工具立即可用，无需额外配置。完整参考及详细说明请见 [docs/default-mcp-tools.md](docs/default-mcp-tools.md)。
 
-标准 MCP `tools/list` 目录被有意保持为面向发现的轻量入口：Unity-MCP 仍会在其中公开全部已启用工具，但默认 `inputSchema` 会缩减为字段名、必填项和核心结构。推荐流程是先用 `tools/list` 做发现，再用 `tool-get-detail` 获取默认的紧凑单工具摘要，只有当该摘要仍然不够时，才使用带 `detailLevel: full` 的 `tool-get-detail` 获取完整 schema。
+标准 MCP `tools/list` 目录被有意保持为面向发现的轻量入口：Unity-MCP 仍会在其中公开全部已启用工具，但默认 `inputSchema` 会缩减为字段名、必填项和核心结构。推荐流程是先用 `tools/list` 或 `tool-list` 做发现，再用 `tool-get-detail` 获取默认的紧凑单工具摘要，只有当该摘要仍然不够时，才使用带 `detailLevel: full` 的 `tool-get-detail` 获取完整 schema。Unity 辅助工具 `tool-list` 只返回工具名，并在 `includeInputs: "Inputs"` 时只附带 input 名称；它的 `regexSearch` 只匹配工具名和 input 名称，不匹配描述文本。
 
 <details>
   <summary>项目与资产</summary>

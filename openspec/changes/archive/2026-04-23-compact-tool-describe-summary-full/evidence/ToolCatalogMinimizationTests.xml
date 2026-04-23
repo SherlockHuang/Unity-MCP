@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.369744">
+  <test-suite type="TestSuite" id="1906" name="2022.3.62f3" fullname="2022.3.62f3" runstate="Runnable" testcasecount="807" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.369744" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="2785" name="com.IvanMurzak.Unity.MCP.Editor.Tests.dll" fullname="G:/github/Unity-MCP/Unity-Tests/2022.3.62f3/Library/ScriptAssemblies/com.IvanMurzak.Unity.MCP.Editor.Tests.dll" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.351924" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="124404" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="2786" name="com" fullname="com" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.344208" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="2787" name="IvanMurzak" fullname="com.IvanMurzak" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.336480" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="2788" name="Unity" fullname="com.IvanMurzak.Unity" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.326178" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="2789" name="MCP" fullname="com.IvanMurzak.Unity.MCP" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.318601" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="2790" name="Editor" fullname="com.IvanMurzak.Unity.MCP.Editor" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.309162" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestSuite" id="2791" name="Tests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests" runstate="Runnable" testcasecount="801" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.298738" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-suite type="TestFixture" id="2241" name="ToolCatalogMinimizationTests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.289301" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="2242" name="LocalToolRegistry_PreservesRichInputSchemaDescriptions" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests.LocalToolRegistry_PreservesRichInputSchemaDescriptions" methodname="LocalToolRegistry_PreservesRichInputSchemaDescriptions" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests" runstate="Runnable" seed="104909091" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.137772" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolCatalogMinimizationTests] SetUp
+<color=#ffaa00>warn:</color> [20:35:23:5240] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c2373ddf-e571-4d4f-8ff7-a9d57136c0dc] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [20:35:23:5240] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c2373ddf-e571-4d4f-8ff7-a9d57136c0dc] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [20:35:23:5240] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[c2373ddf-e571-4d4f-8ff7-a9d57136c0dc] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+[ToolCatalogMinimizationTests] TearDown
+]]></output>
+                    </test-case>
+                    <test-case id="2243" name="ToolListHelper_ReturnsInputNamesWithoutDescriptions" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests.ToolListHelper_ReturnsInputNamesWithoutDescriptions" methodname="ToolListHelper_ReturnsInputNamesWithoutDescriptions" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.ToolCatalogMinimizationTests" runstate="Runnable" seed="199692389" result="Passed" start-time="2026-04-23 12:35:23Z" end-time="2026-04-23 12:35:23Z" duration="0.143498" asserts="0">
+                      <properties>
+                        <property name="_JOINTYPE" value="UnityCombinatorial" />
+                      </properties>
+                      <output><![CDATA[[ToolCatalogMinimizationTests] SetUp
+<color=#ffaa00>warn:</color> [20:35:23:6453] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[d06e6b24-b5db-4976-b68e-429dd1cef388] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [20:35:23:6453] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[d06e6b24-b5db-4976-b68e-429dd1cef388] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+<color=#ffaa00>warn:</color> [20:35:23:6453] <color=#B4FF32>[AI]</color> <color=#48C9B0><b>McpManagerClientHub</b></color> ConnectionManager[d06e6b24-b5db-4976-b68e-429dd1cef388] EnsureConnection Connection not available and auto-reconnect disabled for endpoint: /hub/mcp-server
+tool-list Started with JSON:
+{
+                "regexSearch": "^tool-set-enabled-state$",
+                "includeInputs": "Inputs"
+            }
+tool-list Completed. Result:
+{
+  "Value": {
+    "RequestID": "f9451dd8-18f0-49c3-b625-6b0cdeb5483d",
+    "Status": "Success",
+    "Content": [
+      {
+        "Type": "text",
+        "Text": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022},{\u0022name\u0022:\u0022includeLogs\u0022}]}]}",
+        "MimeType": "application/json"
+      }
+    ],
+    "StructuredContent": {
+      "result": [
+        {
+          "name": "tool-set-enabled-state",
+          "inputs": [
+            {
+              "name": "tools"
+            },
+            {
+              "name": "includeLogs"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "RequestID": "f9451dd8-18f0-49c3-b625-6b0cdeb5483d",
+  "Status": "Success",
+  "Message": "{\u0022result\u0022:[{\u0022name\u0022:\u0022tool-set-enabled-state\u0022,\u0022inputs\u0022:[{\u0022name\u0022:\u0022tools\u0022},{\u0022name\u0022:\u0022includeLogs\u0022}]}]}"
+}
+[ToolCatalogMinimizationTests] TearDown
+]]></output>
+                    </test-case>
+                  </test-suite>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
