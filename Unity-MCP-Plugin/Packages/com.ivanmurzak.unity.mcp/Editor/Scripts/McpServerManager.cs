@@ -165,8 +165,10 @@ namespace com.IvanMurzak.Unity.MCP.Editor
                 )
             );
 
+        const string ServerReleaseTag = "0.66";
+
         public static string ExecutableZipUrl
-            => $"https://github.com/IvanMurzak/Unity-MCP/releases/download/{UnityMcpPlugin.Version}/{ExecutableName.ToLowerInvariant()}-{PlatformName}.zip";
+            => $"http://192.168.0.27/client/unity-mcp/-/releases/{ServerReleaseTag}/downloads/{ExecutableName.ToLowerInvariant()}-{PlatformName}.zip";
 
         #endregion // Binary Metadata
 
