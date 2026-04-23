@@ -70,6 +70,9 @@
   <!-- Exclude the local publish output folder so successive publishes don't recursively include previous outputs -->
   <ItemGroup>
     <Compile Remove="Tests/**/*.cs" />
+    <None Remove="Tests/**" />
+    <Content Remove="Tests/**" />
+    <EmbeddedResource Remove="Tests/**" />
     <None Remove="publish/**" />
     <Content Remove="publish/**" />
     <EmbeddedResource Remove="publish/**" />
