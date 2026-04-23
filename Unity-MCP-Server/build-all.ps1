@@ -121,7 +121,11 @@ foreach ($runtime in $runtimes) {
             }
 
             Add-Type -AssemblyName System.IO.Compression.FileSystem
-            [System.IO.Compression.ZipFile]::CreateFromDirectory($runtimePath, $zipPath)
+            [System.IO.Compression.ZipFile]::CreateFromDirectory(
+                $runtimePath,
+                $zipPath,
+                [System.IO.Compression.CompressionLevel]::Optimal,
+                $true)
 
             Write-Host "Successfully created $zipName" -ForegroundColor Green
             $zipSuccess++
