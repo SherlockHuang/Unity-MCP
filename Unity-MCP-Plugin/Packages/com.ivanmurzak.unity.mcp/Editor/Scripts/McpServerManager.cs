@@ -165,7 +165,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor
                 )
             );
 
-        const string ServerReleaseTag = "0.66";
+        const string ServerReleaseTag = "0.66.1";
 
         public static string ExecutableZipUrl
             => $"http://192.168.0.27/client/unity-mcp/-/releases/{ServerReleaseTag}/downloads/{ExecutableName.ToLowerInvariant()}-{PlatformName}.zip";
