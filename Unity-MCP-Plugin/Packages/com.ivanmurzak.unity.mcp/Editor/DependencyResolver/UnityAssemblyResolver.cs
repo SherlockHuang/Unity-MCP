@@ -14,6 +14,7 @@ using System.IO;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Compilation;
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 
 namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 {
@@ -63,13 +64,12 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 
             var unityProvided = new HashSet<string>(System.StringComparer.OrdinalIgnoreCase);
 
-            // Canonicalize the install root to an absolute path once. `assembly.allReferences`
-            // paths are typically absolute, while NuGetConfig.InstallPath is project-relative,
-            // so a plain StartsWith comparison would never match for our own NuGet DLLs —
-            // we'd incorrectly record them as Unity-provided and later disable them.
-            var installRootAbs = Path.GetFullPath(NuGetConfig.InstallPath).Replace('\\', '/');
-            if (!installRootAbs.EndsWith("/"))
-                installRootAbs += "/";
+            // Canonicalize managed dependency roots to absolute paths once.
+            // `assembly.allReferences` paths are typically absolute, while package asset paths
+            // are project-relative or virtual. If we do not skip our own bundled/OpenUPM DLLs
+            // here, we incorrectly record them as Unity-provided and later disable or exclude
+            // them from the editor during PluginImporter configuration.
+            var managedDependencyRoots = GetManagedDependencyRoots();
 
             foreach (var assembly in playerAssemblies)
             {
@@ -83,7 +83,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
                     // but we still want to detect the *name* as Unity-provided if any other
                     // reference resolves the same name outside our install folder.
                     var fullRef = Path.GetFullPath(reference).Replace('\\', '/');
-                    if (fullRef.StartsWith(installRootAbs, System.StringComparison.OrdinalIgnoreCase))
+                    if (managedDependencyRoots.Any(root => fullRef.StartsWith(root, System.StringComparison.OrdinalIgnoreCase)))
                         continue;
 
                     unityProvided.Add(name);
@@ -104,6 +104,36 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 
             cachedUnityAssemblies = unityProvided;
             return unityProvided;
+        }
+
+        static List<string> GetManagedDependencyRoots()
+        {
+            var roots = new List<string>();
+
+            foreach (var package in PackageInfo.GetAllRegisteredPackages())
+            {
+                if (!string.Equals(package.name, NuGetConfig.PackageName, System.StringComparison.OrdinalIgnoreCase)
+                    && !NuGetConfig.IsManagedOpenUpmPackageName(package.name))
+                    continue;
+
+                var root = package.resolvedPath;
+                if (string.IsNullOrEmpty(root))
+                    continue;
+
+                roots.Add(NormalizeRoot(root));
+            }
+
+            // Fallback for local embedded packages where CompilationPipeline may surface
+            // project-relative package paths before PackageInfo has a resolved path.
+            roots.Add(NormalizeRoot(NuGetConfig.InstallPath));
+
+            return roots;
+        }
+
+        static string NormalizeRoot(string path)
+        {
+            var normalized = Path.GetFullPath(path).Replace('\\', '/');
+            return normalized.EndsWith("/") ? normalized : normalized + "/";
         }
 
     }

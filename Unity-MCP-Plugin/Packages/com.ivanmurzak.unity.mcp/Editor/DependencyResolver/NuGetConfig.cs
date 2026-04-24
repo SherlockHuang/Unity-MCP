@@ -13,35 +13,29 @@
 namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 {
     /// <summary>
-    /// Configuration for the NuGet dependency resolver.
-    /// Contains the list of required NuGet packages and path settings.
+    /// Configuration for dependency PluginImporter settings.
+    /// Third-party NuGet packages are resolved by OpenUPM wrapper dependencies.
     /// </summary>
     static class NuGetConfig
     {
         /// <summary>Log tag shared across all DependencyResolver classes.</summary>
         public const string LogTag = "[NuGet]";
 
-        /// <summary>
-        /// NuGet v3 flat container base URL.
-        /// Download URL pattern: {base}/{id}/{version}/{id}.{version}.nupkg
-        /// </summary>
-        public const string NuGetBaseUrl = "https://api.nuget.org/v3-flatcontainer";
+        /// <summary>Unity-MCP UPM package name.</summary>
+        public const string PackageName = "com.ivanmurzak.unity.mcp";
+
+        /// <summary>OpenUPM NuGet wrapper package prefix.</summary>
+        public const string OpenUpmNuGetPackagePrefix = "org.nuget.";
 
         /// <summary>
-        /// Where extracted NuGet DLLs are installed (mutable location inside Unity's asset pipeline).
-        /// PluginImporter requires files to be under Assets/ to work.
+        /// Where bundled Unity-MCP-owned DLLs live inside the UPM package.
+        /// Third-party NuGet DLLs are resolved by OpenUPM wrapper packages.
         /// </summary>
-        public const string InstallPath = "Assets/Plugins/NuGet";
+        public const string InstallPath = "Packages/" + PackageName + "/Plugins/NuGet";
 
         /// <summary>
-        /// Where downloaded .nupkg files are cached.
-        /// Library/ survives domain reloads but is not tracked by git.
-        /// </summary>
-        public const string CachePath = "Library/NuGetCache";
-
-        /// <summary>
-        /// Top-level NuGet package dependencies.
-        /// Transitive dependencies are resolved automatically from .nuspec metadata.
+        /// NuGet package IDs used to classify DLL importer settings when a DLL folder
+        /// follows the {packageId}.{version} naming convention.
         ///
         /// includeInBuild: true  = DLL included in game builds (runtime dependency)
         /// includeInBuild: false = editor-only DLL (excluded from builds)
@@ -54,7 +48,6 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             // whose built-in BCL doesn't override our NuGet install (e.g. Unity 6.5).
             // 6.1.0 drops the unused ModelContextProtocol dep; earlier versions drag in a
             // v10 BCL stack via MCP.Core.1.2.0 that collides with our v8 pins in Unity.
-            new NuGetPackage("com.IvanMurzak.McpPlugin",                              "6.1.0",  includeInBuild: true),
             new NuGetPackage("System.Text.Json",                                      "8.0.5",  includeInBuild: true),
             new NuGetPackage("Microsoft.AspNetCore.SignalR.Client",                   "8.0.15", includeInBuild: true),
             new NuGetPackage("Microsoft.AspNetCore.SignalR.Protocols.Json",           "8.0.15", includeInBuild: true),
@@ -75,42 +68,21 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             new NuGetPackage("Microsoft.CodeAnalysis.CSharp",                         "4.8.0"),
         };
 
-        /// <summary>
-        /// Package IDs to exclude from transitive dependency resolution. Matched
-        /// case-insensitively against the NuGet package ID (not the DLL filename).
-        ///
-        /// When a package ID appears here:
-        ///   - the resolver skips it (and its transitive deps) during Install()
-        ///   - RemoveUnnecessaryPackages() deletes its install directory if present
-        ///   - AllPackagesInstalled() forces a full restore while it's still on disk
-        ///
-        /// Use this when a top-level package's nuspec pulls in a transitive dep that
-        /// is unused by your project's source AND whose own dependency chain conflicts
-        /// with your pinned versions (e.g., a netstandard2.0 package targeting a newer
-        /// BCL than Unity's runtime provides).
-        /// </summary>
-        public static readonly string[] SkipPackages = { };
+        public static bool IsManagedOpenUpmPackageName(string packageName)
+            => packageName.StartsWith(OpenUpmNuGetPackagePrefix, System.StringComparison.OrdinalIgnoreCase);
 
-        /// <summary>
-        /// Target framework priority for selecting DLLs from .nupkg lib/ folders.
-        /// First match wins. Ordered by preference for Unity compatibility.
-        /// </summary>
-        public static readonly string[] TargetFrameworkPriority =
+        public static bool IsUnityMcpDependencyPackageName(string packageName)
+            => GetPackageByOpenUpmName(packageName) != null;
+
+        public static NuGetPackage? GetPackageByOpenUpmName(string packageName)
         {
-            "netstandard2.1",
-            "netstandard2.0",
-            "net48",
-            "net472",
-            "net471",
-            "net47",
-            "net462",
-            "net461",
-            "net46",
-            "net45",
-            "netstandard1.3",
-            "netstandard1.1",
-            "netstandard1.0",
-            "",  // fallback: root lib/ folder
-        };
+            foreach (var package in Packages)
+            {
+                if (string.Equals(package.OpenUpmPackageName, packageName, System.StringComparison.OrdinalIgnoreCase))
+                    return package;
+            }
+            return null;
+        }
+
     }
 }

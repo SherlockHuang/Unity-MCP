@@ -15,12 +15,17 @@
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "ReflectorNet.dll",
+        "System.Text.Json.dll",
+        "Microsoft.Extensions.Logging.Abstractions.dll",
+        "nunit.framework.dll"
+    ],
     "autoReferenced": true,
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS",
-        "UNITY_MCP_READY"
+        "UNITY_MCP_OPENUPM_READY"
     ],
     "versionDefines": [],
     "noEngineReferences": false

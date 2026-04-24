@@ -29,35 +29,16 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         /// </summary>
         public readonly bool IncludeInBuild;
 
+        /// <summary>OpenUPM NuGet wrapper package name.</summary>
+        public string OpenUpmPackageName
+            => NuGetConfig.OpenUpmNuGetPackagePrefix + Id.ToLowerInvariant();
+
         public NuGetPackage(string id, string version, bool includeInBuild = false)
         {
             Id = id;
             Version = version;
             IncludeInBuild = includeInBuild;
         }
-
-        /// <summary>
-        /// The .nupkg download URL from NuGet v3 flat container API.
-        /// </summary>
-        public string DownloadUrl
-        {
-            get
-            {
-                var lowerId = Id.ToLowerInvariant();
-                var lowerVersion = Version.ToLowerInvariant();
-                return $"{NuGetConfig.NuGetBaseUrl}/{lowerId}/{lowerVersion}/{lowerId}.{lowerVersion}.nupkg";
-            }
-        }
-
-        /// <summary>
-        /// Cached .nupkg filename.
-        /// </summary>
-        public string CacheFileName => $"{Id}.{Version}.nupkg";
-
-        /// <summary>
-        /// The install directory name under the install path.
-        /// </summary>
-        public string InstallDirectoryName => $"{Id}.{Version}";
 
         public override string ToString() => $"{Id} {Version}";
     }

@@ -19,37 +19,36 @@ using UnityEngine;
 namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 {
     /// <summary>
-    /// Entry point for NuGet dependency management. Runs on every domain reload via [InitializeOnLoad].
+    /// Entry point for dependency PluginImporter management. Runs on every domain reload via [InitializeOnLoad].
     ///
     /// This assembly has ZERO external dependencies — it always compiles, even when the main plugin
-    /// fails due to missing or conflicting DLLs. It downloads NuGet packages directly from nuget.org,
-    /// extracts DLLs, skips assemblies Unity already provides, and sets the UNITY_MCP_READY define
-    /// so the main plugin assemblies can compile.
+    /// fails due to missing or conflicting DLLs. It configures Unity-MCP-owned bundled DLLs and sets
+    /// the UNITY_MCP_OPENUPM_READY define so the main plugin assemblies can compile. Third-party NuGet DLLs
+    /// are resolved through OpenUPM wrapper package dependencies declared in package.json.
     ///
     /// Flow:
     ///   1. [InitializeOnLoad] fires on domain reload
     ///   2. Deferred via EditorApplication.update (runs without editor focus, unlike delayCall)
-    ///   3. NuGetPackageRestorer checks if all packages are installed
-    ///   4. Downloads and installs any missing packages
-    ///   5. Sets UNITY_MCP_READY scripting define
-    ///   6. If packages were installed: triggers AssetDatabase.Refresh() → domain reload
-    ///   7. On next reload: everything is in place, main plugin compiles
+    ///   3. Configures bundled DLL import settings
+    ///   4. Sets UNITY_MCP_OPENUPM_READY scripting define
+    ///   5. On next reload: everything is in place, main plugin compiles
     /// </summary>
     [InitializeOnLoad]
     static class NuGetDependencyResolver
     {
         const string Tag = "[Unity-MCP DependencyResolver]";
-        const string ReadyDefine = "UNITY_MCP_READY";
+        const string ReadyDefine = "UNITY_MCP_OPENUPM_READY";
+        static bool isResolving;
+        static bool isResolved;
 
         static NuGetDependencyResolver()
         {
-            // In CI, skip runtime resolution — DLLs are committed to git
-            // and UNITY_MCP_READY should already be in ProjectSettings.
-            // Setting defines at runtime in batch mode causes "Error building Player
-            // because scripts are compiling" when the test runner races the recompilation.
-            if (IsCi())
+            // In short-lived batchmode imports, Unity may quit before the first
+            // EditorApplication.update tick. Run synchronously so package DLL importers
+            // are configured before gated assemblies are compiled on the next reload.
+            if (Application.isBatchMode || IsCi())
             {
-                EnsureScriptingDefine();
+                ResolveOnce();
                 return;
             }
 
@@ -59,40 +58,38 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         static void ResolveOnce()
         {
             EditorApplication.update -= ResolveOnce;
+            ResolveNow();
+        }
+
+        internal static void ResolveNow()
+        {
+            if (isResolving || isResolved)
+                return;
+
+            isResolving = true;
             try
             {
-                // Quick check: if all packages are already installed, reconfigure and set define.
-                if (NuGetPackageRestorer.AllPackagesInstalled())
-                {
-                    NuGetPluginConfigurator.ConfigureAll();
-                    EnsureScriptingDefine();
-                    return;
-                }
-
-                // Full restore: download and install missing packages.
-                Debug.Log($"{Tag} Restoring NuGet packages...");
-                var changed = NuGetPackageRestorer.Restore();
-
-                // Configure PluginImporter settings for all installed DLLs.
-                NuGetPluginConfigurator.ConfigureAll();
+                // Configure PluginImporter settings for bundled Unity-MCP-owned DLLs.
+                var configuredCount = NuGetPluginConfigurator.ConfigureAll();
+                if (configuredCount == 0)
+                    throw new InvalidOperationException("No dependency DLL importers were found. Package assets may not be imported yet.");
 
                 EnsureScriptingDefine();
-
-                if (changed)
-                {
-                    Debug.Log($"{Tag} Packages restored. Refreshing AssetDatabase...");
-                    AssetDatabase.Refresh();
-                }
+                isResolved = true;
             }
             catch (Exception ex)
             {
-                // Do NOT set UNITY_MCP_READY here: if restore/configuration failed, the DLL
+                // Do NOT set UNITY_MCP_OPENUPM_READY here: if restore/configuration failed, the DLL
                 // layout is unknown/inconsistent, and letting main-plugin assemblies compile
                 // against a partial/mismatched set (via defineConstraints) produces hard-to-
                 // diagnose MissingMethodException / TypeLoadException at runtime. Surface the
                 // failure loud and clear instead, so the user fixes the underlying problem
                 // and retries (the next domain reload will run Restore again).
                 Debug.LogError($"{Tag} Failed: {ex}");
+            }
+            finally
+            {
+                isResolving = false;
             }
         }
 
@@ -162,7 +159,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         }
 
         /// <summary>
-        /// Ensures the UNITY_MCP_READY scripting define is set for every supported
+        /// Ensures the UNITY_MCP_OPENUPM_READY scripting define is set for every supported
         /// build target group. Applying it only to the currently selected group would let
         /// target switching (e.g., Standalone → Android) reintroduce compilation failures
         /// in assemblies gated by defineConstraints.
@@ -217,6 +214,39 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             {
                 return false;
             }
+        }
+    }
+
+    sealed class NuGetDependencyAssetPostprocessor : AssetPostprocessor
+    {
+        static void OnPostprocessAllAssets(
+            string[] importedAssets,
+            string[] deletedAssets,
+            string[] movedAssets,
+            string[] movedFromAssetPaths)
+        {
+            if (!HasDependencyAsset(importedAssets) && !HasDependencyAsset(movedAssets))
+                return;
+
+            NuGetDependencyResolver.ResolveNow();
+        }
+
+        static bool HasDependencyAsset(string[] assetPaths)
+        {
+            foreach (var assetPath in assetPaths)
+            {
+                var normalized = assetPath.Replace('\\', '/');
+                if (!normalized.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))
+                    continue;
+
+                if (normalized.StartsWith(NuGetConfig.InstallPath, StringComparison.OrdinalIgnoreCase))
+                    return true;
+
+                if (normalized.StartsWith("Packages/" + NuGetConfig.OpenUpmNuGetPackagePrefix, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
         }
     }
 }

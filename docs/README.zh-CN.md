@@ -295,6 +295,30 @@ unity-mcp-cli wait-for-ready ./MyUnityProject
 
 > 查看[完整 CLI 文档](https://github.com/IvanMurzak/Unity-MCP/blob/main/cli/README.md)了解所有可用命令。
 
+### 直接 Git/tarball/手动包安装
+
+安装器和 CLI 会自动更新 Unity 项目的 `Packages/manifest.json`。如果你直接通过 Git URL、tarball 或本地 `package.json` 添加 Unity MCP 包，请先在消费项目的 `Packages/manifest.json` 中加入 OpenUPM scoped registry：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.ivanmurzak",
+        "extensions.unity",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
+      ]
+    }
+  ]
+}
+```
+
+这些 scopes 让 Unity 能把 NuGet wrapper 依赖解析到 `Packages/packages-lock.json`，而不是把 DLL 还原到 `Assets/Plugins/NuGet`。
+
 ## 第二步：安装 `AI 智能体`
 
 选择一个你喜欢的 `AI 智能体` — 无需全部安装。这将是你与 LLM 通信的主要聊天窗口。

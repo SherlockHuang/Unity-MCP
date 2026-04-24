@@ -295,6 +295,30 @@ unity-mcp-cli wait-for-ready ./MyUnityProject
 
 > すべての利用可能なコマンドについては [CLI の完全なドキュメント](https://github.com/IvanMurzak/Unity-MCP/blob/main/cli/README.md)をご覧ください。
 
+### Git/tarball/手動での直接パッケージインストール
+
+インストーラーと CLI は Unity プロジェクトの `Packages/manifest.json` を自動で更新します。Git URL、tarball、またはローカルの `package.json` から Unity MCP パッケージを直接追加する場合は、先に利用側プロジェクトの `Packages/manifest.json` に OpenUPM scoped registry を追加してください：
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.ivanmurzak",
+        "extensions.unity",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
+      ]
+    }
+  ]
+}
+```
+
+これらの scopes により、Unity は NuGet wrapper 依存関係を `Packages/packages-lock.json` に解決し、DLL を `Assets/Plugins/NuGet` に復元しません。
+
 ## ステップ2: `AI エージェント` をインストール
 
 好みの `AI エージェント` を1つ選んでください — すべてをインストールする必要はありません。これが LLM とコミュニケーションするメインのチャットウィンドウになります。

@@ -119,6 +119,26 @@ Choose `MCP Client` you prefer, don't need to install all of them. This is will 
 openupm add com.ivanmurzak.unity.mcp
 ```
 
+For Git URL, tarball, or local `package.json` installs that bypass this installer and OpenUPM CLI, add these scopes to the project's `Packages/manifest.json` first:
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.ivanmurzak",
+        "extensions.unity",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
+      ]
+    }
+  ]
+}
+```
+
 </details>
 
 ## Step 2: Configure `MCP Client`

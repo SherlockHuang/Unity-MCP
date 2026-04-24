@@ -9,8 +9,10 @@
 */
 
 #nullable enable
+using System.Collections.Generic;
 using System.IO;
 using UnityEditor;
+using PackageInfo = UnityEditor.PackageManager.PackageInfo;
 using UnityEngine;
 
 namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
@@ -36,13 +38,13 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         /// Configures PluginImporter for all DLLs in the NuGet install directory.
         /// Called after packages are installed/restored.
         /// </summary>
-        public static void ConfigureAll()
+        public static int ConfigureAll()
         {
-            if (!Directory.Exists(NuGetConfig.InstallPath))
-                return;
+            var dlls = FindDependencyDllAssetPaths();
+            if (dlls.Count == 0)
+                return 0;
 
-            var dlls = Directory.GetFiles(NuGetConfig.InstallPath, "*.dll", SearchOption.AllDirectories);
-
+            var configuredCount = 0;
             // Batch importer changes so Unity performs a single reimport pass at the end
             // instead of one reimport per DLL (which was dominating editor startup time
             // on projects with many NuGet packages).
@@ -51,25 +53,89 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             {
                 foreach (var dllPath in dlls)
                 {
-                    // Convert to Unity asset path (forward slashes, relative to project)
-                    var assetPath = dllPath.Replace('\\', '/');
-                    ConfigureDll(assetPath);
+                    if (ConfigureDll(dllPath))
+                        configuredCount++;
                 }
             }
             finally
             {
                 AssetDatabase.StopAssetEditing();
             }
+
+            return HasRequiredOpenUpmDllsConfigured() ? configuredCount : 0;
+        }
+
+        static List<string> FindDependencyDllAssetPaths()
+        {
+            var result = new List<string>();
+
+            foreach (var package in PackageInfo.GetAllRegisteredPackages())
+            {
+                if (string.Equals(package.name, NuGetConfig.PackageName, System.StringComparison.OrdinalIgnoreCase))
+                {
+                    var resolvedBundledPath = string.IsNullOrEmpty(package.resolvedPath)
+                        ? null
+                        : Path.Combine(package.resolvedPath, "Plugins", "NuGet");
+                    AddDllsFromPackageFolder(result, NuGetConfig.InstallPath, resolvedBundledPath, includeOnlyLibDlls: false);
+                    continue;
+                }
+
+                if (!NuGetConfig.IsUnityMcpDependencyPackageName(package.name))
+                    continue;
+
+                var packageRoot = $"Packages/{package.name}";
+                AddDllsFromPackageFolder(result, packageRoot, package.resolvedPath, includeOnlyLibDlls: true);
+            }
+
+            return result;
+        }
+
+        static void AddDllsFromPackageFolder(List<string> result, string assetRoot, string? resolvedRoot, bool includeOnlyLibDlls)
+        {
+            foreach (var guid in AssetDatabase.FindAssets("", new[] { assetRoot }))
+            {
+                var assetPath = AssetDatabase.GUIDToAssetPath(guid).Replace('\\', '/');
+                AddDllIfNeeded(result, assetPath, includeOnlyLibDlls);
+            }
+
+            if (string.IsNullOrEmpty(resolvedRoot) || !Directory.Exists(resolvedRoot))
+                return;
+
+            var physicalRoot = resolvedRoot!;
+            foreach (var filePath in Directory.GetFiles(physicalRoot, "*.dll", SearchOption.AllDirectories))
+            {
+                var relativePath = filePath.Substring(physicalRoot.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                var assetPath = (assetRoot.TrimEnd('/') + "/" + relativePath).Replace('\\', '/');
+                AddDllIfNeeded(result, assetPath, includeOnlyLibDlls);
+            }
+        }
+
+        static void AddDllIfNeeded(List<string> result, string assetPath, bool includeOnlyLibDlls)
+        {
+            if (!assetPath.EndsWith(".dll", System.StringComparison.OrdinalIgnoreCase))
+                return;
+
+            if (includeOnlyLibDlls && assetPath.IndexOf("/lib/", System.StringComparison.OrdinalIgnoreCase) < 0)
+                return;
+
+            if (!result.Contains(assetPath))
+                result.Add(assetPath);
         }
 
         /// <summary>
         /// Configures a single DLL's PluginImporter settings.
         /// </summary>
-        public static void ConfigureDll(string assetPath)
+        public static bool ConfigureDll(string assetPath)
         {
             var importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
             if (importer == null)
-                return;
+            {
+                AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+                importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
+            }
+
+            if (importer == null)
+                return false;
 
             var dllName = Path.GetFileNameWithoutExtension(assetPath);
             var unityProvidesIt = UnityAssemblyResolver.IsAlreadyImported(dllName);
@@ -112,6 +178,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             var currentAnyPlatform = importer.GetCompatibleWithAnyPlatform();
             var currentEditor = importer.GetCompatibleWithEditor();
             var currentExcludeEditor = importer.GetExcludeEditorFromAnyPlatform();
+            var currentExplicitlyReferenced = IsExplicitlyReferenced(assetPath);
 
             // When Any Platform is on, the Editor flag must also track !excludeEditor —
             // otherwise a stale Editor=0 left over from Unity's initial import silently
@@ -119,10 +186,11 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             var expectedEditor = anyPlatform ? !excludeEditor : editorOnly;
             var needsChange = currentAnyPlatform != anyPlatform
                            || currentExcludeEditor != excludeEditor
-                           || currentEditor != expectedEditor;
+                           || currentEditor != expectedEditor
+                           || !currentExplicitlyReferenced;
 
             if (!needsChange)
-                return;
+                return true;
 
             if (anyPlatform)
             {
@@ -142,7 +210,101 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             }
 
             importer.SaveAndReimport();
+            EnsureExplicitlyReferenced(assetPath);
+            AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
             Debug.Log($"{Tag} Configured '{dllName}': anyPlatform={anyPlatform}, excludeEditor={excludeEditor}, editorOnly={editorOnly}");
+            return true;
+        }
+
+        static bool HasRequiredOpenUpmDllsConfigured()
+        {
+            foreach (var package in NuGetConfig.Packages)
+            {
+                if (!HasConfiguredDllForPackage(package.OpenUpmPackageName))
+                    return false;
+            }
+            return true;
+        }
+
+        static bool HasConfiguredDllForPackage(string packageName)
+        {
+            var packageRoot = $"Packages/{packageName}";
+            foreach (var guid in AssetDatabase.FindAssets("t:PluginImporter", new[] { packageRoot }))
+            {
+                var assetPath = AssetDatabase.GUIDToAssetPath(guid).Replace('\\', '/');
+                if (assetPath.IndexOf("/lib/", System.StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                var importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
+                if (importer == null)
+                    continue;
+
+                if (importer.GetCompatibleWithEditor() && IsExplicitlyReferenced(assetPath))
+                    return true;
+            }
+
+            var package = PackageInfo.FindForAssetPath(packageRoot);
+            if (package == null || string.IsNullOrEmpty(package.resolvedPath) || !Directory.Exists(package.resolvedPath))
+                return false;
+
+            foreach (var filePath in Directory.GetFiles(package.resolvedPath, "*.dll", SearchOption.AllDirectories))
+            {
+                var relativePath = filePath.Substring(package.resolvedPath.Length).TrimStart(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+                var assetPath = (packageRoot + "/" + relativePath).Replace('\\', '/');
+                if (assetPath.IndexOf("/lib/", System.StringComparison.OrdinalIgnoreCase) < 0)
+                    continue;
+
+                var importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
+                if (importer != null && importer.GetCompatibleWithEditor() && IsExplicitlyReferenced(assetPath))
+                    return true;
+            }
+
+            return false;
+        }
+
+        static bool IsExplicitlyReferenced(string assetPath)
+        {
+            var metaPath = ResolveMetaPath(assetPath);
+            if (metaPath == null || !File.Exists(metaPath))
+                return false;
+
+            return File.ReadAllText(metaPath).Contains("isExplicitlyReferenced: 1");
+        }
+
+        static void EnsureExplicitlyReferenced(string assetPath)
+        {
+            var metaPath = ResolveMetaPath(assetPath);
+            if (metaPath == null || !File.Exists(metaPath))
+                return;
+
+            var content = File.ReadAllText(metaPath);
+            if (content.Contains("isExplicitlyReferenced: 1"))
+                return;
+
+            content = content.Contains("isExplicitlyReferenced: 0")
+                ? content.Replace("isExplicitlyReferenced: 0", "isExplicitlyReferenced: 1")
+                : content.Replace("validateReferences:", "isExplicitlyReferenced: 1\n  validateReferences:");
+            File.WriteAllText(metaPath, content);
+        }
+
+        static string? ResolveMetaPath(string assetPath)
+        {
+            var normalized = assetPath.Replace('\\', '/');
+            const string prefix = "Packages/";
+            if (!normalized.StartsWith(prefix, System.StringComparison.OrdinalIgnoreCase))
+                return null;
+
+            var slash = normalized.IndexOf('/', prefix.Length);
+            if (slash < 0)
+                return null;
+
+            var packageName = normalized.Substring(prefix.Length, slash - prefix.Length);
+            var package = PackageInfo.FindForAssetPath($"Packages/{packageName}");
+            if (package == null || string.IsNullOrEmpty(package.resolvedPath))
+                return null;
+
+            var relativePath = normalized.Substring(slash + 1).Replace('/', Path.DirectorySeparatorChar);
+            return Path.Combine(package.resolvedPath, relativePath) + ".meta";
         }
 
         /// <summary>
@@ -152,6 +314,10 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         /// </summary>
         static bool ShouldIncludeInBuild(string dllPath)
         {
+            var packageName = ExtractPackageNameFromAssetPath(dllPath);
+            if (packageName != null && NuGetConfig.IsManagedOpenUpmPackageName(packageName))
+                return NuGetConfig.GetPackageByOpenUpmName(packageName)?.IncludeInBuild ?? true;
+
             var dirName = Path.GetFileName(Path.GetDirectoryName(dllPath));
             if (dirName == null)
                 return true;
@@ -159,7 +325,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             // Extract the package ID from the directory name (e.g., "System.Text.Json.8.0.5" → "System.Text.Json")
             // so we match the exact package ID rather than any prefix (which would confuse
             // "Microsoft.Extensions.Logging" with "Microsoft.Extensions.Logging.Abstractions").
-            var extractedId = NuGetPackageInstaller.ExtractPackageIdFromDirName(dirName);
+            var extractedId = ExtractPackageIdFromDirName(dirName);
             if (extractedId == null)
                 return true;
 
@@ -171,6 +337,37 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 
             // Transitive dependency — include in builds by default.
             return true;
+        }
+
+        static string? ExtractPackageNameFromAssetPath(string assetPath)
+        {
+            var normalized = assetPath.Replace('\\', '/');
+            const string prefix = "Packages/";
+            if (!normalized.StartsWith(prefix, System.StringComparison.OrdinalIgnoreCase))
+                return null;
+
+            var start = prefix.Length;
+            var slash = normalized.IndexOf('/', start);
+            return slash < 0 ? null : normalized.Substring(start, slash - start);
+        }
+
+        /// <summary>
+        /// Extracts the package ID from a directory name like "System.Text.Json.8.0.5"
+        /// or "Microsoft.AspNetCore.SignalR.Protocols.Json.8.0.15".
+        /// </summary>
+        static string? ExtractPackageIdFromDirName(string dirName)
+        {
+            var parts = dirName.Split('.');
+            for (var i = 1; i < parts.Length; i++)
+            {
+                if (parts[i].Length == 0 || !char.IsDigit(parts[i][0]))
+                    continue;
+
+                var versionPart = string.Join(".", parts, i, parts.Length - i);
+                if (System.Version.TryParse(versionPart, out _))
+                    return string.Join(".", parts, 0, i);
+            }
+            return null;
         }
     }
 }

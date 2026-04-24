@@ -16,40 +16,29 @@ using UnityEngine;
 namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
 {
     /// <summary>
-    /// Adds a Unity Editor menu item that forces a full NuGet DLL re-resolve on demand.
-    /// The automatic resolver in <see cref="NuGetDependencyResolver"/> only runs the full
-    /// restore path when <see cref="NuGetPackageRestorer.AllPackagesInstalled"/> reports
-    /// something is missing. This menu item bypasses that quick-check so users can recover
-    /// from an inconsistent on-disk DLL state without manually deleting Assets/Plugins/NuGet.
+    /// Adds a Unity Editor menu item that reapplies bundled dependency DLL importer settings.
     /// </summary>
     static class NuGetResolverMenu
     {
         const string Tag = NuGetConfig.LogTag;
-        const string MenuPath = "Tools/AI Game Developer/Dependencies/Force Resolve NuGet DLLs";
+        const string MenuPath = "Tools/AI Game Developer/Dependencies/Reconfigure Dependency DLLs";
 
         [MenuItem(MenuPath, priority = 1050)]
         public static void ForceResolve()
         {
-            Debug.Log($"{Tag} Force resolve requested — running full restore...");
+            Debug.Log($"{Tag} Dependency DLL reconfigure requested...");
 
             try
             {
-                var changed = NuGetPackageRestorer.Restore();
-                NuGetPluginConfigurator.ConfigureAll();
+                var configuredCount = NuGetPluginConfigurator.ConfigureAll();
+                if (configuredCount == 0)
+                    throw new InvalidOperationException("Required dependency DLL importers were not found or were not configured.");
 
-                if (changed)
-                {
-                    Debug.Log($"{Tag} Force resolve complete. Refreshing AssetDatabase...");
-                    AssetDatabase.Refresh();
-                }
-                else
-                {
-                    Debug.Log($"{Tag} Force resolve complete. No changes needed.");
-                }
+                Debug.Log($"{Tag} Dependency DLL reconfigure complete. Configured {configuredCount} DLL importer(s).");
             }
             catch (Exception ex)
             {
-                Debug.LogError($"{Tag} Force resolve failed: {ex}");
+                Debug.LogError($"{Tag} Dependency DLL reconfigure failed: {ex}");
             }
         }
     }

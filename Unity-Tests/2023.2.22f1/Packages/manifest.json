@@ -46,7 +46,10 @@
       "url": "https://package.openupm.com",
       "scopes": [
         "com.ivanmurzak",
-        "extensions.unity"
+        "extensions.unity",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
       ]
     }
   ]

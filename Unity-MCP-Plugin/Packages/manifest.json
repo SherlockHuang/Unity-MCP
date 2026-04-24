@@ -10,7 +10,10 @@
       "scopes": [
         "com.ivanmurzak",
         "extensions.unity",
-        "extensions.unity.playerprefsex"
+        "extensions.unity.playerprefsex",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
       ]
     }
   ]

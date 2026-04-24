@@ -34,6 +34,9 @@ namespace com.IvanMurzak.Unity.MCP.Installer
         public static readonly string[] PackageIds = new string[] {
             "com.ivanmurzak",            // Ivan Murzak's OpenUPM packages
             "extensions.unity",          // Ivan Murzak's OpenUPM packages (older)
+            "org.nuget.microsoft",       // NuGet wrapper packages used by Unity-MCP
+            "org.nuget.system",          // NuGet wrapper packages used by Unity-MCP
+            "org.nuget.r3",              // NuGet wrapper packages used by Unity-MCP
         };
 
         /// <summary>

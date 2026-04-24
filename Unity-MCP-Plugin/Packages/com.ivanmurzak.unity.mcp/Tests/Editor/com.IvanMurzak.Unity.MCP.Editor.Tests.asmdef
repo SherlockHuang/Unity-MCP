@@ -26,7 +26,7 @@
     ],
     "autoReferenced": true,
     "defineConstraints": [
-        "UNITY_MCP_READY"
+        "UNITY_MCP_OPENUPM_READY"
     ],
     "versionDefines": [],
     "noEngineReferences": false

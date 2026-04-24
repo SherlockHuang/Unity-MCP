@@ -165,7 +165,15 @@ namespace com.IvanMurzak.Unity.MCP.Editor
                 )
             );
 
-        const string ServerReleaseTag = "0.66.1";
+        const string ServerReleaseTag = UnityMcpPlugin.Version;
+
+        public static string ReleaseTagFullPath
+            => Path.GetFullPath(
+                Path.Combine(
+                    ExecutableFolderPath,
+                    "release-tag"
+                )
+            );
 
         public static string ExecutableZipUrl
             => $"http://192.168.0.27/client/unity-mcp/-/releases/{ServerReleaseTag}/downloads/{ExecutableName.ToLowerInvariant()}-{PlatformName}.zip";
@@ -190,13 +198,26 @@ namespace com.IvanMurzak.Unity.MCP.Editor
             return File.ReadAllText(VersionFullPath);
         }
 
+        public static string? GetBinaryReleaseTag()
+        {
+            if (!File.Exists(ReleaseTagFullPath))
+                return null;
+
+            return File.ReadAllText(ReleaseTagFullPath);
+        }
+
         public static bool IsVersionMatches()
         {
             var binaryVersion = GetBinaryVersion();
             if (binaryVersion == null)
                 return false;
 
-            return binaryVersion == UnityMcpPlugin.Version;
+            var binaryReleaseTag = GetBinaryReleaseTag();
+            if (binaryReleaseTag == null)
+                return false;
+
+            return binaryVersion == UnityMcpPlugin.Version
+                && binaryReleaseTag == ServerReleaseTag;
         }
 
         public static bool DeleteBinaryFolderIfExists()
@@ -334,6 +355,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor
                 }
 
                 File.WriteAllText(VersionFullPath, UnityMcpPlugin.Version);
+                File.WriteAllText(ReleaseTagFullPath, ServerReleaseTag);
 
                 UnityEngine.Debug.Log($"MCP server version file created at: <color=green><b>COMPLETED</b></color>");
 

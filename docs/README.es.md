@@ -295,6 +295,30 @@ unity-mcp-cli wait-for-ready ./MyUnityProject
 
 > Consulta la [documentación completa de la CLI](https://github.com/IvanMurzak/Unity-MCP/blob/main/cli/README.md) para ver todos los comandos disponibles.
 
+### Instalaciones directas desde Git/tarball/manuales
+
+El instalador y la CLI actualizan automáticamente el `Packages/manifest.json` del proyecto de Unity. Si agregas el paquete Unity MCP directamente desde una URL Git, un tarball o un `package.json` local, primero agrega el scoped registry de OpenUPM al `Packages/manifest.json` del proyecto consumidor:
+
+```json
+{
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.ivanmurzak",
+        "extensions.unity",
+        "org.nuget.microsoft",
+        "org.nuget.system",
+        "org.nuget.r3"
+      ]
+    }
+  ]
+}
+```
+
+Estos scopes permiten que Unity resuelva las dependencias wrapper de NuGet en `Packages/packages-lock.json`, en lugar de restaurar DLLs en `Assets/Plugins/NuGet`.
+
 ## Paso 2: Instalar `agente de IA`
 
 Elige un solo `agente de IA` de tu preferencia - no necesitas instalar todos. Este será tu ventana de chat principal para comunicarte con el LLM.

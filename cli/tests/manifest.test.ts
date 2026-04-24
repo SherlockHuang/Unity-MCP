@@ -54,7 +54,6 @@ describe('addPluginToManifest', () => {
   const REQUIRED_SCOPES = [
     'com.ivanmurzak',
     'extensions.unity',
-    'org.nuget.com.ivanmurzak',
     'org.nuget.microsoft',
     'org.nuget.system',
     'org.nuget.r3',
@@ -175,7 +174,6 @@ describe('addPluginToManifest', () => {
           scopes: [
             'com.ivanmurzak',
             'extensions.unity',
-            'org.nuget.com.ivanmurzak',
             'org.nuget.microsoft',
           ],
         },
@@ -324,7 +322,6 @@ describe('removePluginFromManifest', () => {
   const REQUIRED_SCOPES = [
     'com.ivanmurzak',
     'extensions.unity',
-    'org.nuget.com.ivanmurzak',
     'org.nuget.microsoft',
     'org.nuget.system',
     'org.nuget.r3',

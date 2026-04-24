@@ -84,6 +84,8 @@ npx unity-mcp-cli install-plugin /path/to/unity/project
 
 > **Requirements:** [Node.js](https://nodejs.org/) ^20.19.0 || >=22.12.0. [Unity Hub](https://unity.com/download) is installed automatically if not found.
 
+`install-plugin` updates the project's `Packages/manifest.json` with the OpenUPM scopes required by Unity-MCP and its `org.nuget.*` wrapper dependencies. If you bypass the CLI and install the Unity package from a Git URL, tarball, or local `package.json`, add these scopes first: `com.ivanmurzak`, `extensions.unity`, `org.nuget.microsoft`, `org.nuget.system`, and `org.nuget.r3`.
+
 ![AI Game Developer — Unity SKILLS and MCP](https://github.com/IvanMurzak/Unity-MCP/blob/main/docs/img/promo/hazzard-divider.svg?raw=true)
 
 # Contents
