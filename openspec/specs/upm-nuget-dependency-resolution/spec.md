@@ -24,6 +24,13 @@ Unity-MCP SHALL configure importer settings for required bundled DLLs and requir
 - **WHEN** the dependency resolver runs in the Unity Editor
 - **THEN** required DLLs referenced by Unity-MCP assemblies are editor-compatible according to their configured runtime/editor inclusion policy before `UNITY_MCP_OPENUPM_READY` is set
 
+### Requirement: Generated MCP skill scripts reference explicit package DLLs
+Unity-MCP SHALL keep generated project-local MCP skill scripts in an assembly definition that can reference Unity-MCP's explicitly referenced precompiled DLLs.
+
+#### Scenario: Existing generated skills need package DLLs
+- **WHEN** the dependency resolver finds C# scripts under `Assets/Editor/McpSkills`
+- **THEN** Unity-MCP creates or preserves an editor-only `McpSkills.asmdef` that references `McpPlugin.dll`, `McpPlugin.Common.dll`, and `ReflectorNet.dll`
+
 ### Requirement: Installer-managed manifests include required OpenUPM scopes
 Unity-MCP SHALL ensure installer-managed project manifests include OpenUPM scopes required to resolve Unity-MCP and its `org.nuget.*` dependencies.
 

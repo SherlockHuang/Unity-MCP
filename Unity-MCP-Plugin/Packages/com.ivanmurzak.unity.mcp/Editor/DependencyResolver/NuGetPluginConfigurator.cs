@@ -180,13 +180,31 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             var currentExcludeEditor = importer.GetExcludeEditorFromAnyPlatform();
             var currentExplicitlyReferenced = IsExplicitlyReferenced(assetPath);
 
-            // When Any Platform is on, the Editor flag must also track !excludeEditor —
-            // otherwise a stale Editor=0 left over from Unity's initial import silently
-            // survives (this was the cause of "Unloading broken assembly" on startup).
+            // OpenUPM wrapper packages may already select the right TFM/platform using
+            // defineConstraints (for example UNITY_EDITOR or UNITY_2021_2_OR_NEWER).
+            // For editor-only wrappers, do not fight those platform settings; only make
+            // the DLL explicitly referenceable so asmdefs can name it.
+            if (!includeInBuild
+                && IsManagedOpenUpmPackageAssetPath(assetPath)
+                && currentAnyPlatform
+                && !currentExcludeEditor)
+            {
+                if (!currentExplicitlyReferenced)
+                {
+                    EnsureExplicitlyReferenced(assetPath);
+                    AssetDatabase.ImportAsset(assetPath, ImportAssetOptions.ForceUpdate);
+                }
+                return true;
+            }
+
+            // When Any Platform is on, Editor compatibility is governed by Exclude Editor.
+            // Unity keeps the individual Editor flag disabled in that mode, so checking it
+            // directly would make this resolver reimport the DLL forever.
             var expectedEditor = anyPlatform ? !excludeEditor : editorOnly;
+            var editorMatches = anyPlatform || currentEditor == expectedEditor;
             var needsChange = currentAnyPlatform != anyPlatform
                            || currentExcludeEditor != excludeEditor
-                           || currentEditor != expectedEditor
+                           || !editorMatches
                            || !currentExplicitlyReferenced;
 
             if (!needsChange)
@@ -239,7 +257,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
                 if (importer == null)
                     continue;
 
-                if (importer.GetCompatibleWithEditor() && IsExplicitlyReferenced(assetPath))
+                if (IsEditorCompatible(importer) && IsExplicitlyReferenced(assetPath))
                     return true;
             }
 
@@ -255,11 +273,18 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
                     continue;
 
                 var importer = AssetImporter.GetAtPath(assetPath) as PluginImporter;
-                if (importer != null && importer.GetCompatibleWithEditor() && IsExplicitlyReferenced(assetPath))
+                if (importer != null && IsEditorCompatible(importer) && IsExplicitlyReferenced(assetPath))
                     return true;
             }
 
             return false;
+        }
+
+        static bool IsEditorCompatible(PluginImporter importer)
+        {
+            return importer.GetCompatibleWithAnyPlatform()
+                ? !importer.GetExcludeEditorFromAnyPlatform()
+                : importer.GetCompatibleWithEditor();
         }
 
         static bool IsExplicitlyReferenced(string assetPath)
@@ -349,6 +374,12 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             var start = prefix.Length;
             var slash = normalized.IndexOf('/', start);
             return slash < 0 ? null : normalized.Substring(start, slash - start);
+        }
+
+        static bool IsManagedOpenUpmPackageAssetPath(string assetPath)
+        {
+            var packageName = ExtractPackageNameFromAssetPath(assetPath);
+            return packageName != null && NuGetConfig.IsManagedOpenUpmPackageName(packageName);
         }
 
         /// <summary>

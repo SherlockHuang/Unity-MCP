@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using com.IvanMurzak.McpPlugin;
 using com.IvanMurzak.McpPlugin.Common.Model;
 using com.IvanMurzak.ReflectorNet.Utils;
+using com.IvanMurzak.Unity.MCP.Editor.DependencyResolver;
 using com.IvanMurzak.Unity.MCP.Editor.Utils;
 using UnityEditor;
 
@@ -225,6 +226,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
 
             if (!Directory.Exists(dirPath))
                 Directory.CreateDirectory(dirPath);
+
+            McpSkillsAssemblyDefinition.EnsureForScriptPath(normalizedPath);
 
             var exists = File.Exists(path);
             File.WriteAllText(path, code);

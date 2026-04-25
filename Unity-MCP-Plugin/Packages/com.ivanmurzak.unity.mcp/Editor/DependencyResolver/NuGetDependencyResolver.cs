@@ -74,6 +74,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
                 if (configuredCount == 0)
                     throw new InvalidOperationException("No dependency DLL importers were found. Package assets may not be imported yet.");
 
+                McpSkillsAssemblyDefinition.EnsureForExistingSkills();
                 EnsureScriptingDefine();
                 isResolved = true;
             }
@@ -225,10 +226,26 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             string[] movedAssets,
             string[] movedFromAssetPaths)
         {
+            if (HasMcpSkillScript(importedAssets) || HasMcpSkillScript(movedAssets))
+                McpSkillsAssemblyDefinition.EnsureForExistingSkills();
+
             if (!HasDependencyAsset(importedAssets) && !HasDependencyAsset(movedAssets))
                 return;
 
             NuGetDependencyResolver.ResolveNow();
+        }
+
+        static bool HasMcpSkillScript(string[] assetPaths)
+        {
+            foreach (var assetPath in assetPaths)
+            {
+                var normalized = assetPath.Replace('\\', '/');
+                if (normalized.StartsWith("Assets/Editor/McpSkills/", StringComparison.OrdinalIgnoreCase)
+                    && normalized.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+
+            return false;
         }
 
         static bool HasDependencyAsset(string[] assetPaths)
