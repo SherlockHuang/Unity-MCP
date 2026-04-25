@@ -165,7 +165,9 @@ namespace com.IvanMurzak.Unity.MCP.Editor
                 )
             );
 
-        const string ServerReleaseTag = UnityMcpPlugin.Version;
+        // The server binary is versioned independently from package-only Unity plugin fixes.
+        // Bump this only when publishing matching unity-mcp-server release assets.
+        const string ServerReleaseTag = "0.66.2";
 
         public static string ReleaseTagFullPath
             => Path.GetFullPath(
