@@ -19,8 +19,14 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
         [Description("Summary of the test run including total, passed, failed, and skipped counts.")]
         public TestSummaryData Summary { get; set; } = new TestSummaryData();
 
+        [Description("Requested result format. Flat is the legacy per-test list; Tree groups methods by shared namespace/class identity.")]
+        public TestResultFormat ResultFormat { get; set; } = TestResultFormat.Flat;
+
         [Description("List of individual test results with details about each test.")]
         public List<TestResultData> Results { get; set; } = new List<TestResultData>();
+
+        [Description("Grouped test results for compact tree output. Populated when ResultFormat is Tree.")]
+        public List<TestResultGroupData>? ResultGroups { get; set; }
 
         [Description("Log entries captured during test execution.")]
         public List<TestLogEntry>? Logs { get; set; }

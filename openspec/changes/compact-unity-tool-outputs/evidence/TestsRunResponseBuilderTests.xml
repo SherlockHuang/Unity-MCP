@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="4" result="Passed" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.0975268">
+  <test-suite type="TestSuite" id="1911" name="2022.3.62f3" fullname="2022.3.62f3" runstate="Runnable" testcasecount="811" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.097527" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="2795" name="com.IvanMurzak.Unity.MCP.Editor.Tests.dll" fullname="G:/github/Unity-MCP/Unity-Tests/2022.3.62f3/Library/ScriptAssemblies/com.IvanMurzak.Unity.MCP.Editor.Tests.dll" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.083968" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="78248" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestSuite" id="2796" name="com" fullname="com" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.077244" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="2797" name="IvanMurzak" fullname="com.IvanMurzak" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.067818" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestSuite" id="2798" name="Unity" fullname="com.IvanMurzak.Unity" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.061170" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="TestSuite" id="2799" name="MCP" fullname="com.IvanMurzak.Unity.MCP" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.054281" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-suite type="TestSuite" id="2800" name="Editor" fullname="com.IvanMurzak.Unity.MCP.Editor" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.044585" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                <properties />
+                <test-suite type="TestSuite" id="2801" name="Tests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests" runstate="Runnable" testcasecount="805" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.035942" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                  <properties />
+                  <test-suite type="TestFixture" id="2246" name="TestsRunResponseBuilderTests" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.023201" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+                    <properties />
+                    <test-case id="2247" name="Build_DefaultFlat_ReturnsLegacyResultsShape" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests.Build_DefaultFlat_ReturnsLegacyResultsShape" methodname="Build_DefaultFlat_ReturnsLegacyResultsShape" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" runstate="Runnable" seed="1360092147" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.010387" asserts="0">
+                      <properties />
+                    </test-case>
+                    <test-case id="2248" name="Build_Tree_GroupsByNamespaceAndClass" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests.Build_Tree_GroupsByNamespaceAndClass" methodname="Build_Tree_GroupsByNamespaceAndClass" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" runstate="Runnable" seed="1926539364" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.003608" asserts="0">
+                      <properties />
+                    </test-case>
+                    <test-case id="2249" name="Build_Tree_RespectsIncludeFlagsAndLogs" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests.Build_Tree_RespectsIncludeFlagsAndLogs" methodname="Build_Tree_RespectsIncludeFlagsAndLogs" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" runstate="Runnable" seed="1639677367" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.000660" asserts="0">
+                      <properties />
+                    </test-case>
+                    <test-case id="2250" name="ResultFormat_PlayerPrefsValue_RoundTripsForDeferredRunPersistence" fullname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests.ResultFormat_PlayerPrefsValue_RoundTripsForDeferredRunPersistence" methodname="ResultFormat_PlayerPrefsValue_RoundTripsForDeferredRunPersistence" classname="com.IvanMurzak.Unity.MCP.Editor.Tests.TestsRunResponseBuilderTests" runstate="Runnable" seed="241800727" result="Passed" start-time="2026-04-25 15:45:35Z" end-time="2026-04-25 15:45:35Z" duration="0.000593" asserts="0">
+                      <properties />
+                    </test-case>
+                  </test-suite>
+                </test-suite>
+              </test-suite>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

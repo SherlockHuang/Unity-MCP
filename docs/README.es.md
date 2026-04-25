@@ -167,7 +167,7 @@ El catálogo estándar de MCP `tools/list` está pensado explícitamente para el
 - `script-execute` - Compila y ejecuta código C# dinámicamente usando Roslyn
 - `script-read` - Lee el contenido de un archivo de script
 - `script-update-or-create` - Actualiza o crea un archivo de script con el código C# proporcionado
-- `tests-run` - Ejecuta pruebas de Unity (EditMode/PlayMode) con filtrado y resultados detallados
+- `tests-run` - Ejecuta pruebas de Unity (EditMode/PlayMode) con filtrado y resultados detallados o agrupados compactos
 
 </details>
 

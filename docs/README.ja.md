@@ -167,7 +167,7 @@ unity-mcp-cli open ./MyUnityProject
 - `script-execute` - Roslynを使用してC#コードを動的にコンパイル・実行
 - `script-read` - スクリプトファイルの内容を読み取る
 - `script-update-or-create` - 提供されたC#コードでスクリプトファイルを更新または作成
-- `tests-run` - フィルタリングと詳細な結果付きでUnityテスト（EditMode/PlayMode）を実行
+- `tests-run` - フィルタリングと詳細またはコンパクトなグループ化結果付きでUnityテスト（EditMode/PlayMode）を実行
 
 </details>
 

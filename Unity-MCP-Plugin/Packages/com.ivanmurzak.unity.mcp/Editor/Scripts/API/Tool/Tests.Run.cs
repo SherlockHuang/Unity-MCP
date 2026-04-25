@@ -66,6 +66,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
             LogType logType = LogType.Warning,
             [Description("Include stack traces for console logs in the test results (default: false). This is huge amount of data, use only if really needed.")]
             bool includeLogsStacktrace = false,
+            [Description("Test result response format. Options: '" + nameof(TestResultFormat.Flat) + "', '" + nameof(TestResultFormat.Tree) + "'. Default: '" + nameof(TestResultFormat.Flat) + "'.")]
+            TestResultFormat resultFormat = TestResultFormat.Flat,
 
             [RequestID]
             string? requestId = null
@@ -90,6 +92,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API
                 TestResultCollector.IncludePassingTests.Value = includePassingTests;
                 TestResultCollector.IncludeMessage.Value = includeMessages;
                 TestResultCollector.IncludeMessageStacktrace.Value = includeStacktrace;
+                TestResultCollector.PersistResultFormat(resultFormat);
 
                 TestResultCollector.IncludeLogs.Value = includeLogs;
                 TestResultCollector.IncludeLogsMinLevel.Value = (int)logType;

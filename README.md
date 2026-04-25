@@ -167,7 +167,7 @@ The standard MCP `tools/list` catalog is intentionally discovery-oriented: Unity
 - `script-execute` - Compiles and executes C# code dynamically using Roslyn
 - `script-read` - Reads the content of a script file
 - `script-update-or-create` - Updates or creates script file with the provided C# code
-- `tests-run` - Execute Unity tests (EditMode/PlayMode) with filtering and detailed results
+- `tests-run` - Execute Unity tests (EditMode/PlayMode) with filtering and detailed or compact grouped results
 
 </details>
 

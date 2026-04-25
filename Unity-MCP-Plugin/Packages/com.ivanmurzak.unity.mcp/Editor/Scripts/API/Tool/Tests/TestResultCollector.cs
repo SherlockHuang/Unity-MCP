@@ -55,6 +55,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
         public static PlayerPrefsBool IncludePassingTests = new PlayerPrefsBool("Unity_MCP_TestRunner_IncludePassingTests");
         public static PlayerPrefsBool IncludeMessage = new PlayerPrefsBool("Unity_MCP_TestRunner_IncludeMessage", true);
         public static PlayerPrefsBool IncludeMessageStacktrace = new PlayerPrefsBool("Unity_MCP_TestRunner_IncludeStacktrace");
+        public static PlayerPrefsString ResultFormat = new PlayerPrefsString("Unity_MCP_TestRunner_ResultFormat");
 
         public static PlayerPrefsBool IncludeLogs = new PlayerPrefsBool("Unity_MCP_TestRunner_IncludeLogs");
         public static PlayerPrefsInt IncludeLogsMinLevel = new PlayerPrefsInt("Unity_MCP_TestRunner_IncludeLogsMinLevel", (int)LogType.Warning);
@@ -135,7 +136,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
                     includeMessage: IncludeMessage.Value,
                     includeLogs: IncludeLogs.Value,
                     includeMessageStacktrace: IncludeMessageStacktrace.Value,
-                    includeLogsStacktrace: IncludeLogsStacktrace.Value);
+                    includeLogsStacktrace: IncludeLogsStacktrace.Value,
+                    resultFormat: GetPersistedResultFormat());
 
                 var mcpPlugin = UnityMcpPluginEditor.Instance.McpPluginInstance ?? throw new InvalidOperationException("MCP Plugin instance is not available.");
 
@@ -218,50 +220,29 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
             }
         }
 
-        TestRunResponse CreateStructuredResponse(bool includePassingTests, bool includeMessage, bool includeMessageStacktrace, bool includeLogs, bool includeLogsStacktrace)
-        {
-            var results = GetResults();
-            var summary = GetSummary();
-            var logs = GetLogs();
+        TestRunResponse CreateStructuredResponse(bool includePassingTests, bool includeMessage, bool includeMessageStacktrace, bool includeLogs, bool includeLogsStacktrace, TestResultFormat resultFormat)
+            => TestResultResponseBuilder.Build(
+                results: GetResults(),
+                summary: GetSummary(),
+                logs: GetLogs(),
+                resultFormat: resultFormat,
+                includePassingTests: includePassingTests,
+                includeMessage: includeMessage,
+                includeMessageStacktrace: includeMessageStacktrace,
+                includeLogs: includeLogs,
+                includeLogsStacktrace: includeLogsStacktrace,
+                minLogType: (LogType)IncludeLogsMinLevel.Value);
 
-            var response = new TestRunResponse
-            {
-                Summary = summary,
-                Results = new List<TestResultData>()
-            };
+        internal static TestResultFormat ParseResultFormat(string? value)
+            => Enum.TryParse(value, ignoreCase: true, out TestResultFormat resultFormat) && Enum.IsDefined(typeof(TestResultFormat), resultFormat)
+                ? resultFormat
+                : TestResultFormat.Flat;
 
-            // Filter test results based on includePassingTests, includeMessage and includeMessageStacktrace
-            foreach (var result in results)
-            {
-                // Skip passing tests if includePassingTests is false
-                if (!includePassingTests && result.Status == TestResultStatus.Passed)
-                    continue;
+        internal static void PersistResultFormat(TestResultFormat resultFormat)
+            => ResultFormat.Value = resultFormat.ToString();
 
-                var filteredResult = new TestResultData
-                {
-                    Name = result.Name,
-                    Status = result.Status,
-                    Duration = result.Duration,
-                    Message = includeMessage ? result.Message : null,
-                    StackTrace = includeMessageStacktrace ? result.StackTrace : null
-                };
-                response.Results.Add(filteredResult);
-            }
-
-            // Include logs if requested
-            if (includeLogs && logs.Any())
-            {
-                var minLogLevel = TestLogEntry.ToLogLevel((LogType)IncludeLogsMinLevel.Value);
-                response.Logs = logs
-                    .Where(log => log.LogLevel >= minLogLevel)
-                    .Select(log => includeLogsStacktrace
-                        ? log
-                        : new TestLogEntry(log.Type, log.Condition, null, log.Timestamp))
-                    .ToList();
-            }
-
-            return response;
-        }
+        internal static TestResultFormat GetPersistedResultFormat()
+            => ParseResultFormat(ResultFormat.Value);
 
         public static int CountTests(ITestAdaptor test)
         {
