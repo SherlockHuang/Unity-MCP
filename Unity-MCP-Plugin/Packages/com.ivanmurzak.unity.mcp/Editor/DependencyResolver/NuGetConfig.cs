@@ -43,29 +43,23 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         public static readonly NuGetPackage[] Packages =
         {
             // --- Runtime dependencies (included in game builds) ---
-            // v8 pinned to match what McpPlugin.dll (netstandard2.1) is compiled against.
-            // Higher versions cause MissingMethodException at runtime in Unity versions
-            // whose built-in BCL doesn't override our NuGet install (e.g. Unity 6.5).
-            // 6.1.0 drops the unused ModelContextProtocol dep; earlier versions drag in a
-            // v10 BCL stack via MCP.Core.1.2.0 that collides with our v8 pins in Unity.
-            new NuGetPackage("System.Text.Json",                                      "8.0.5",  includeInBuild: true),
-            new NuGetPackage("Microsoft.AspNetCore.SignalR.Client",                   "8.0.15", includeInBuild: true),
-            new NuGetPackage("Microsoft.AspNetCore.SignalR.Protocols.Json",           "8.0.15", includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.Logging",                          "8.0.1",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.Logging.Abstractions",             "8.0.2",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.DependencyInjection",              "8.0.1",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.DependencyInjection.Abstractions", "8.0.2",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.Options",                          "8.0.2",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.Caching.Abstractions",             "8.0.0",  includeInBuild: true),
-            new NuGetPackage("Microsoft.Extensions.Hosting.Abstractions",             "8.0.1",  includeInBuild: true),
+            // Keep these in sync with package.json so the OpenUPM-resolved DLLs
+            // match the assembly definition precompiled references.
+            new NuGetPackage("System.Text.Json",                                      "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.AspNetCore.SignalR.Client",                   "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.AspNetCore.SignalR.Protocols.Json",           "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.Logging",                          "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.Logging.Abstractions",             "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.DependencyInjection",              "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.DependencyInjection.Abstractions", "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.Options",                          "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.Caching.Abstractions",             "10.0.3", includeInBuild: true),
+            new NuGetPackage("Microsoft.Extensions.Hosting.Abstractions",             "10.0.3", includeInBuild: true),
             new NuGetPackage("R3",                                                    "1.3.0",  includeInBuild: true),
 
             // --- Editor-only dependencies (excluded from builds) ---
             new NuGetPackage("Microsoft.Bcl.Memory",                                  "10.0.3"),
-            // Pinned to 4.8.0 so transitive System.Collections.Immutable stays at 7.0.0
-            // (forward-compatible with Unity 6.6's built-in 8.0.0). Roslyn 4.14 requires
-            // SCI 9.0.0 which clashes with Unity's built-in.
-            new NuGetPackage("Microsoft.CodeAnalysis.CSharp",                         "4.8.0"),
+            new NuGetPackage("Microsoft.CodeAnalysis.CSharp",                         "4.14.0"),
         };
 
         public static bool IsManagedOpenUpmPackageName(string packageName)

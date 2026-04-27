@@ -347,7 +347,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
             if (dirName == null)
                 return true;
 
-            // Extract the package ID from the directory name (e.g., "System.Text.Json.8.0.5" → "System.Text.Json")
+            // Extract the package ID from the directory name (e.g., "System.Text.Json.10.0.3" → "System.Text.Json")
             // so we match the exact package ID rather than any prefix (which would confuse
             // "Microsoft.Extensions.Logging" with "Microsoft.Extensions.Logging.Abstractions").
             var extractedId = ExtractPackageIdFromDirName(dirName);
@@ -383,8 +383,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         }
 
         /// <summary>
-        /// Extracts the package ID from a directory name like "System.Text.Json.8.0.5"
-        /// or "Microsoft.AspNetCore.SignalR.Protocols.Json.8.0.15".
+        /// Extracts the package ID from a directory name like "System.Text.Json.10.0.3"
+        /// or "Microsoft.AspNetCore.SignalR.Protocols.Json.10.0.3".
         /// </summary>
         static string? ExtractPackageIdFromDirName(string dirName)
         {

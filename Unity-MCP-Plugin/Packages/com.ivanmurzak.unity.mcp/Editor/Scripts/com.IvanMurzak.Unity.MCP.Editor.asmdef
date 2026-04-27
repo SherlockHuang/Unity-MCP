@@ -17,7 +17,6 @@
         "McpPlugin.dll",
         "McpPlugin.Common.dll",
         "R3.dll",
-        "Microsoft.Extensions.Diagnostics.dll",
         "Microsoft.Extensions.Logging.Abstractions.dll",
         "Microsoft.Extensions.Logging.dll",
         "Microsoft.AspNetCore.SignalR.Client.dll",
