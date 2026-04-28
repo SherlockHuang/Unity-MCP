@@ -46,9 +46,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.DependencyResolver
         ""ReflectorNet.dll""
     ],
     ""autoReferenced"": true,
-    ""defineConstraints"": [
-        ""UNITY_MCP_OPENUPM_READY""
-    ],
+    ""defineConstraints"": [],
     ""versionDefines"": [],
     ""noEngineReferences"": false
 }

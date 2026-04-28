@@ -21,9 +21,7 @@
         "Microsoft.AspNetCore.SignalR.Client.Core.dll"
     ],
     "autoReferenced": true,
-    "defineConstraints": [
-        "UNITY_MCP_OPENUPM_READY"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }

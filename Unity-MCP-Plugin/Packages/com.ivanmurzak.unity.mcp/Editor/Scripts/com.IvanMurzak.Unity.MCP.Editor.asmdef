@@ -27,9 +27,7 @@
         "System.Text.Json.dll"
     ],
     "autoReferenced": true,
-    "defineConstraints": [
-        "UNITY_MCP_OPENUPM_READY"
-    ],
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }

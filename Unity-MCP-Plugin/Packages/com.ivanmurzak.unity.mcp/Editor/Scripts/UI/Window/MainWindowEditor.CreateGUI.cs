@@ -314,9 +314,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.UI
         {
             // Populate in code rather than via UXML type="..." so the UXML importer
             // doesn't need to resolve com.IvanMurzak.Unity.MCP.Runtime at asset-import
-            // time (the Runtime asmdef is gated by UNITY_MCP_OPENUPM_READY, which is set later
-            // by the NuGet resolver — resolving it during UXML import produces a
-            // TypeLoadException on the very first package import).
+            // time; resolving it during UXML import can produce a TypeLoadException
+            // on the very first package import before dependencies are fully imported.
             var dropdownLogLevel = root.Q<DropdownField>("dropdownLogLevel");
             dropdownLogLevel.choices = Enum.GetNames(typeof(LogLevel)).ToList();
             dropdownLogLevel.value = UnityMcpPluginEditor.LogLevel.ToString();

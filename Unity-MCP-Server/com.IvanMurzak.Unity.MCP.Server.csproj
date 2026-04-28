@@ -13,7 +13,7 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>unity-mcp-server</ToolCommandName>
     <PackageId>com.IvanMurzak.Unity.MCP.Server</PackageId>
-    <Version>0.66.6</Version>
+    <Version>0.66.7</Version>
     <Authors>Ivan Murzak</Authors>
     <Company>Ivan Murzak</Company>
     <Copyright>Copyright © 2025 Ivan Murzak</Copyright>
