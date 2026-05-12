@@ -11,6 +11,7 @@
 #nullable enable
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
 {
@@ -23,7 +24,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
         public TestResultFormat ResultFormat { get; set; } = TestResultFormat.Flat;
 
         [Description("List of individual test results with details about each test.")]
-        public List<TestResultData> Results { get; set; } = new List<TestResultData>();
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public List<TestResultData>? Results { get; set; }
 
         [Description("Grouped test results for compact tree output. Populated when ResultFormat is Tree.")]
         public List<TestResultGroupData>? ResultGroups { get; set; }

@@ -11,6 +11,7 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
 {
@@ -30,7 +31,8 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
     public class TestResultLeafData
     {
         public string MethodName { get; set; } = string.Empty;
-        public string FullName { get; set; } = string.Empty;
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? FullName { get; set; }
         public TestResultStatus Status { get; set; } = TestResultStatus.Skipped;
         public TimeSpan Duration { get; set; }
         public string? Message { get; set; }

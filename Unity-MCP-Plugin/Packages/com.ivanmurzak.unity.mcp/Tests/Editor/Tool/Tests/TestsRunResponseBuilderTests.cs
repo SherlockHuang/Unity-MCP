@@ -11,6 +11,8 @@
 #nullable enable
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using com.IvanMurzak.Unity.MCP.Editor.API.TestRunner;
 using NUnit.Framework;
 using UnityEngine;
@@ -32,11 +34,12 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
 
             Assert.AreEqual(TestResultFormat.Flat, response.ResultFormat);
             Assert.IsNotNull(response.Results);
-            Assert.AreEqual(2, response.Results.Count);
+            var results = response.Results!;
+            Assert.AreEqual(2, results.Count);
             Assert.IsNull(response.ResultGroups);
-            Assert.AreEqual("WG.Game.DailyDungeon.Tests.DailyDungeonSettlementRoutingTests.Fails_WhenRouteMissing", response.Results[0].Name);
-            Assert.AreEqual("expected route", response.Results[0].Message);
-            Assert.IsNull(response.Results[0].StackTrace);
+            Assert.AreEqual("WG.Game.DailyDungeon.Tests.DailyDungeonSettlementRoutingTests.Fails_WhenRouteMissing", results[0].Name);
+            Assert.AreEqual("expected route", results[0].Message);
+            Assert.IsNull(results[0].StackTrace);
         }
 
         [Test]
@@ -51,7 +54,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
                 includeLogsStacktrace: false);
 
             Assert.AreEqual(TestResultFormat.Tree, response.ResultFormat);
-            Assert.AreEqual(0, response.Results.Count);
+            Assert.IsNull(response.Results);
             Assert.IsNotNull(response.ResultGroups);
             Assert.AreEqual(2, response.ResultGroups!.Count);
 
@@ -63,8 +66,126 @@ namespace com.IvanMurzak.Unity.MCP.Editor.Tests
             Assert.AreEqual(1, dailyDungeonGroup.PassedTests);
             Assert.AreEqual(1, dailyDungeonGroup.FailedTests);
             Assert.AreEqual("Fails_WhenRouteMissing", dailyDungeonGroup.Results[0].MethodName);
-            Assert.AreEqual("WG.Game.DailyDungeon.Tests.DailyDungeonSettlementRoutingTests.Fails_WhenRouteMissing", dailyDungeonGroup.Results[0].FullName);
+            Assert.IsNull(dailyDungeonGroup.Results[0].FullName);
             Assert.AreEqual("Passes_WhenRouteExists", dailyDungeonGroup.Results[1].MethodName);
+            Assert.IsNull(dailyDungeonGroup.Results[1].FullName);
+        }
+
+        [Test]
+        public void Build_Tree_SerializesWithoutLegacyResultsOrNormalLeafFullNames()
+        {
+            var response = Build(
+                TestResultFormat.Tree,
+                includePassingTests: true,
+                includeMessage: true,
+                includeStacktrace: false,
+                includeLogs: false,
+                includeLogsStacktrace: false);
+
+            var json = JsonSerializer.Serialize(response);
+            var root = JsonNode.Parse(json)!.AsObject();
+
+            Assert.IsFalse(root.ContainsKey(nameof(TestRunResponse.Results)), json);
+            var resultGroups = root[nameof(TestRunResponse.ResultGroups)]!.AsArray();
+            foreach (var groupNode in resultGroups)
+            {
+                var leaves = groupNode![nameof(TestResultGroupData.Results)]!.AsArray();
+                foreach (var leafNode in leaves)
+                    Assert.IsFalse(leafNode!.AsObject().ContainsKey(nameof(TestResultLeafData.FullName)), json);
+            }
+        }
+
+        [Test]
+        public void Build_Tree_KeepsFullNameFallbackWhenMethodIdentityIsIncomplete()
+        {
+            var response = TestResultResponseBuilder.Build(
+                results: new List<TestResultData>
+                {
+                    new TestResultData
+                    {
+                        Name = "WG.Game.Tests.IncompleteFixture.",
+                        Status = TestResultStatus.Failed,
+                        Duration = TimeSpan.FromMilliseconds(1)
+                    }
+                },
+                summary: new TestSummaryData { TotalTests = 1, FailedTests = 1 },
+                logs: new List<TestLogEntry>(),
+                resultFormat: TestResultFormat.Tree,
+                includePassingTests: true,
+                includeMessage: true,
+                includeMessageStacktrace: false,
+                includeLogs: false,
+                includeLogsStacktrace: false,
+                minLogType: LogType.Warning);
+
+            Assert.IsNotNull(response.ResultGroups);
+            var leaf = response.ResultGroups![0].Results[0];
+            Assert.AreEqual(string.Empty, leaf.MethodName);
+            Assert.AreEqual("WG.Game.Tests.IncompleteFixture.", leaf.FullName);
+
+            var json = JsonSerializer.Serialize(response);
+            Assert.IsTrue(json.Contains(nameof(TestResultLeafData.FullName)), json);
+        }
+
+        [Test]
+        public void Build_Tree_KeepsFullNameFallbackWhenGroupIdentityIsUnavailable()
+        {
+            var response = TestResultResponseBuilder.Build(
+                results: new List<TestResultData>
+                {
+                    new TestResultData
+                    {
+                        Name = "SingleMethodName",
+                        Status = TestResultStatus.Failed,
+                        Duration = TimeSpan.FromMilliseconds(1)
+                    }
+                },
+                summary: new TestSummaryData { TotalTests = 1, FailedTests = 1 },
+                logs: new List<TestLogEntry>(),
+                resultFormat: TestResultFormat.Tree,
+                includePassingTests: true,
+                includeMessage: true,
+                includeMessageStacktrace: false,
+                includeLogs: false,
+                includeLogsStacktrace: false,
+                minLogType: LogType.Warning);
+
+            Assert.IsNotNull(response.ResultGroups);
+            var leaf = response.ResultGroups![0].Results[0];
+            Assert.AreEqual("SingleMethodName", leaf.MethodName);
+            Assert.AreEqual("SingleMethodName", leaf.FullName);
+        }
+
+        [Test]
+        public void Build_Tree_ParsesParameterizedFixtureIdentityWithoutFallback()
+        {
+            var response = TestResultResponseBuilder.Build(
+                results: new List<TestResultData>
+                {
+                    new TestResultData
+                    {
+                        Name = "WG.Game.Tests.Fixture(1).Runs_With_Value(\"a.b\")",
+                        Status = TestResultStatus.Failed,
+                        Duration = TimeSpan.FromMilliseconds(1)
+                    }
+                },
+                summary: new TestSummaryData { TotalTests = 1, FailedTests = 1 },
+                logs: new List<TestLogEntry>(),
+                resultFormat: TestResultFormat.Tree,
+                includePassingTests: true,
+                includeMessage: true,
+                includeMessageStacktrace: false,
+                includeLogs: false,
+                includeLogsStacktrace: false,
+                minLogType: LogType.Warning);
+
+            Assert.IsNotNull(response.ResultGroups);
+            var group = response.ResultGroups![0];
+            Assert.AreEqual("WG.Game.Tests", group.Namespace);
+            Assert.AreEqual("Fixture(1)", group.ClassName);
+            var leaf = group.Results[0];
+            Assert.AreEqual("Runs_With_Value(\"a.b\")", leaf.MethodName);
+            Assert.IsNull(leaf.FullName);
         }
 
         [Test]

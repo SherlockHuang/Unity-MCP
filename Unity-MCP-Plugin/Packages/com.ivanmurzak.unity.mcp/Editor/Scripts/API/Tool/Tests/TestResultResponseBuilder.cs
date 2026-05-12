@@ -33,8 +33,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
             var response = new TestRunResponse
             {
                 Summary = summary,
-                ResultFormat = resultFormat,
-                Results = new List<TestResultData>()
+                ResultFormat = resultFormat
             };
 
             if (resultFormat == TestResultFormat.Tree)
@@ -104,7 +103,7 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
                         .Select(item => new TestResultLeafData
                         {
                             MethodName = item.Identity.MethodName,
-                            FullName = item.Result.Name,
+                            FullName = item.Identity.RequiresFullNameFallback ? item.Result.Name : null,
                             Status = item.Result.Status,
                             Duration = item.Result.Duration,
                             Message = includeMessage ? item.Result.Message : null,
@@ -134,36 +133,73 @@ namespace com.IvanMurzak.Unity.MCP.Editor.API.TestRunner
             public readonly string Namespace;
             public readonly string ClassName;
             public readonly string MethodName;
+            public readonly bool RequiresFullNameFallback;
 
-            TestIdentity(string assemblyName, string namespaceName, string className, string methodName)
+            TestIdentity(string assemblyName, string namespaceName, string className, string methodName, bool requiresFullNameFallback)
             {
                 AssemblyName = assemblyName;
                 Namespace = namespaceName;
                 ClassName = className;
                 MethodName = methodName;
+                RequiresFullNameFallback = requiresFullNameFallback;
             }
 
             public static TestIdentity Parse(string fullName)
             {
                 if (string.IsNullOrWhiteSpace(fullName))
-                    return new TestIdentity(string.Empty, string.Empty, string.Empty, string.Empty);
+                    return new TestIdentity(string.Empty, string.Empty, string.Empty, string.Empty, true);
 
-                var lastDot = fullName.LastIndexOf('.');
+                var lastDot = LastDotOutsideParentheses(fullName);
                 if (lastDot < 0)
-                    return new TestIdentity(string.Empty, string.Empty, string.Empty, fullName);
+                    return new TestIdentity(
+                        assemblyName: string.Empty,
+                        namespaceName: string.Empty,
+                        className: string.Empty,
+                        methodName: fullName,
+                        requiresFullNameFallback: true);
 
                 var methodName = fullName[(lastDot + 1)..];
                 var ownerName = fullName[..lastDot];
-                var classDot = ownerName.LastIndexOf('.');
+                var classDot = LastDotOutsideParentheses(ownerName);
 
                 if (classDot < 0)
-                    return new TestIdentity(string.Empty, string.Empty, ownerName, methodName);
+                    return new TestIdentity(
+                        assemblyName: string.Empty,
+                        namespaceName: string.Empty,
+                        className: ownerName,
+                        methodName: methodName,
+                        requiresFullNameFallback: string.IsNullOrEmpty(methodName) || string.IsNullOrEmpty(ownerName));
 
                 return new TestIdentity(
                     assemblyName: string.Empty,
                     namespaceName: ownerName[..classDot],
                     className: ownerName[(classDot + 1)..],
-                    methodName: methodName);
+                    methodName: methodName,
+                    requiresFullNameFallback: string.IsNullOrEmpty(methodName));
+            }
+
+            static int LastDotOutsideParentheses(string value)
+            {
+                var depth = 0;
+                for (var i = value.Length - 1; i >= 0; i--)
+                {
+                    switch (value[i])
+                    {
+                        case ')':
+                            depth++;
+                            break;
+                        case '(':
+                            if (depth > 0)
+                                depth--;
+                            break;
+                        case '.':
+                            if (depth == 0)
+                                return i;
+                            break;
+                    }
+                }
+
+                return -1;
             }
         }
     }
